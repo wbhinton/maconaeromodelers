@@ -1,0 +1,6 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* You can add custom global styles here if absolutely needed, 
+   but try to stick to utility classes! */

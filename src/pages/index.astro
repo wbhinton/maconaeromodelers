@@ -3,58 +3,84 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="Home">
-  <div class="hero">
-    <h1>Welcome to Macon Aero Modelers</h1>
-    <p>Join us in the exciting world of radio-controlled model aviation</p>
+  <div class="bg-gradient-to-br from-primary to-secondary text-white py-16 px-4 rounded-2xl text-center mb-12 shadow-md">
+    <h1 class="text-4xl md:text-5xl font-bold mb-4">Welcome to Macon Aero Modelers</h1>
+    <p class="text-xl md:text-2xl text-blue-50 max-w-2xl mx-auto">
+      Join us in the exciting world of radio-controlled model aviation
+    </p>
   </div>
 
-  <section class="section">
-    <h2 class="section-title">About Our Club</h2>
-    <div class="card">
-      <p style="margin-bottom: 1rem;">
+  <section class="mb-16">
+    <h2 class="text-3xl font-bold text-text-dark mb-6">About Our Club</h2>
+    
+    <div class="bg-white rounded-xl shadow-md border border-gray-100 p-8 hover:shadow-lg transition-shadow duration-300">
+      <p class="mb-4 text-lg text-gray-600 leading-relaxed">
         Macon Aero Modelers is a community of passionate model airplane enthusiasts. We welcome pilots of all skill levels, 
         from beginners to experienced flyers. Our club provides a safe and friendly environment to enjoy the hobby of 
         radio-controlled aviation.
       </p>
-      <p style="margin-bottom: 1rem;">
+      <p class="mb-8 text-lg text-gray-600 leading-relaxed">
         We meet regularly to fly, share knowledge, and enjoy the camaraderie of fellow model aviation enthusiasts. 
         Whether you're interested in sport flying, aerobatics, scale models, or FPV racing, you'll find like-minded 
         members at our club.
       </p>
-      <a href={`${import.meta.env.BASE_URL}new-members`} class="btn">Join Our Club</a>
+      
+      <a 
+        href={`${import.meta.env.BASE_URL}new-members`} 
+        class="inline-block bg-primary text-white font-semibold py-3 px-6 rounded-lg hover:bg-primary-hover transition-colors"
+      >
+        Join Our Club
+      </a>
     </div>
   </section>
 
-  <section class="section">
-    <h2 class="section-title">What We Offer</h2>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
-      <div class="card">
-        <h3 style="color: var(--primary-color); margin-bottom: 1rem;">Flying Field</h3>
-        <p>Access to a well-maintained flying field with paved runways and ample space for all types of model aircraft.</p>
+  <section class="mb-16">
+    <h2 class="text-3xl font-bold text-text-dark mb-6">What We Offer</h2>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      
+      <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:-translate-y-1 transition-transform duration-300">
+        <h3 class="text-xl font-bold text-primary mb-3">Flying Field</h3>
+        <p class="text-gray-600">Access to a well-maintained flying field with paved runways and ample space for all types of model aircraft.</p>
       </div>
-      <div class="card">
-        <h3 style="color: var(--primary-color); margin-bottom: 1rem;">Training Program</h3>
-        <p>Comprehensive training for beginners with experienced instructors to help you learn to fly safely.</p>
+
+      <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:-translate-y-1 transition-transform duration-300">
+        <h3 class="text-xl font-bold text-primary mb-3">Training Program</h3>
+        <p class="text-gray-600">Comprehensive training for beginners with experienced instructors to help you learn to fly safely.</p>
       </div>
-      <div class="card">
-        <h3 style="color: var(--primary-color); margin-bottom: 1rem;">Events & Competitions</h3>
-        <p>Regular fly-ins, competitions, and social events to connect with fellow enthusiasts.</p>
+
+      <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:-translate-y-1 transition-transform duration-300">
+        <h3 class="text-xl font-bold text-primary mb-3">Events & Competitions</h3>
+        <p class="text-gray-600">Regular fly-ins, competitions, and social events to connect with fellow enthusiasts.</p>
       </div>
-      <div class="card">
-        <h3 style="color: var(--primary-color); margin-bottom: 1rem;">Community Support</h3>
-        <p>A welcoming community ready to share knowledge, tips, and assistance with your models.</p>
+
+      <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:-translate-y-1 transition-transform duration-300">
+        <h3 class="text-xl font-bold text-primary mb-3">Community Support</h3>
+        <p class="text-gray-600">A welcoming community ready to share knowledge, tips, and assistance with your models.</p>
       </div>
+
     </div>
   </section>
 
-  <section class="section" style="text-align: center; background-color: var(--bg-light); padding: 3rem; border-radius: 8px;">
-    <h2 class="section-title">Ready to Get Started?</h2>
-    <p style="font-size: 1.1rem; margin-bottom: 2rem; color: var(--text-light);">
+  <section class="bg-background-alt rounded-2xl p-12 text-center border border-gray-200">
+    <h2 class="text-3xl font-bold text-text-dark mb-4">Ready to Get Started?</h2>
+    <p class="text-lg text-text-light mb-8 max-w-2xl mx-auto">
       Whether you're new to the hobby or an experienced pilot, we'd love to have you join us.
     </p>
-    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-      <a href={`${import.meta.env.BASE_URL}new-members`} class="btn">Become a Member</a>
-      <a href={`${import.meta.env.BASE_URL}contact`} class="btn btn-secondary">Contact Us</a>
+    
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a 
+        href={`${import.meta.env.BASE_URL}new-members`} 
+        class="inline-block bg-primary text-white font-semibold py-3 px-8 rounded-lg hover:bg-primary-hover transition-colors shadow-md"
+      >
+        Become a Member
+      </a>
+      <a 
+        href={`${import.meta.env.BASE_URL}contact`} 
+        class="inline-block bg-white text-primary border-2 border-primary font-semibold py-3 px-8 rounded-lg hover:bg-blue-50 transition-colors"
+      >
+        Contact Us
+      </a>
     </div>
   </section>
 </Layout>
