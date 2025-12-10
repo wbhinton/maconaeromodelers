@@ -1,0 +1,151 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Events" description="Upcoming events and activities at Macon Aero Modelers">
+  <div class="hero">
+    <h1>Events & Activities</h1>
+    <p>Join us for fly-ins, competitions, and club meetings</p>
+  </div>
+
+  <section class="section">
+    <h2 class="section-title">Upcoming Events</h2>
+    <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+      <div class="card">
+        <div style="display: grid; grid-template-columns: auto 1fr; gap: 1.5rem; align-items: start;">
+          <div style="background: var(--primary-color); color: white; padding: 1rem; border-radius: 8px; text-align: center; min-width: 80px;">
+            <div style="font-size: 2rem; font-weight: bold;">15</div>
+            <div style="font-size: 0.9rem;">JAN</div>
+          </div>
+          <div>
+            <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">Monthly Club Meeting</h3>
+            <p style="color: var(--text-light); margin-bottom: 0.5rem;">
+              <strong>Time:</strong> 7:00 PM - 9:00 PM<br>
+              <strong>Location:</strong> Community Center, Main Hall
+            </p>
+            <p style="margin-bottom: 1rem;">
+              Join us for our monthly meeting to discuss club business, upcoming events, and share flying experiences. 
+              New members and visitors are always welcome!
+            </p>
+            <a href={`${import.meta.env.BASE_URL}contact`} class="btn">Get Directions</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div style="display: grid; grid-template-columns: auto 1fr; gap: 1.5rem; align-items: start;">
+          <div style="background: var(--accent-color); color: white; padding: 1rem; border-radius: 8px; text-align: center; min-width: 80px;">
+            <div style="font-size: 2rem; font-weight: bold;">22</div>
+            <div style="font-size: 0.9rem;">FEB</div>
+          </div>
+          <div>
+            <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">Winter Fun Fly</h3>
+            <p style="color: var(--text-light); margin-bottom: 0.5rem;">
+              <strong>Time:</strong> 9:00 AM - 4:00 PM<br>
+              <strong>Location:</strong> Club Flying Field
+            </p>
+            <p style="margin-bottom: 1rem;">
+              Weather permitting, join us for a fun day of flying! Bring your aircraft and enjoy flying with fellow club members. 
+              Hot dogs and refreshments will be provided.
+            </p>
+            <a href={`${import.meta.env.BASE_URL}contact`} class="btn">Register Now</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div style="display: grid; grid-template-columns: auto 1fr; gap: 1.5rem; align-items: start;">
+          <div style="background: var(--primary-color); color: white; padding: 1rem; border-radius: 8px; text-align: center; min-width: 80px;">
+            <div style="font-size: 2rem; font-weight: bold;">15</div>
+            <div style="font-size: 0.9rem;">MAR</div>
+          </div>
+          <div>
+            <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">Beginner Training Day</h3>
+            <p style="color: var(--text-light); margin-bottom: 0.5rem;">
+              <strong>Time:</strong> 10:00 AM - 2:00 PM<br>
+              <strong>Location:</strong> Club Flying Field
+            </p>
+            <p style="margin-bottom: 1rem;">
+              Special training session for new pilots! Our certified instructors will provide hands-on training with trainer aircraft. 
+              Perfect for those looking to get started in the hobby.
+            </p>
+            <a href={`${import.meta.env.BASE_URL}new-members`} class="btn">Learn More</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div style="display: grid; grid-template-columns: auto 1fr; gap: 1.5rem; align-items: start;">
+          <div style="background: var(--accent-color); color: white; padding: 1rem; border-radius: 8px; text-align: center; min-width: 80px;">
+            <div style="font-size: 2rem; font-weight: bold;">12</div>
+            <div style="font-size: 0.9rem;">APR</div>
+          </div>
+          <div>
+            <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">Spring Aerobatic Competition</h3>
+            <p style="color: var(--text-light); margin-bottom: 0.5rem;">
+              <strong>Time:</strong> 8:00 AM - 5:00 PM<br>
+              <strong>Location:</strong> Club Flying Field
+            </p>
+            <p style="margin-bottom: 1rem;">
+              Annual aerobatic competition featuring multiple classes from beginner to expert. Spectators welcome! 
+              Food vendors and raffle prizes throughout the day.
+            </p>
+            <a href={`${import.meta.env.BASE_URL}contact`} class="btn">Register to Compete</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Regular Activities</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+      <div class="card">
+        <h3 style="color: var(--primary-color); margin-bottom: 1rem;">🗓️ Monthly Meetings</h3>
+        <p style="margin-bottom: 0.5rem;"><strong>When:</strong> Third Monday of each month</p>
+        <p style="margin-bottom: 0.5rem;"><strong>Time:</strong> 7:00 PM</p>
+        <p style="color: var(--text-light);">
+          Regular meetings to discuss club business, plan events, and share knowledge.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3 style="color: var(--primary-color); margin-bottom: 1rem;">✈️ Open Flying</h3>
+        <p style="margin-bottom: 0.5rem;"><strong>When:</strong> Weekends & Holidays</p>
+        <p style="margin-bottom: 0.5rem;"><strong>Time:</strong> Dawn to Dusk</p>
+        <p style="color: var(--text-light);">
+          Field is open to members for flying during daylight hours on weekends.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3 style="color: var(--primary-color); margin-bottom: 1rem;">🎓 Training Sessions</h3>
+        <p style="margin-bottom: 0.5rem;"><strong>When:</strong> Saturdays (by appointment)</p>
+        <p style="margin-bottom: 0.5rem;"><strong>Time:</strong> 10:00 AM - 1:00 PM</p>
+        <p style="color: var(--text-light);">
+          One-on-one training with certified instructors for new members.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3 style="color: var(--primary-color); margin-bottom: 1rem;">🛠️ Build Nights</h3>
+        <p style="margin-bottom: 0.5rem;"><strong>When:</strong> First Thursday of each month</p>
+        <p style="margin-bottom: 0.5rem;"><strong>Time:</strong> 6:00 PM - 9:00 PM</p>
+        <p style="color: var(--text-light);">
+          Work on your projects and get help from experienced builders.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background-color: var(--bg-light); padding: 2rem; border-radius: 8px;">
+    <h2 class="section-title">Stay Informed</h2>
+    <p style="font-size: 1.1rem; color: var(--text-light); margin-bottom: 1.5rem;">
+      Want to receive updates about upcoming events? Join our mailing list or follow us on social media!
+    </p>
+    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+      <a href={`${import.meta.env.BASE_URL}contact`} class="btn">Join Mailing List</a>
+      <a href="#" class="btn btn-secondary">Follow on Facebook</a>
+    </div>
+  </section>
+</Layout>
