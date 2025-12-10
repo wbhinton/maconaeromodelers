@@ -5,27 +5,21 @@ import react from '@astrojs/react';
 
 // https://astro.build/config
 export default defineConfig({
-
   site: 'https://wbhinton.github.io',
   base: '/maconaeromodelers/',
   output: 'static',
-  plugins: [
-    require('@tailwindcss/typography'),
-  ],
+  // REMOVED the 'plugins' block from here
   integrations: [
-    tailwind(),
+    tailwind(), // This will automatically look for tailwind.config.mjs
     react(),
-    
     starlight({
       title: 'Macon Aero Modelers Docs',
-      disable404Route: true, // Let your main theme handle 404s
-
+      disable404Route: true,
       customCss: ['./src/styles/starlight.css'],
       sidebar: [
         {
           label: 'Start Here',
           items: [
-            // The slug 'docs' points to src/content/docs/docs/index.md
             { label: 'Overview', slug: 'docs' },
           ],
         },
