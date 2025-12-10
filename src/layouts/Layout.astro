@@ -1,5 +1,4 @@
 ---
-// Import the global CSS file we just created
 import '../styles/global.css';
 
 interface Props {
@@ -10,14 +9,13 @@ interface Props {
 const { title, description = "Macon Aero Modelers - A model airplane flying club" } = Astro.props;
 const baseUrl = import.meta.env.BASE_URL;
 
-// Helper for navigation links to keep code clean
 const navItems = [
   { text: "Home", href: baseUrl },
   { text: "Gallery", href: `${baseUrl}gallery/` },
   { text: "Videos", href: `${baseUrl}videos/` },
   { text: "Events", href: `${baseUrl}events/` },
   { text: "Resources", href: `${baseUrl}resources/` },
-  { text: "Docs", href: `${baseUrl}docs` }, // Added your Starlight Docs link here
+  { text: "Docs", href: `${baseUrl}docs` },
   { text: "Contact", href: `${baseUrl}contact/` },
   { text: "New Members", href: `${baseUrl}new-members/` },
 ];
@@ -36,18 +34,35 @@ const navItems = [
   <body class="bg-background text-text-dark antialiased min-h-screen flex flex-col font-sans">
     
     <header class="bg-background border-b border-gray-200 sticky top-0 z-50 shadow-sm">
-      <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between relative">
         
-        <a href={baseUrl} class="text-xl font-bold text-primary flex items-center gap-2 hover:opacity-80 transition-opacity">
+        <a href={baseUrl} class="text-xl font-bold text-primary flex items-center gap-2 hover:opacity-80 transition-opacity z-50">
           <span class="text-2xl">✈️</span> Macon Aero Modelers
         </a>
 
-        <ul class="hidden md:flex items-center gap-6">
+        <button 
+          id="mobile-menu-btn"
+          class="md:hidden text-text-dark hover:text-primary p-2 focus:outline-none z-50"
+          aria-label="Toggle menu"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+          </svg>
+        </button>
+
+        <ul 
+          id="nav-links"
+          class="
+            hidden 
+            absolute top-16 left-0 w-full bg-white border-b border-gray-200 shadow-lg flex-col p-6 gap-4 
+            md:flex md:static md:w-auto md:bg-transparent md:border-none md:shadow-none md:flex-row md:p-0 md:gap-6
+          "
+        >
           {navItems.map((item) => (
             <li>
               <a 
                 href={item.href} 
-                class="text-text-dark font-medium hover:text-primary border-b-2 border-transparent hover:border-primary transition-colors py-1"
+                class="block text-text-dark font-medium hover:text-primary border-b-2 border-transparent hover:border-primary transition-colors py-2 md:py-1"
               >
                 {item.text}
               </a>
@@ -55,11 +70,6 @@ const navItems = [
           ))}
         </ul>
 
-        <button class="md:hidden text-text-dark hover:text-primary">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-          </svg>
-        </button>
       </nav>
     </header>
 
@@ -69,14 +79,12 @@ const navItems = [
 
     <footer class="bg-text-dark text-white mt-12 py-12">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8">
-        
         <div>
           <h3 class="text-alert font-semibold text-lg mb-4">About Us</h3>
           <p class="text-gray-300 leading-relaxed">
             Macon Aero Modelers is a community of model airplane enthusiasts dedicated to the hobby of radio-controlled aviation.
           </p>
         </div>
-
         <div>
           <h3 class="text-alert font-semibold text-lg mb-4">Quick Links</h3>
           <ul class="space-y-2">
@@ -86,33 +94,31 @@ const navItems = [
             <li><a href={`${baseUrl}contact/`} class="text-gray-300 hover:text-alert transition-colors">Contact Us</a></li>
           </ul>
         </div>
-
         <div>
           <h3 class="text-alert font-semibold text-lg mb-4">Connect</h3>
           <ul class="space-y-2">
-            <li>
-              <a href="https://www.facebook.com/MaconAeroModelers" class="flex items-center gap-2 text-gray-300 hover:text-alert transition-colors">
-                Facebook
-              </a>
-            </li>
-            <li>
-              <a href="https://www.youtube.com/channel/UCy5OGJfxp4gos5WnEADppSw" class="flex items-center gap-2 text-gray-300 hover:text-alert transition-colors">
-                YouTube
-              </a>
-            </li>
-            <li>
-              <a href="#" class="flex items-center gap-2 text-gray-300 hover:text-alert transition-colors">
-                Instagram
-              </a>
-            </li>
+            <li><a href="https://www.facebook.com/MaconAeroModelers" class="flex items-center gap-2 text-gray-300 hover:text-alert transition-colors">Facebook</a></li>
+            <li><a href="https://www.youtube.com/channel/UCy5OGJfxp4gos5WnEADppSw" class="flex items-center gap-2 text-gray-300 hover:text-alert transition-colors">YouTube</a></li>
           </ul>
         </div>
       </div>
-
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-8 border-t border-gray-700 text-center text-gray-400">
         <p>&copy; {new Date().getFullYear()} Macon Aero Modelers. All rights reserved.</p>
       </div>
     </footer>
 
+    <script>
+      const btn = document.getElementById('mobile-menu-btn');
+      const menu = document.getElementById('nav-links');
+
+      if (btn && menu) {
+        btn.addEventListener('click', () => {
+          // Toggle the 'hidden' class to show/hide the menu
+          menu.classList.toggle('hidden');
+          // Toggle 'flex' to ensure it uses flexbox when visible
+          menu.classList.toggle('flex');
+        });
+      }
+    </script>
   </body>
 </html>
