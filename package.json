@@ -10,10 +10,16 @@
     "preview": "astro preview",
     "astro": "astro"
   },
-  "keywords": ["astro", "model-airplane", "flying-club"],
+  "keywords": [
+    "astro",
+    "model-airplane",
+    "flying-club"
+  ],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@astrojs/react": "^4.4.2",
+    "@astrojs/starlight": "^0.37.1",
     "astro": "^5.16.4"
   },
   "devDependencies": {

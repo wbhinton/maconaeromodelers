@@ -3,149 +3,181 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="Events" description="Upcoming events and activities at Macon Aero Modelers">
-  <div class="hero">
-    <h1>Events & Activities</h1>
-    <p>Join us for fly-ins, competitions, and club meetings</p>
+  <div class="bg-gradient-to-br from-primary to-secondary text-white py-16 px-4 rounded-2xl text-center mb-12 shadow-md">
+    <h1 class="text-4xl md:text-5xl font-bold mb-4">Events & Activities</h1>
+    <p class="text-xl md:text-2xl text-blue-50 max-w-2xl mx-auto">
+      Join us for fly-ins, competitions, and club meetings
+    </p>
   </div>
 
-  <section class="section">
-    <h2 class="section-title">Upcoming Events</h2>
-    <div style="display: flex; flex-direction: column; gap: 1.5rem;">
-      <div class="card">
-        <div style="display: grid; grid-template-columns: auto 1fr; gap: 1.5rem; align-items: start;">
-          <div style="background: var(--primary-color); color: white; padding: 1rem; border-radius: 8px; text-align: center; min-width: 80px;">
-            <div style="font-size: 2rem; font-weight: bold;">15</div>
-            <div style="font-size: 0.9rem;">JAN</div>
+  <section class="mb-16">
+    <h2 class="text-3xl font-bold text-text-dark mb-6">Upcoming Events</h2>
+    
+    <div class="flex flex-col gap-6">
+      
+      <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition-shadow">
+        <div class="flex flex-col sm:flex-row gap-6">
+          <div class="bg-primary text-white rounded-lg p-4 text-center min-w-[100px] h-fit flex flex-col justify-center shrink-0">
+            <div class="text-3xl font-bold">15</div>
+            <div class="text-sm font-medium tracking-wider">JAN</div>
           </div>
-          <div>
-            <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">Monthly Club Meeting</h3>
-            <p style="color: var(--text-light); margin-bottom: 0.5rem;">
-              <strong>Time:</strong> 7:00 PM - 9:00 PM<br>
-              <strong>Location:</strong> Community Center, Main Hall
-            </p>
-            <p style="margin-bottom: 1rem;">
+          
+          <div class="flex-grow">
+            <h3 class="text-xl font-bold text-primary mb-2">Monthly Club Meeting</h3>
+            <div class="text-gray-600 mb-4 space-y-1">
+              <p><strong>Time:</strong> 7:00 PM - 9:00 PM</p>
+              <p><strong>Location:</strong> Community Center, Main Hall</p>
+            </div>
+            <p class="text-gray-700 mb-4 leading-relaxed">
               Join us for our monthly meeting to discuss club business, upcoming events, and share flying experiences. 
               New members and visitors are always welcome!
             </p>
-            <a href={`${import.meta.env.BASE_URL}contact`} class="btn">Get Directions</a>
+            <a href={`${import.meta.env.BASE_URL}contact`} class="inline-block bg-primary text-white font-medium py-2 px-4 rounded hover:bg-primary-hover transition-colors">
+              Get Directions
+            </a>
           </div>
         </div>
       </div>
 
-      <div class="card">
-        <div style="display: grid; grid-template-columns: auto 1fr; gap: 1.5rem; align-items: start;">
-          <div style="background: var(--accent-color); color: white; padding: 1rem; border-radius: 8px; text-align: center; min-width: 80px;">
-            <div style="font-size: 2rem; font-weight: bold;">22</div>
-            <div style="font-size: 0.9rem;">FEB</div>
+      <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition-shadow">
+        <div class="flex flex-col sm:flex-row gap-6">
+          <div class="bg-alert text-white rounded-lg p-4 text-center min-w-[100px] h-fit flex flex-col justify-center shrink-0">
+            <div class="text-3xl font-bold">22</div>
+            <div class="text-sm font-medium tracking-wider">FEB</div>
           </div>
-          <div>
-            <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">Winter Fun Fly</h3>
-            <p style="color: var(--text-light); margin-bottom: 0.5rem;">
-              <strong>Time:</strong> 9:00 AM - 4:00 PM<br>
-              <strong>Location:</strong> Club Flying Field
-            </p>
-            <p style="margin-bottom: 1rem;">
+          
+          <div class="flex-grow">
+            <h3 class="text-xl font-bold text-primary mb-2">Winter Fun Fly</h3>
+            <div class="text-gray-600 mb-4 space-y-1">
+              <p><strong>Time:</strong> 9:00 AM - 4:00 PM</p>
+              <p><strong>Location:</strong> Club Flying Field</p>
+            </div>
+            <p class="text-gray-700 mb-4 leading-relaxed">
               Weather permitting, join us for a fun day of flying! Bring your aircraft and enjoy flying with fellow club members. 
               Hot dogs and refreshments will be provided.
             </p>
-            <a href={`${import.meta.env.BASE_URL}contact`} class="btn">Register Now</a>
+            <a href={`${import.meta.env.BASE_URL}contact`} class="inline-block bg-primary text-white font-medium py-2 px-4 rounded hover:bg-primary-hover transition-colors">
+              Register Now
+            </a>
           </div>
         </div>
       </div>
 
-      <div class="card">
-        <div style="display: grid; grid-template-columns: auto 1fr; gap: 1.5rem; align-items: start;">
-          <div style="background: var(--primary-color); color: white; padding: 1rem; border-radius: 8px; text-align: center; min-width: 80px;">
-            <div style="font-size: 2rem; font-weight: bold;">15</div>
-            <div style="font-size: 0.9rem;">MAR</div>
+      <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition-shadow">
+        <div class="flex flex-col sm:flex-row gap-6">
+          <div class="bg-primary text-white rounded-lg p-4 text-center min-w-[100px] h-fit flex flex-col justify-center shrink-0">
+            <div class="text-3xl font-bold">15</div>
+            <div class="text-sm font-medium tracking-wider">MAR</div>
           </div>
-          <div>
-            <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">Beginner Training Day</h3>
-            <p style="color: var(--text-light); margin-bottom: 0.5rem;">
-              <strong>Time:</strong> 10:00 AM - 2:00 PM<br>
-              <strong>Location:</strong> Club Flying Field
-            </p>
-            <p style="margin-bottom: 1rem;">
+          
+          <div class="flex-grow">
+            <h3 class="text-xl font-bold text-primary mb-2">Beginner Training Day</h3>
+            <div class="text-gray-600 mb-4 space-y-1">
+              <p><strong>Time:</strong> 10:00 AM - 2:00 PM</p>
+              <p><strong>Location:</strong> Club Flying Field</p>
+            </div>
+            <p class="text-gray-700 mb-4 leading-relaxed">
               Special training session for new pilots! Our certified instructors will provide hands-on training with trainer aircraft. 
               Perfect for those looking to get started in the hobby.
             </p>
-            <a href={`${import.meta.env.BASE_URL}new-members`} class="btn">Learn More</a>
+            <a href={`${import.meta.env.BASE_URL}new-members`} class="inline-block bg-primary text-white font-medium py-2 px-4 rounded hover:bg-primary-hover transition-colors">
+              Learn More
+            </a>
           </div>
         </div>
       </div>
 
-      <div class="card">
-        <div style="display: grid; grid-template-columns: auto 1fr; gap: 1.5rem; align-items: start;">
-          <div style="background: var(--accent-color); color: white; padding: 1rem; border-radius: 8px; text-align: center; min-width: 80px;">
-            <div style="font-size: 2rem; font-weight: bold;">12</div>
-            <div style="font-size: 0.9rem;">APR</div>
+      <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition-shadow">
+        <div class="flex flex-col sm:flex-row gap-6">
+          <div class="bg-alert text-white rounded-lg p-4 text-center min-w-[100px] h-fit flex flex-col justify-center shrink-0">
+            <div class="text-3xl font-bold">12</div>
+            <div class="text-sm font-medium tracking-wider">APR</div>
           </div>
-          <div>
-            <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">Spring Aerobatic Competition</h3>
-            <p style="color: var(--text-light); margin-bottom: 0.5rem;">
-              <strong>Time:</strong> 8:00 AM - 5:00 PM<br>
-              <strong>Location:</strong> Club Flying Field
-            </p>
-            <p style="margin-bottom: 1rem;">
+          
+          <div class="flex-grow">
+            <h3 class="text-xl font-bold text-primary mb-2">Spring Aerobatic Competition</h3>
+            <div class="text-gray-600 mb-4 space-y-1">
+              <p><strong>Time:</strong> 8:00 AM - 5:00 PM</p>
+              <p><strong>Location:</strong> Club Flying Field</p>
+            </div>
+            <p class="text-gray-700 mb-4 leading-relaxed">
               Annual aerobatic competition featuring multiple classes from beginner to expert. Spectators welcome! 
               Food vendors and raffle prizes throughout the day.
             </p>
-            <a href={`${import.meta.env.BASE_URL}contact`} class="btn">Register to Compete</a>
+            <a href={`${import.meta.env.BASE_URL}contact`} class="inline-block bg-primary text-white font-medium py-2 px-4 rounded hover:bg-primary-hover transition-colors">
+              Register to Compete
+            </a>
           </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="mb-16">
+    <h2 class="text-3xl font-bold text-text-dark mb-6">Regular Activities</h2>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 h-full">
+        <h3 class="text-xl font-bold text-primary mb-4 flex items-center gap-2">
+          <span>🗓️</span> Monthly Meetings
+        </h3>
+        <div class="space-y-2 text-gray-600">
+          <p><strong>When:</strong> Third Monday</p>
+          <p><strong>Time:</strong> 7:00 PM</p>
+          <p class="text-sm mt-3 border-t pt-3">Regular meetings to discuss club business, plan events, and share knowledge.</p>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 h-full">
+        <h3 class="text-xl font-bold text-primary mb-4 flex items-center gap-2">
+          <span>✈️</span> Open Flying
+        </h3>
+        <div class="space-y-2 text-gray-600">
+          <p><strong>When:</strong> Weekends & Holidays</p>
+          <p><strong>Time:</strong> Dawn to Dusk</p>
+          <p class="text-sm mt-3 border-t pt-3">Field is open to members for flying during daylight hours on weekends.</p>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 h-full">
+        <h3 class="text-xl font-bold text-primary mb-4 flex items-center gap-2">
+          <span>🎓</span> Training Sessions
+        </h3>
+        <div class="space-y-2 text-gray-600">
+          <p><strong>When:</strong> Saturdays</p>
+          <p><strong>Time:</strong> 10:00 AM - 1:00 PM</p>
+          <p class="text-sm mt-3 border-t pt-3">One-on-one training with certified instructors for new members.</p>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 h-full">
+        <h3 class="text-xl font-bold text-primary mb-4 flex items-center gap-2">
+          <span>🛠️</span> Build Nights
+        </h3>
+        <div class="space-y-2 text-gray-600">
+          <p><strong>When:</strong> First Thursday</p>
+          <p><strong>Time:</strong> 6:00 PM - 9:00 PM</p>
+          <p class="text-sm mt-3 border-t pt-3">Work on your projects and get help from experienced builders.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section">
-    <h2 class="section-title">Regular Activities</h2>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
-      <div class="card">
-        <h3 style="color: var(--primary-color); margin-bottom: 1rem;">🗓️ Monthly Meetings</h3>
-        <p style="margin-bottom: 0.5rem;"><strong>When:</strong> Third Monday of each month</p>
-        <p style="margin-bottom: 0.5rem;"><strong>Time:</strong> 7:00 PM</p>
-        <p style="color: var(--text-light);">
-          Regular meetings to discuss club business, plan events, and share knowledge.
-        </p>
+  <section class="bg-background-alt rounded-2xl p-8 border border-gray-200">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-2xl font-bold text-text-dark mb-4">Stay Informed</h2>
+      <p class="text-lg text-text-light mb-8">
+        Want to receive updates about upcoming events? Join our mailing list or follow us on social media!
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href={`${import.meta.env.BASE_URL}contact`} class="inline-block bg-primary text-white font-semibold py-3 px-8 rounded-lg hover:bg-primary-hover transition-colors shadow-sm">
+          Join Mailing List
+        </a>
+        <a href="#" class="inline-block bg-white text-secondary border border-secondary font-semibold py-3 px-8 rounded-lg hover:bg-gray-50 transition-colors shadow-sm">
+          Follow on Facebook
+        </a>
       </div>
-
-      <div class="card">
-        <h3 style="color: var(--primary-color); margin-bottom: 1rem;">✈️ Open Flying</h3>
-        <p style="margin-bottom: 0.5rem;"><strong>When:</strong> Weekends & Holidays</p>
-        <p style="margin-bottom: 0.5rem;"><strong>Time:</strong> Dawn to Dusk</p>
-        <p style="color: var(--text-light);">
-          Field is open to members for flying during daylight hours on weekends.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3 style="color: var(--primary-color); margin-bottom: 1rem;">🎓 Training Sessions</h3>
-        <p style="margin-bottom: 0.5rem;"><strong>When:</strong> Saturdays (by appointment)</p>
-        <p style="margin-bottom: 0.5rem;"><strong>Time:</strong> 10:00 AM - 1:00 PM</p>
-        <p style="color: var(--text-light);">
-          One-on-one training with certified instructors for new members.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3 style="color: var(--primary-color); margin-bottom: 1rem;">🛠️ Build Nights</h3>
-        <p style="margin-bottom: 0.5rem;"><strong>When:</strong> First Thursday of each month</p>
-        <p style="margin-bottom: 0.5rem;"><strong>Time:</strong> 6:00 PM - 9:00 PM</p>
-        <p style="color: var(--text-light);">
-          Work on your projects and get help from experienced builders.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" style="background-color: var(--bg-light); padding: 2rem; border-radius: 8px;">
-    <h2 class="section-title">Stay Informed</h2>
-    <p style="font-size: 1.1rem; color: var(--text-light); margin-bottom: 1.5rem;">
-      Want to receive updates about upcoming events? Join our mailing list or follow us on social media!
-    </p>
-    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-      <a href={`${import.meta.env.BASE_URL}contact`} class="btn">Join Mailing List</a>
-      <a href="#" class="btn btn-secondary">Follow on Facebook</a>
     </div>
   </section>
 </Layout>

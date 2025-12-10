@@ -3,266 +3,312 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="New Members" description="Join Macon Aero Modelers - Information for new members">
-  <div class="hero">
-    <h1>Welcome New Members!</h1>
-    <p>Join our community of model aviation enthusiasts</p>
+  <div class="bg-gradient-to-br from-primary to-secondary text-white py-16 px-4 rounded-2xl text-center mb-12 shadow-md">
+    <h1 class="text-4xl md:text-5xl font-bold mb-4">Welcome New Members!</h1>
+    <p class="text-xl md:text-2xl text-blue-50 max-w-2xl mx-auto">
+      Join our community of model aviation enthusiasts
+    </p>
   </div>
 
-  <section class="section">
-    <h2 class="section-title">Why Join Macon Aero Modelers?</h2>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
-      <div class="card">
-        <div style="font-size: 3rem; margin-bottom: 1rem; text-align: center;">🛩️</div>
-        <h3 style="color: var(--primary-color); margin-bottom: 1rem; text-align: center;">Great Flying Field</h3>
-        <p style="color: var(--text-light); text-align: center;">
+  <section class="mb-16">
+    <h2 class="text-3xl font-bold text-text-dark mb-8 text-center">Why Join Macon Aero Modelers?</h2>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      
+      <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 text-center hover:-translate-y-1 transition-transform">
+        <div class="text-5xl mb-4">🛩️</div>
+        <h3 class="text-xl font-bold text-primary mb-3">Great Flying Field</h3>
+        <p class="text-gray-600">
           Access to a well-maintained field with paved runways, safety barriers, and convenient parking.
         </p>
       </div>
 
-      <div class="card">
-        <div style="font-size: 3rem; margin-bottom: 1rem; text-align: center;">🎓</div>
-        <h3 style="color: var(--primary-color); margin-bottom: 1rem; text-align: center;">Expert Training</h3>
-        <p style="color: var(--text-light); text-align: center;">
+      <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 text-center hover:-translate-y-1 transition-transform">
+        <div class="text-5xl mb-4">🎓</div>
+        <h3 class="text-xl font-bold text-primary mb-3">Expert Training</h3>
+        <p class="text-gray-600">
           Learn from certified instructors who provide free training to new members.
         </p>
       </div>
 
-      <div class="card">
-        <div style="font-size: 3rem; margin-bottom: 1rem; text-align: center;">👥</div>
-        <h3 style="color: var(--primary-color); margin-bottom: 1rem; text-align: center;">Friendly Community</h3>
-        <p style="color: var(--text-light); text-align: center;">
+      <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 text-center hover:-translate-y-1 transition-transform">
+        <div class="text-5xl mb-4">👥</div>
+        <h3 class="text-xl font-bold text-primary mb-3">Friendly Community</h3>
+        <p class="text-gray-600">
           Join a welcoming group of enthusiasts ready to share knowledge and experiences.
         </p>
       </div>
 
-      <div class="card">
-        <div style="font-size: 3rem; margin-bottom: 1rem; text-align: center;">🎉</div>
-        <h3 style="color: var(--primary-color); margin-bottom: 1rem; text-align: center;">Fun Events</h3>
-        <p style="color: var(--text-light); text-align: center;">
+      <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 text-center hover:-translate-y-1 transition-transform">
+        <div class="text-5xl mb-4">🎉</div>
+        <h3 class="text-xl font-bold text-primary mb-3">Fun Events</h3>
+        <p class="text-gray-600">
           Participate in fly-ins, competitions, and social events throughout the year.
         </p>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="mb-16">
+    <h2 class="text-3xl font-bold text-text-dark mb-6">Membership Requirements</h2>
+    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-8 max-w-4xl mx-auto">
+      <div class="space-y-8">
+        
+        <div class="flex gap-4">
+          <div class="flex-shrink-0 w-8 h-8 rounded-full bg-blue-100 text-primary flex items-center justify-center font-bold">1</div>
+          <div>
+            <h3 class="text-lg font-bold text-primary">AMA Membership</h3>
+            <p class="text-gray-600 mt-1">
+              All members must maintain current <a href="https://www.modelaircraft.org/" target="_blank" class="underline hover:text-primary-hover">Academy of Model Aeronautics (AMA)</a> membership for insurance coverage.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex gap-4">
+          <div class="flex-shrink-0 w-8 h-8 rounded-full bg-blue-100 text-primary flex items-center justify-center font-bold">2</div>
+          <div>
+            <h3 class="text-lg font-bold text-primary">Age Requirement</h3>
+            <p class="text-gray-600 mt-1">
+              Members must be at least 12 years old. Minors under 18 require parental consent and supervision.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex gap-4">
+          <div class="flex-shrink-0 w-8 h-8 rounded-full bg-blue-100 text-primary flex items-center justify-center font-bold">3</div>
+          <div>
+            <h3 class="text-lg font-bold text-primary">Safety Orientation</h3>
+            <p class="text-gray-600 mt-1">
+              Complete a brief safety orientation before flying at our field to ensure everyone's safety.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex gap-4">
+          <div class="flex-shrink-0 w-8 h-8 rounded-full bg-blue-100 text-primary flex items-center justify-center font-bold">4</div>
+          <div>
+            <h3 class="text-lg font-bold text-primary">Annual Dues</h3>
+            <p class="text-gray-600 mt-1">
+              Pay annual membership dues. See our fee schedule below for current rates (family and senior discounts available).
+            </p>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <section class="section">
-    <h2 class="section-title">Membership Requirements</h2>
-    <div class="card" style="max-width: 800px; margin: 0 auto;">
-      <ol style="display: flex; flex-direction: column; gap: 1.5rem; padding-left: 1.5rem;">
-        <li>
-          <strong style="color: var(--primary-color);">AMA Membership</strong>
-          <p style="color: var(--text-light); margin-top: 0.5rem;">
-            All members must maintain current Academy of Model Aeronautics (AMA) membership for insurance coverage.
-          </p>
-        </li>
-        <li>
-          <strong style="color: var(--primary-color);">Age Requirement</strong>
-          <p style="color: var(--text-light); margin-top: 0.5rem;">
-            Members must be at least 12 years old. Minors under 18 require parental consent and supervision.
-          </p>
-        </li>
-        <li>
-          <strong style="color: var(--primary-color);">Safety Orientation</strong>
-          <p style="color: var(--text-light); margin-top: 0.5rem;">
-            Complete a brief safety orientation before flying at our field.
-          </p>
-        </li>
-        <li>
-          <strong style="color: var(--primary-color);">Annual Dues</strong>
-          <p style="color: var(--text-light); margin-top: 0.5rem;">
-            Pay annual membership dues. See our fee schedule for current rates (family and senior discounts available).
-          </p>
-        </li>
-      </ol>
-    </div>
-  </section>
-
-  <section class="section">
-    <h2 class="section-title">How to Join</h2>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
-      <div class="card" style="text-align: center;">
-        <div style="width: 60px; height: 60px; background: var(--primary-color); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: bold; margin: 0 auto 1rem;">1</div>
-        <h3 style="color: var(--primary-color); margin-bottom: 1rem;">Visit the Field</h3>
-        <p style="color: var(--text-light);">
+  <section class="mb-16">
+    <h2 class="text-3xl font-bold text-text-dark mb-8 text-center">How to Join</h2>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-8 text-center h-full">
+        <div class="w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6 shadow-md">1</div>
+        <h3 class="text-xl font-bold text-text-dark mb-3">Visit the Field</h3>
+        <p class="text-gray-600">
           Stop by during flying hours to meet members and see our facilities. We fly on weekends and holidays.
         </p>
       </div>
 
-      <div class="card" style="text-align: center;">
-        <div style="width: 60px; height: 60px; background: var(--primary-color); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: bold; margin: 0 auto 1rem;">2</div>
-        <h3 style="color: var(--primary-color); margin-bottom: 1rem;">Complete Application</h3>
-        <p style="color: var(--text-light);">
+      <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-8 text-center h-full">
+        <div class="w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6 shadow-md">2</div>
+        <h3 class="text-xl font-bold text-text-dark mb-3">Apply</h3>
+        <p class="text-gray-600">
           Fill out the membership application form available in our resources section or at the field.
         </p>
       </div>
 
-      <div class="card" style="text-align: center;">
-        <div style="width: 60px; height: 60px; background: var(--primary-color); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: bold; margin: 0 auto 1rem;">3</div>
-        <h3 style="color: var(--primary-color); margin-bottom: 1rem;">Pay Dues</h3>
-        <p style="color: var(--text-light);">
+      <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-8 text-center h-full">
+        <div class="w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6 shadow-md">3</div>
+        <h3 class="text-xl font-bold text-text-dark mb-3">Pay Dues</h3>
+        <p class="text-gray-600">
           Submit your application with annual dues payment. We accept cash, checks, and electronic payments.
         </p>
       </div>
 
-      <div class="card" style="text-align: center;">
-        <div style="width: 60px; height: 60px; background: var(--primary-color); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: bold; margin: 0 auto 1rem;">4</div>
-        <h3 style="color: var(--primary-color); margin-bottom: 1rem;">Start Flying!</h3>
-        <p style="color: var(--text-light);">
+      <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-8 text-center h-full">
+        <div class="w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-6 shadow-md">4</div>
+        <h3 class="text-xl font-bold text-text-dark mb-3">Start Flying!</h3>
+        <p class="text-gray-600">
           Once approved, you'll receive your membership card and field access information. Welcome aboard!
         </p>
       </div>
     </div>
   </section>
 
-  <section class="section">
-    <h2 class="section-title">Membership Benefits</h2>
-    <div class="card">
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+  <section class="mb-16">
+    <h2 class="text-3xl font-bold text-text-dark mb-6">Membership Benefits</h2>
+    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        
         <div>
-          <h3 style="color: var(--primary-color); margin-bottom: 1rem;">✅ Field Access</h3>
-          <ul style="color: var(--text-light); line-height: 1.8; padding-left: 1.5rem;">
+          <h3 class="text-xl font-bold text-primary mb-4 flex items-center gap-2">
+            ✅ Field Access
+          </h3>
+          <ul class="space-y-2 text-gray-600 pl-8 list-disc">
             <li>Unlimited flying during field hours</li>
             <li>Use of club equipment and facilities</li>
             <li>24/7 gate access for members</li>
           </ul>
         </div>
+
         <div>
-          <h3 style="color: var(--primary-color); margin-bottom: 1rem;">✅ Training & Support</h3>
-          <ul style="color: var(--text-light); line-height: 1.8; padding-left: 1.5rem;">
+          <h3 class="text-xl font-bold text-primary mb-4 flex items-center gap-2">
+            ✅ Training & Support
+          </h3>
+          <ul class="space-y-2 text-gray-600 pl-8 list-disc">
             <li>Free flight instruction for beginners</li>
             <li>Access to club trainer aircraft</li>
             <li>Mentorship from experienced pilots</li>
           </ul>
         </div>
+
         <div>
-          <h3 style="color: var(--primary-color); margin-bottom: 1rem;">✅ Events & Activities</h3>
-          <ul style="color: var(--text-light); line-height: 1.8; padding-left: 1.5rem;">
+          <h3 class="text-xl font-bold text-primary mb-4 flex items-center gap-2">
+            ✅ Events & Activities
+          </h3>
+          <ul class="space-y-2 text-gray-600 pl-8 list-disc">
             <li>Participate in club events and fly-ins</li>
             <li>Compete in sanctioned competitions</li>
             <li>Attend monthly meetings and socials</li>
           </ul>
         </div>
+
         <div>
-          <h3 style="color: var(--primary-color); margin-bottom: 1rem;">✅ Resources</h3>
-          <ul style="color: var(--text-light); line-height: 1.8; padding-left: 1.5rem;">
+          <h3 class="text-xl font-bold text-primary mb-4 flex items-center gap-2">
+            ✅ Resources
+          </h3>
+          <ul class="space-y-2 text-gray-600 pl-8 list-disc">
             <li>Access to club library and materials</li>
             <li>Discounts at local hobby shops</li>
             <li>Newsletter and updates</li>
           </ul>
         </div>
+
       </div>
     </div>
   </section>
 
-  <section class="section">
-    <h2 class="section-title">Membership Fees</h2>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
-      <div class="card" style="border: 2px solid var(--primary-color);">
-        <h3 style="color: var(--primary-color); margin-bottom: 1rem;">Individual</h3>
-        <div style="font-size: 2.5rem; font-weight: bold; color: var(--primary-color); margin-bottom: 1rem;">$75</div>
-        <p style="color: var(--text-light); margin-bottom: 0.5rem;">per year</p>
-        <ul style="color: var(--text-light); line-height: 1.8; padding-left: 1.5rem; margin-top: 1rem;">
-          <li>Full field access</li>
-          <li>Voting rights</li>
-          <li>All club benefits</li>
+  <section class="mb-16">
+    <h2 class="text-3xl font-bold text-text-dark mb-8 text-center">Membership Fees</h2>
+    
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      
+      <div class="bg-white rounded-xl shadow-sm border-2 border-primary p-6 hover:shadow-md transition-shadow">
+        <h3 class="text-xl font-bold text-primary mb-4">Individual</h3>
+        <div class="text-4xl font-bold text-gray-900 mb-2">$75</div>
+        <p class="text-gray-500 mb-6 text-sm uppercase tracking-wide">per year</p>
+        <ul class="space-y-2 text-gray-600 text-sm">
+          <li class="flex items-center gap-2"><span>✓</span> Full field access</li>
+          <li class="flex items-center gap-2"><span>✓</span> Voting rights</li>
+          <li class="flex items-center gap-2"><span>✓</span> All club benefits</li>
         </ul>
       </div>
 
-      <div class="card" style="border: 2px solid var(--accent-color);">
-        <h3 style="color: var(--accent-color); margin-bottom: 1rem;">Family</h3>
-        <div style="font-size: 2.5rem; font-weight: bold; color: var(--accent-color); margin-bottom: 1rem;">$100</div>
-        <p style="color: var(--text-light); margin-bottom: 0.5rem;">per year</p>
-        <ul style="color: var(--text-light); line-height: 1.8; padding-left: 1.5rem; margin-top: 1rem;">
-          <li>Up to 4 family members</li>
-          <li>Full field access for all</li>
-          <li>All club benefits</li>
+      <div class="bg-blue-50 rounded-xl shadow-md border-2 border-secondary p-6 hover:shadow-lg transition-shadow transform scale-105 z-10">
+        <div class="absolute top-0 right-0 bg-secondary text-white text-xs font-bold px-2 py-1 rounded-bl-lg rounded-tr-lg">BEST VALUE</div>
+        <h3 class="text-xl font-bold text-secondary mb-4">Family</h3>
+        <div class="text-4xl font-bold text-gray-900 mb-2">$100</div>
+        <p class="text-gray-500 mb-6 text-sm uppercase tracking-wide">per year</p>
+        <ul class="space-y-2 text-gray-700 text-sm">
+          <li class="flex items-center gap-2"><span>✓</span> Up to 4 family members</li>
+          <li class="flex items-center gap-2"><span>✓</span> Full field access for all</li>
+          <li class="flex items-center gap-2"><span>✓</span> All club benefits</li>
         </ul>
       </div>
 
-      <div class="card">
-        <h3 style="color: var(--primary-color); margin-bottom: 1rem;">Senior (65+)</h3>
-        <div style="font-size: 2.5rem; font-weight: bold; color: var(--primary-color); margin-bottom: 1rem;">$60</div>
-        <p style="color: var(--text-light); margin-bottom: 0.5rem;">per year</p>
-        <ul style="color: var(--text-light); line-height: 1.8; padding-left: 1.5rem; margin-top: 1rem;">
-          <li>Full field access</li>
-          <li>Voting rights</li>
-          <li>All club benefits</li>
+      <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow">
+        <h3 class="text-xl font-bold text-primary mb-4">Senior (65+)</h3>
+        <div class="text-4xl font-bold text-gray-900 mb-2">$60</div>
+        <p class="text-gray-500 mb-6 text-sm uppercase tracking-wide">per year</p>
+        <ul class="space-y-2 text-gray-600 text-sm">
+          <li class="flex items-center gap-2"><span>✓</span> Full field access</li>
+          <li class="flex items-center gap-2"><span>✓</span> Voting rights</li>
+          <li class="flex items-center gap-2"><span>✓</span> All club benefits</li>
         </ul>
       </div>
 
-      <div class="card">
-        <h3 style="color: var(--primary-color); margin-bottom: 1rem;">Junior (12-18)</h3>
-        <div style="font-size: 2.5rem; font-weight: bold; color: var(--primary-color); margin-bottom: 1rem;">$40</div>
-        <p style="color: var(--text-light); margin-bottom: 0.5rem;">per year</p>
-        <ul style="color: var(--text-light); line-height: 1.8; padding-left: 1.5rem; margin-top: 1rem;">
-          <li>Parental consent required</li>
-          <li>Full field access</li>
-          <li>Training included</li>
+      <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow">
+        <h3 class="text-xl font-bold text-primary mb-4">Junior (12-18)</h3>
+        <div class="text-4xl font-bold text-gray-900 mb-2">$40</div>
+        <p class="text-gray-500 mb-6 text-sm uppercase tracking-wide">per year</p>
+        <ul class="space-y-2 text-gray-600 text-sm">
+          <li class="flex items-center gap-2"><span>✓</span> Parental consent req.</li>
+          <li class="flex items-center gap-2"><span>✓</span> Full field access</li>
+          <li class="flex items-center gap-2"><span>✓</span> Training included</li>
         </ul>
       </div>
+
     </div>
   </section>
 
-  <section class="section">
-    <h2 class="section-title">Frequently Asked Questions</h2>
-    <div style="display: flex; flex-direction: column; gap: 1rem;">
-      <details class="card">
-        <summary style="font-weight: 600; cursor: pointer; color: var(--primary-color); padding: 0.5rem 0;">
+  <section class="mb-16">
+    <h2 class="text-3xl font-bold text-text-dark mb-6">Frequently Asked Questions</h2>
+    <div class="max-w-3xl mx-auto space-y-4">
+      
+      <details class="group bg-white p-6 rounded-lg border border-gray-200 shadow-sm open:shadow-md transition-shadow">
+        <summary class="flex justify-between items-center font-bold text-lg text-primary cursor-pointer list-none">
           Do I need my own aircraft to join?
+          <span class="text-gray-400 group-open:rotate-180 transition-transform duration-200">▼</span>
         </summary>
-        <p style="margin-top: 1rem; color: var(--text-light);">
+        <div class="mt-4 text-gray-600 leading-relaxed border-t pt-4">
           No! We have club trainer aircraft available for new members to use during training. However, you'll eventually want to get your own aircraft as you progress.
-        </p>
+        </div>
       </details>
 
-      <details class="card">
-        <summary style="font-weight: 600; cursor: pointer; color: var(--primary-color); padding: 0.5rem 0;">
+      <details class="group bg-white p-6 rounded-lg border border-gray-200 shadow-sm open:shadow-md transition-shadow">
+        <summary class="flex justify-between items-center font-bold text-lg text-primary cursor-pointer list-none">
           I've never flown before. Can I still join?
+          <span class="text-gray-400 group-open:rotate-180 transition-transform duration-200">▼</span>
         </summary>
-        <p style="margin-top: 1rem; color: var(--text-light);">
+        <div class="mt-4 text-gray-600 leading-relaxed border-t pt-4">
           Absolutely! Most of our members started with no experience. Our instructors will teach you everything you need to know, starting with the basics of RC flight.
-        </p>
+        </div>
       </details>
 
-      <details class="card">
-        <summary style="font-weight: 600; cursor: pointer; color: var(--primary-color); padding: 0.5rem 0;">
+      <details class="group bg-white p-6 rounded-lg border border-gray-200 shadow-sm open:shadow-md transition-shadow">
+        <summary class="flex justify-between items-center font-bold text-lg text-primary cursor-pointer list-none">
           What types of aircraft can I fly?
+          <span class="text-gray-400 group-open:rotate-180 transition-transform duration-200">▼</span>
         </summary>
-        <p style="margin-top: 1rem; color: var(--text-light);">
+        <div class="mt-4 text-gray-600 leading-relaxed border-t pt-4">
           We welcome all types of radio-controlled aircraft including airplanes, helicopters, and multirotors (drones). All aircraft must comply with AMA safety guidelines and FAA regulations.
-        </p>
+        </div>
       </details>
 
-      <details class="card">
-        <summary style="font-weight: 600; cursor: pointer; color: var(--primary-color); padding: 0.5rem 0;">
+      <details class="group bg-white p-6 rounded-lg border border-gray-200 shadow-sm open:shadow-md transition-shadow">
+        <summary class="flex justify-between items-center font-bold text-lg text-primary cursor-pointer list-none">
           How long does it take to learn to fly?
+          <span class="text-gray-400 group-open:rotate-180 transition-transform duration-200">▼</span>
         </summary>
-        <p style="margin-top: 1rem; color: var(--text-light);">
+        <div class="mt-4 text-gray-600 leading-relaxed border-t pt-4">
           This varies by individual, but most students can fly solo with confidence after 5-10 training sessions. Our instructors work at your pace to ensure you're comfortable and safe.
-        </p>
+        </div>
       </details>
 
-      <details class="card">
-        <summary style="font-weight: 600; cursor: pointer; color: var(--primary-color); padding: 0.5rem 0;">
+      <details class="group bg-white p-6 rounded-lg border border-gray-200 shadow-sm open:shadow-md transition-shadow">
+        <summary class="flex justify-between items-center font-bold text-lg text-primary cursor-pointer list-none">
           Can I visit before joining?
+          <span class="text-gray-400 group-open:rotate-180 transition-transform duration-200">▼</span>
         </summary>
-        <p style="margin-top: 1rem; color: var(--text-light);">
+        <div class="mt-4 text-gray-600 leading-relaxed border-t pt-4">
           Yes! We encourage prospective members to visit the field and meet our members. Come out on a weekend to see what we're all about!
-        </p>
+        </div>
       </details>
     </div>
   </section>
 
-  <section class="section" style="background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white; padding: 3rem; border-radius: 8px; text-align: center;">
-    <h2 style="font-size: 2rem; margin-bottom: 1rem;">Ready to Join?</h2>
-    <p style="font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.95;">
+  <section class="bg-gradient-to-br from-primary to-secondary rounded-2xl p-12 text-center text-white shadow-lg">
+    <h2 class="text-3xl font-bold mb-4">Ready to Join?</h2>
+    <p class="text-xl text-blue-50 mb-8 max-w-2xl mx-auto">
       Take the first step toward an exciting hobby and join our community today!
     </p>
-    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-      <a href={`${import.meta.env.BASE_URL}resources`} class="btn" style="background: white; color: var(--primary-color);">
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href={`${import.meta.env.BASE_URL}resources`} class="inline-block bg-white text-primary font-bold py-3 px-8 rounded-lg hover:bg-gray-100 transition-colors shadow-sm">
         Download Application
       </a>
-      <a href={`${import.meta.env.BASE_URL}contact`} class="btn btn-secondary">
+      <a href={`${import.meta.env.BASE_URL}contact`} class="inline-block bg-transparent border-2 border-white text-white font-bold py-3 px-8 rounded-lg hover:bg-white/10 transition-colors">
         Contact Us
       </a>
     </div>

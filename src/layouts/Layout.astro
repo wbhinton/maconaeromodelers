@@ -1,4 +1,7 @@
 ---
+// Import the global CSS file we just created
+import '../styles/global.css';
+
 interface Props {
   title: string;
   description?: string;
@@ -6,303 +9,110 @@ interface Props {
 
 const { title, description = "Macon Aero Modelers - A model airplane flying club" } = Astro.props;
 const baseUrl = import.meta.env.BASE_URL;
+
+// Helper for navigation links to keep code clean
+const navItems = [
+  { text: "Home", href: baseUrl },
+  { text: "Gallery", href: `${baseUrl}gallery/` },
+  { text: "Videos", href: `${baseUrl}videos/` },
+  { text: "Events", href: `${baseUrl}events/` },
+  { text: "Resources", href: `${baseUrl}resources/` },
+  { text: "Docs", href: `${baseUrl}docs` }, // Added your Starlight Docs link here
+  { text: "Contact", href: `${baseUrl}contact/` },
+  { text: "New Members", href: `${baseUrl}new-members/` },
+];
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href={`${baseUrl}favicon.svg`} />
     <title>{title} | Macon Aero Modelers</title>
-    <style is:global>
-      /* Reset and Base Styles */
-      *, *::before, *::after {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-
-      :root {
-        --primary-color: #0066cc;
-        --secondary-color: #004499;
-        --accent-color: #ff6600;
-        --text-dark: #1a1a1a;
-        --text-light: #666666;
-        --bg-light: #f8f9fa;
-        --bg-white: #ffffff;
-        --border-color: #e0e0e0;
-        --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        --shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.15);
-      }
-
-      body {
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-        line-height: 1.6;
-        color: var(--text-dark);
-        background-color: var(--bg-white);
-      }
-
-      /* Header Navigation */
-      header {
-        background-color: var(--bg-white);
-        border-bottom: 1px solid var(--border-color);
-        position: sticky;
-        top: 0;
-        z-index: 100;
-        box-shadow: var(--shadow);
-      }
-
-      nav {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 1rem 2rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 1rem;
-      }
-
-      .logo {
-        font-size: 1.5rem;
-        font-weight: bold;
-        color: var(--primary-color);
-        text-decoration: none;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-      }
-
-      .nav-links {
-        display: flex;
-        gap: 2rem;
-        list-style: none;
-        align-items: center;
-        flex-wrap: wrap;
-      }
-
-      .nav-links a {
-        color: var(--text-dark);
-        text-decoration: none;
-        font-weight: 500;
-        transition: color 0.3s ease;
-        padding: 0.5rem 0;
-        border-bottom: 2px solid transparent;
-      }
-
-      .nav-links a:hover,
-      .nav-links a.active {
-        color: var(--primary-color);
-        border-bottom-color: var(--primary-color);
-      }
-
-      /* Main Content */
-      main {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 2rem;
-        min-height: calc(100vh - 200px);
-      }
-
-      /* Footer */
-      footer {
-        background-color: var(--text-dark);
-        color: var(--bg-white);
-        padding: 2rem;
-        margin-top: 4rem;
-      }
-
-      .footer-content {
-        max-width: 1200px;
-        margin: 0 auto;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 2rem;
-      }
-
-      .footer-section h3 {
-        color: var(--accent-color);
-        margin-bottom: 1rem;
-      }
-
-      .footer-section ul {
-        list-style: none;
-      }
-
-      .footer-section a {
-        color: var(--bg-light);
-        text-decoration: none;
-        transition: color 0.3s ease;
-      }
-
-      .footer-section a:hover {
-        color: var(--accent-color);
-      }
-
-      .footer-bottom {
-        text-align: center;
-        padding-top: 2rem;
-        margin-top: 2rem;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-        color: var(--bg-light);
-      }
-
-      /* Utility Classes */
-      .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 2rem;
-      }
-
-      .hero {
-        text-align: center;
-        padding: 4rem 2rem;
-        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-        color: white;
-        border-radius: 8px;
-        margin-bottom: 3rem;
-      }
-
-      .hero h1 {
-        font-size: 3rem;
-        margin-bottom: 1rem;
-        font-weight: 700;
-      }
-
-      .hero p {
-        font-size: 1.25rem;
-        max-width: 600px;
-        margin: 0 auto;
-      }
-
-      .section {
-        margin: 3rem 0;
-      }
-
-      .section-title {
-        font-size: 2rem;
-        color: var(--text-dark);
-        margin-bottom: 1.5rem;
-        font-weight: 600;
-      }
-
-      .card {
-        background: var(--bg-white);
-        border: 1px solid var(--border-color);
-        border-radius: 8px;
-        padding: 1.5rem;
-        box-shadow: var(--shadow);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-      }
-
-      .card:hover {
-        transform: translateY(-4px);
-        box-shadow: var(--shadow-lg);
-      }
-
-      .btn {
-        display: inline-block;
-        padding: 0.75rem 1.5rem;
-        background-color: var(--primary-color);
-        color: white;
-        text-decoration: none;
-        border-radius: 4px;
-        font-weight: 600;
-        transition: background-color 0.3s ease;
-        border: none;
-        cursor: pointer;
-      }
-
-      .btn:hover {
-        background-color: var(--secondary-color);
-      }
-
-      .btn-secondary {
-        background-color: var(--accent-color);
-      }
-
-      .btn-secondary:hover {
-        background-color: #e55500;
-      }
-
-      /* Responsive Design */
-      @media (max-width: 768px) {
-        nav {
-          flex-direction: column;
-          align-items: flex-start;
-        }
-
-        .nav-links {
-          flex-direction: column;
-          gap: 1rem;
-          width: 100%;
-        }
-
-        .hero h1 {
-          font-size: 2rem;
-        }
-
-        .hero p {
-          font-size: 1rem;
-        }
-
-        main {
-          padding: 1rem;
-        }
-      }
-    </style>
   </head>
-  <body>
-    <header>
-      <nav>
-        <a href={`${baseUrl}`} class="logo">
-          ✈️ Macon Aero Modelers
+  
+  <body class="bg-background text-text-dark antialiased min-h-screen flex flex-col font-sans">
+    
+    <header class="bg-background border-b border-gray-200 sticky top-0 z-50 shadow-sm">
+      <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        
+        <a href={baseUrl} class="text-xl font-bold text-primary flex items-center gap-2 hover:opacity-80 transition-opacity">
+          <span class="text-2xl">✈️</span> Macon Aero Modelers
         </a>
-        <ul class="nav-links">
-          <li><a href={`${baseUrl}`}>Home</a></li>
-          <li><a href={`${baseUrl}gallery/`}>Gallery</a></li>
-          <li><a href={`${baseUrl}videos/`}>Videos</a></li>
-          <li><a href={`${baseUrl}events/`}>Events</a></li>
-          <li><a href={`${baseUrl}resources/`}>Resources</a></li>
-          <li><a href={`${baseUrl}contact/`}>Contact</a></li>
-          <li><a href={`${baseUrl}new-members/`}>New Members</a></li>
+
+        <ul class="hidden md:flex items-center gap-6">
+          {navItems.map((item) => (
+            <li>
+              <a 
+                href={item.href} 
+                class="text-text-dark font-medium hover:text-primary border-b-2 border-transparent hover:border-primary transition-colors py-1"
+              >
+                {item.text}
+              </a>
+            </li>
+          ))}
         </ul>
+
+        <button class="md:hidden text-text-dark hover:text-primary">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+          </svg>
+        </button>
       </nav>
     </header>
 
-    <main>
+    <main class="flex-grow max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8">
       <slot />
     </main>
 
-    <footer>
-      <div class="footer-content">
-        <div class="footer-section">
-          <h3>About Us</h3>
-          <p>Macon Aero Modelers is a community of model airplane enthusiasts dedicated to the hobby of radio-controlled aviation.</p>
+    <footer class="bg-text-dark text-white mt-12 py-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <div>
+          <h3 class="text-alert font-semibold text-lg mb-4">About Us</h3>
+          <p class="text-gray-300 leading-relaxed">
+            Macon Aero Modelers is a community of model airplane enthusiasts dedicated to the hobby of radio-controlled aviation.
+          </p>
         </div>
-        <div class="footer-section">
-          <h3>Quick Links</h3>
-          <ul>
-            <li><a href={`${baseUrl}new-members/`}>Join Our Club</a></li>
-            <li><a href={`${baseUrl}events/`}>Upcoming Events</a></li>
-            <li><a href={`${baseUrl}resources/`}>Resources</a></li>
-            <li><a href={`${baseUrl}contact/`}>Contact Us</a></li>
+
+        <div>
+          <h3 class="text-alert font-semibold text-lg mb-4">Quick Links</h3>
+          <ul class="space-y-2">
+            <li><a href={`${baseUrl}new-members/`} class="text-gray-300 hover:text-alert transition-colors">Join Our Club</a></li>
+            <li><a href={`${baseUrl}events/`} class="text-gray-300 hover:text-alert transition-colors">Upcoming Events</a></li>
+            <li><a href={`${baseUrl}resources/`} class="text-gray-300 hover:text-alert transition-colors">Resources</a></li>
+            <li><a href={`${baseUrl}contact/`} class="text-gray-300 hover:text-alert transition-colors">Contact Us</a></li>
           </ul>
         </div>
-        <div class="footer-section">
-          <h3>Connect</h3>
-          <ul>
-            <li><a href="https://www.facebook.com/MaconAeroModelers">Facebook</a></li>
-            <li><a href="https://www.youtube.com/channel/UCy5OGJfxp4gos5WnEADppSw">YouTube</a></li>
-            <li><a href="#">Instagram</a></li>
+
+        <div>
+          <h3 class="text-alert font-semibold text-lg mb-4">Connect</h3>
+          <ul class="space-y-2">
+            <li>
+              <a href="https://www.facebook.com/MaconAeroModelers" class="flex items-center gap-2 text-gray-300 hover:text-alert transition-colors">
+                Facebook
+              </a>
+            </li>
+            <li>
+              <a href="https://www.youtube.com/channel/UCy5OGJfxp4gos5WnEADppSw" class="flex items-center gap-2 text-gray-300 hover:text-alert transition-colors">
+                YouTube
+              </a>
+            </li>
+            <li>
+              <a href="#" class="flex items-center gap-2 text-gray-300 hover:text-alert transition-colors">
+                Instagram
+              </a>
+            </li>
           </ul>
         </div>
       </div>
-      <div class="footer-bottom">
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-8 border-t border-gray-700 text-center text-gray-400">
         <p>&copy; {new Date().getFullYear()} Macon Aero Modelers. All rights reserved.</p>
       </div>
     </footer>
+
   </body>
 </html>

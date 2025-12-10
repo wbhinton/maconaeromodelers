@@ -3,55 +3,58 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="Contact" description="Get in touch with Macon Aero Modelers">
-  <div class="hero">
-    <h1>Contact Us</h1>
-    <p>Get in touch with Macon Aero Modelers</p>
+  <div class="bg-gradient-to-br from-primary to-secondary text-white py-16 px-4 rounded-2xl text-center mb-12 shadow-md">
+    <h1 class="text-4xl md:text-5xl font-bold mb-4">Contact Us</h1>
+    <p class="text-xl md:text-2xl text-blue-50 max-w-2xl mx-auto">
+      Get in touch with Macon Aero Modelers
+    </p>
   </div>
 
-  <section class="section">
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+  <section class="mb-16">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+      
       <div>
-        <h2 class="section-title">Send Us a Message</h2>
-        <form style="display: flex; flex-direction: column; gap: 1rem;">
+        <h2 class="text-3xl font-bold text-text-dark mb-6">Send Us a Message</h2>
+        <form class="space-y-6 bg-white p-8 rounded-xl shadow-sm border border-gray-100">
           <div>
-            <label for="name" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Name *</label>
+            <label for="name" class="block mb-2 font-semibold text-gray-700">Name *</label>
             <input 
               type="text" 
               id="name" 
               name="name" 
               required 
-              style="width: 100%; padding: 0.75rem; border: 1px solid var(--border-color); border-radius: 4px; font-size: 1rem;"
+              class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
             />
           </div>
           
           <div>
-            <label for="email" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Email *</label>
+            <label for="email" class="block mb-2 font-semibold text-gray-700">Email *</label>
             <input 
               type="email" 
               id="email" 
               name="email" 
               required 
-              style="width: 100%; padding: 0.75rem; border: 1px solid var(--border-color); border-radius: 4px; font-size: 1rem;"
+              class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
             />
           </div>
           
           <div>
-            <label for="phone" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Phone</label>
+            <label for="phone" class="block mb-2 font-semibold text-gray-700">Phone</label>
             <input 
               type="tel" 
               id="phone" 
               name="phone" 
-              style="width: 100%; padding: 0.75rem; border: 1px solid var(--border-color); border-radius: 4px; font-size: 1rem;"
+              class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
             />
           </div>
           
           <div>
-            <label for="subject" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Subject *</label>
+            <label for="subject" class="block mb-2 font-semibold text-gray-700">Subject *</label>
             <select 
               id="subject" 
               name="subject" 
               required 
-              style="width: 100%; padding: 0.75rem; border: 1px solid var(--border-color); border-radius: 4px; font-size: 1rem;"
+              class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all bg-white"
             >
               <option value="">Select a subject...</option>
               <option value="membership">Membership Inquiry</option>
@@ -63,129 +66,154 @@ import Layout from '../layouts/Layout.astro';
           </div>
           
           <div>
-            <label for="message" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Message *</label>
+            <label for="message" class="block mb-2 font-semibold text-gray-700">Message *</label>
             <textarea 
               id="message" 
               name="message" 
               required 
               rows="6"
-              style="width: 100%; padding: 0.75rem; border: 1px solid var(--border-color); border-radius: 4px; font-size: 1rem; resize: vertical;"
+              class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all resize-y"
             ></textarea>
           </div>
           
-          <button type="submit" class="btn" style="width: fit-content;">Send Message</button>
+          <button 
+            type="submit" 
+            class="w-full sm:w-auto bg-primary text-white font-bold py-3 px-8 rounded-lg hover:bg-primary-hover transition-colors shadow-sm"
+          >
+            Send Message
+          </button>
         </form>
       </div>
 
-      <div>
-        <h2 class="section-title">Contact Information</h2>
-        <div class="card" style="margin-bottom: 1.5rem;">
-          <h3 style="color: var(--primary-color); margin-bottom: 1rem;">📧 Email</h3>
-          <p style="margin-bottom: 0.5rem;">
-            <a href="mailto:info@maconaeromodelers.org" style="color: var(--primary-color); text-decoration: none;">
+      <div class="space-y-6">
+        <h2 class="text-3xl font-bold text-text-dark mb-6">Contact Information</h2>
+        
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+          <h3 class="text-xl font-bold text-primary mb-3 flex items-center gap-2">
+            <span>📧</span> Email
+          </h3>
+          <p class="mb-2">
+            <a href="mailto:info@maconaeromodelers.org" class="text-primary hover:underline font-medium">
               info@maconaeromodelers.org
             </a>
           </p>
-          <p style="color: var(--text-light); font-size: 0.9rem;">
+          <p class="text-sm text-gray-500">
             We typically respond within 24-48 hours
           </p>
         </div>
 
-        <div class="card" style="margin-bottom: 1.5rem;">
-          <h3 style="color: var(--primary-color); margin-bottom: 1rem;">📍 Flying Field Location</h3>
-          <p style="margin-bottom: 0.5rem;">
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+          <h3 class="text-xl font-bold text-primary mb-3 flex items-center gap-2">
+            <span>📍</span> Flying Field Location
+          </h3>
+          <p class="text-gray-700 mb-2 leading-relaxed">
             123 Aviation Drive<br>
             Macon, GA 31201
           </p>
-          <p style="color: var(--text-light); font-size: 0.9rem; margin-bottom: 1rem;">
+          <p class="text-sm text-gray-500 mb-4">
             Open to members dawn to dusk, weekends and holidays
           </p>
-          <a href="#" class="btn btn-secondary" style="display: inline-block;">Get Directions</a>
+          <a href="#" class="inline-block text-primary border border-primary px-4 py-2 rounded hover:bg-blue-50 transition-colors font-medium">
+            Get Directions
+          </a>
         </div>
 
-        <div class="card">
-          <h3 style="color: var(--primary-color); margin-bottom: 1rem;">🕐 Office Hours</h3>
-          <p style="margin-bottom: 0.5rem;">
-            <strong>Field Access:</strong><br>
-            Weekends & Holidays: Dawn to Dusk
-          </p>
-          <p style="margin-bottom: 0.5rem; margin-top: 1rem;">
-            <strong>Club Meetings:</strong><br>
-            Third Monday of each month at 7:00 PM
-          </p>
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+          <h3 class="text-xl font-bold text-primary mb-3 flex items-center gap-2">
+            <span>🕐</span> Office Hours
+          </h3>
+          <div class="space-y-4">
+            <div>
+              <p class="font-semibold text-gray-700">Field Access:</p>
+              <p class="text-gray-600">Weekends & Holidays: Dawn to Dusk</p>
+            </div>
+            <div>
+              <p class="font-semibold text-gray-700">Club Meetings:</p>
+              <p class="text-gray-600">Third Monday of each month at 7:00 PM</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section">
-    <h2 class="section-title">Connect With Us</h2>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
-      <a href="#" class="card" style="text-decoration: none; color: inherit; text-align: center;">
-        <div style="font-size: 3rem; margin-bottom: 1rem;">📘</div>
-        <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">Facebook</h3>
-        <p style="color: var(--text-light);">Follow us for updates, photos, and events</p>
+  <section class="mb-16">
+    <h2 class="text-3xl font-bold text-text-dark mb-6">Connect With Us</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      
+      <a href="#" class="group bg-white rounded-xl shadow-sm border border-gray-100 p-6 text-center hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+        <div class="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">📘</div>
+        <h3 class="text-xl font-bold text-primary mb-2">Facebook</h3>
+        <p class="text-gray-600 text-sm">Follow us for updates, photos, and events</p>
       </a>
 
-      <a href="#" class="card" style="text-decoration: none; color: inherit; text-align: center;">
-        <div style="font-size: 3rem; margin-bottom: 1rem;">📺</div>
-        <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">YouTube</h3>
-        <p style="color: var(--text-light);">Watch our flying videos and tutorials</p>
+      <a href="#" class="group bg-white rounded-xl shadow-sm border border-gray-100 p-6 text-center hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+        <div class="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">📺</div>
+        <h3 class="text-xl font-bold text-primary mb-2">YouTube</h3>
+        <p class="text-gray-600 text-sm">Watch our flying videos and tutorials</p>
       </a>
 
-      <a href="#" class="card" style="text-decoration: none; color: inherit; text-align: center;">
-        <div style="font-size: 3rem; margin-bottom: 1rem;">📷</div>
-        <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">Instagram</h3>
-        <p style="color: var(--text-light);">See our latest photos and stories</p>
+      <a href="#" class="group bg-white rounded-xl shadow-sm border border-gray-100 p-6 text-center hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+        <div class="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">📷</div>
+        <h3 class="text-xl font-bold text-primary mb-2">Instagram</h3>
+        <p class="text-gray-600 text-sm">See our latest photos and stories</p>
       </a>
 
-      <a href="#" class="card" style="text-decoration: none; color: inherit; text-align: center;">
-        <div style="font-size: 3rem; margin-bottom: 1rem;">💬</div>
-        <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">Discussion Forum</h3>
-        <p style="color: var(--text-light);">Join the conversation with members</p>
+      <a href="#" class="group bg-white rounded-xl shadow-sm border border-gray-100 p-6 text-center hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+        <div class="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">💬</div>
+        <h3 class="text-xl font-bold text-primary mb-2">Discussion Forum</h3>
+        <p class="text-gray-600 text-sm">Join the conversation with members</p>
       </a>
+
     </div>
   </section>
 
-  <section class="section" style="background-color: var(--bg-light); padding: 2rem; border-radius: 8px;">
-    <h2 class="section-title">Frequently Asked Questions</h2>
-    <div style="display: flex; flex-direction: column; gap: 1rem;">
-      <details style="background: white; padding: 1rem; border-radius: 4px; border: 1px solid var(--border-color);">
-        <summary style="font-weight: 600; cursor: pointer; color: var(--primary-color);">
+  <section class="bg-background-alt rounded-2xl p-8 lg:p-12 border border-gray-200">
+    <h2 class="text-3xl font-bold text-text-dark mb-8 text-center">Frequently Asked Questions</h2>
+    
+    <div class="max-w-3xl mx-auto space-y-4">
+      
+      <details class="group bg-white p-6 rounded-lg border border-gray-200 shadow-sm open:shadow-md transition-shadow">
+        <summary class="flex justify-between items-center font-bold text-lg text-primary cursor-pointer list-none">
           How do I become a member?
+          <span class="text-gray-400 group-open:rotate-180 transition-transform duration-200">▼</span>
         </summary>
-        <p style="margin-top: 1rem; color: var(--text-light);">
-          Visit our <a href={`${import.meta.env.BASE_URL}new-members`} style="color: var(--primary-color);">New Members</a> page 
+        <div class="mt-4 text-gray-600 leading-relaxed border-t pt-4">
+          Visit our <a href={`${import.meta.env.BASE_URL}new-members`} class="text-primary hover:underline font-semibold">New Members</a> page 
           for information about membership requirements and the application process.
-        </p>
+        </div>
       </details>
 
-      <details style="background: white; padding: 1rem; border-radius: 4px; border: 1px solid var(--border-color);">
-        <summary style="font-weight: 600; cursor: pointer; color: var(--primary-color);">
+      <details class="group bg-white p-6 rounded-lg border border-gray-200 shadow-sm open:shadow-md transition-shadow">
+        <summary class="flex justify-between items-center font-bold text-lg text-primary cursor-pointer list-none">
           Can I visit the field before joining?
+          <span class="text-gray-400 group-open:rotate-180 transition-transform duration-200">▼</span>
         </summary>
-        <p style="margin-top: 1rem; color: var(--text-light);">
+        <div class="mt-4 text-gray-600 leading-relaxed border-t pt-4">
           Yes! Visitors are welcome. Please contact us in advance to arrange a visit, and we'll make sure someone is available to show you around.
-        </p>
+        </div>
       </details>
 
-      <details style="background: white; padding: 1rem; border-radius: 4px; border: 1px solid var(--border-color);">
-        <summary style="font-weight: 600; cursor: pointer; color: var(--primary-color);">
+      <details class="group bg-white p-6 rounded-lg border border-gray-200 shadow-sm open:shadow-md transition-shadow">
+        <summary class="flex justify-between items-center font-bold text-lg text-primary cursor-pointer list-none">
           Do you offer training for beginners?
+          <span class="text-gray-400 group-open:rotate-180 transition-transform duration-200">▼</span>
         </summary>
-        <p style="margin-top: 1rem; color: var(--text-light);">
+        <div class="mt-4 text-gray-600 leading-relaxed border-t pt-4">
           Absolutely! We have certified flight instructors who provide free training to new members. Training sessions are scheduled on Saturday mornings.
-        </p>
+        </div>
       </details>
 
-      <details style="background: white; padding: 1rem; border-radius: 4px; border: 1px solid var(--border-color);">
-        <summary style="font-weight: 600; cursor: pointer; color: var(--primary-color);">
+      <details class="group bg-white p-6 rounded-lg border border-gray-200 shadow-sm open:shadow-md transition-shadow">
+        <summary class="flex justify-between items-center font-bold text-lg text-primary cursor-pointer list-none">
           What should I bring to the field?
+          <span class="text-gray-400 group-open:rotate-180 transition-transform duration-200">▼</span>
         </summary>
-        <p style="margin-top: 1rem; color: var(--text-light);">
+        <div class="mt-4 text-gray-600 leading-relaxed border-t pt-4">
           Bring your aircraft, transmitter, batteries, and tools. Don't forget sunscreen, water, and a chair for comfort. Members must have current AMA membership.
-        </p>
+        </div>
       </details>
+
     </div>
   </section>
 </Layout>
