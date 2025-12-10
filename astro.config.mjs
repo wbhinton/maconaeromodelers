@@ -5,9 +5,13 @@ import react from '@astrojs/react';
 
 // https://astro.build/config
 export default defineConfig({
+
   site: 'https://wbhinton.github.io',
   base: '/maconaeromodelers/',
   output: 'static',
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
   integrations: [
     tailwind(),
     react(),
