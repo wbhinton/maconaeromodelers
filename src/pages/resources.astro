@@ -1,0 +1,267 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const baseUrl = import.meta.env.BASE_URL;
+---
+
+<Layout title="Resources" description="Helpful resources for RC model airplane enthusiasts">
+  <div class="hero">
+    <h1>Resources</h1>
+    <p>Downloads, guides, and helpful information for our members</p>
+  </div>
+
+  <section class="section">
+    <h2 class="section-title">Club Documents</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+      <div class="card">
+        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+          <div style="font-size: 2.5rem;">📄</div>
+          <div>
+            <h3 style="color: var(--primary-color); margin-bottom: 0.25rem;">Club Bylaws</h3>
+            <p style="color: var(--text-light); font-size: 0.9rem;">PDF - 250 KB</p>
+          </div>
+        </div>
+        <p style="margin-bottom: 1rem; color: var(--text-light);">
+          Official club bylaws and governance documents.
+        </p>
+        <a href={`${baseUrl}resources/club-bylaws.pdf`} class="btn" download style="display: inline-block;">
+          Download
+        </a>
+      </div>
+
+      <div class="card">
+        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+          <div style="font-size: 2.5rem;">📋</div>
+          <div>
+            <h3 style="color: var(--primary-color); margin-bottom: 0.25rem;">Safety Guidelines</h3>
+            <p style="color: var(--text-light); font-size: 0.9rem;">PDF - 180 KB</p>
+          </div>
+        </div>
+        <p style="margin-bottom: 1rem; color: var(--text-light);">
+          Field safety rules and flying guidelines for all members.
+        </p>
+        <a href={`${baseUrl}resources/safety-guidelines.pdf`} class="btn" download style="display: inline-block;">
+          Download
+        </a>
+      </div>
+
+      <div class="card">
+        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+          <div style="font-size: 2.5rem;">📝</div>
+          <div>
+            <h3 style="color: var(--primary-color); margin-bottom: 0.25rem;">Membership Application</h3>
+            <p style="color: var(--text-light); font-size: 0.9rem;">PDF - 120 KB</p>
+          </div>
+        </div>
+        <p style="margin-bottom: 1rem; color: var(--text-light);">
+          Application form for new club members.
+        </p>
+        <a href={`${baseUrl}resources/membership-application.pdf`} class="btn" download style="display: inline-block;">
+          Download
+        </a>
+      </div>
+
+      <div class="card">
+        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+          <div style="font-size: 2.5rem;">🗺️</div>
+          <div>
+            <h3 style="color: var(--primary-color); margin-bottom: 0.25rem;">Field Map</h3>
+            <p style="color: var(--text-light); font-size: 0.9rem;">PDF - 500 KB</p>
+          </div>
+        </div>
+        <p style="margin-bottom: 1rem; color: var(--text-light);">
+          Detailed map of our flying field and facilities.
+        </p>
+        <a href={`${baseUrl}resources/field-map.pdf`} class="btn" download style="display: inline-block;">
+          Download
+        </a>
+      </div>
+
+      <div class="card">
+        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+          <div style="font-size: 2.5rem;">📅</div>
+          <div>
+            <h3 style="color: var(--primary-color); margin-bottom: 0.25rem;">Event Calendar</h3>
+            <p style="color: var(--text-light); font-size: 0.9rem;">PDF - 200 KB</p>
+          </div>
+        </div>
+        <p style="margin-bottom: 1rem; color: var(--text-light);">
+          Annual calendar of club events and meetings.
+        </p>
+        <a href={`${baseUrl}resources/event-calendar.pdf`} class="btn" download style="display: inline-block;">
+          Download
+        </a>
+      </div>
+
+      <div class="card">
+        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+          <div style="font-size: 2.5rem;">💰</div>
+          <div>
+            <h3 style="color: var(--primary-color); margin-bottom: 0.25rem;">Membership Dues</h3>
+            <p style="color: var(--text-light); font-size: 0.9rem;">PDF - 100 KB</p>
+          </div>
+        </div>
+        <p style="margin-bottom: 1rem; color: var(--text-light);">
+          Current membership fee schedule and payment options.
+        </p>
+        <a href={`${baseUrl}resources/membership-dues.pdf`} class="btn" download style="display: inline-block;">
+          Download
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Training Materials</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+      <div class="card">
+        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+          <div style="font-size: 2.5rem;">✈️</div>
+          <div>
+            <h3 style="color: var(--primary-color); margin-bottom: 0.25rem;">Beginner's Guide</h3>
+            <p style="color: var(--text-light); font-size: 0.9rem;">PDF - 1.2 MB</p>
+          </div>
+        </div>
+        <p style="margin-bottom: 1rem; color: var(--text-light);">
+          Complete guide for new RC pilots covering basics and safety.
+        </p>
+        <a href={`${baseUrl}resources/beginners-guide.pdf`} class="btn" download style="display: inline-block;">
+          Download
+        </a>
+      </div>
+
+      <div class="card">
+        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+          <div style="font-size: 2.5rem;">✓</div>
+          <div>
+            <h3 style="color: var(--primary-color); margin-bottom: 0.25rem;">Pre-Flight Checklist</h3>
+            <p style="color: var(--text-light); font-size: 0.9rem;">PDF - 150 KB</p>
+          </div>
+        </div>
+        <p style="margin-bottom: 1rem; color: var(--text-light);">
+          Essential pre-flight checks for safe flying operations.
+        </p>
+        <a href={`${baseUrl}resources/preflight-checklist.pdf`} class="btn" download style="display: inline-block;">
+          Download
+        </a>
+      </div>
+
+      <div class="card">
+        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+          <div style="font-size: 2.5rem;">📖</div>
+          <div>
+            <h3 style="color: var(--primary-color); margin-bottom: 0.25rem;">Flight Training Manual</h3>
+            <p style="color: var(--text-light); font-size: 0.9rem;">PDF - 2.5 MB</p>
+          </div>
+        </div>
+        <p style="margin-bottom: 1rem; color: var(--text-light);">
+          Comprehensive flight training curriculum and exercises.
+        </p>
+        <a href={`${baseUrl}resources/flight-training-manual.pdf`} class="btn" download style="display: inline-block;">
+          Download
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Technical Resources</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+      <div class="card">
+        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+          <div style="font-size: 2.5rem;">🔧</div>
+          <div>
+            <h3 style="color: var(--primary-color); margin-bottom: 0.25rem;">Maintenance Guide</h3>
+            <p style="color: var(--text-light); font-size: 0.9rem;">PDF - 800 KB</p>
+          </div>
+        </div>
+        <p style="margin-bottom: 1rem; color: var(--text-light);">
+          Tips for maintaining and repairing your RC aircraft.
+        </p>
+        <a href={`${baseUrl}resources/maintenance-guide.pdf`} class="btn" download style="display: inline-block;">
+          Download
+        </a>
+      </div>
+
+      <div class="card">
+        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+          <div style="font-size: 2.5rem;">📡</div>
+          <div>
+            <h3 style="color: var(--primary-color); margin-bottom: 0.25rem;">Radio Setup Guide</h3>
+            <p style="color: var(--text-light); font-size: 0.9rem;">PDF - 600 KB</p>
+          </div>
+        </div>
+        <p style="margin-bottom: 1rem; color: var(--text-light);">
+          How to properly set up and configure your transmitter.
+        </p>
+        <a href={`${baseUrl}resources/radio-setup-guide.pdf`} class="btn" download style="display: inline-block;">
+          Download
+        </a>
+      </div>
+
+      <div class="card">
+        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+          <div style="font-size: 2.5rem;">⚡</div>
+          <div>
+            <h3 style="color: var(--primary-color); margin-bottom: 0.25rem;">Battery Safety</h3>
+            <p style="color: var(--text-light); font-size: 0.9rem;">PDF - 400 KB</p>
+          </div>
+        </div>
+        <p style="margin-bottom: 1rem; color: var(--text-light);">
+          Important information on LiPo battery care and safety.
+        </p>
+        <a href={`${baseUrl}resources/battery-safety.pdf`} class="btn" download style="display: inline-block;">
+          Download
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Helpful Links</h2>
+    <div class="card">
+      <ul style="list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+        <li>
+          <a href="https://www.modelaircraft.org/" target="_blank" rel="noopener" style="color: var(--primary-color); text-decoration: none; font-weight: 600;">
+            🔗 Academy of Model Aeronautics (AMA)
+          </a>
+          <p style="color: var(--text-light); font-size: 0.9rem; margin-top: 0.25rem;">
+            National organization for model aviation
+          </p>
+        </li>
+        <li>
+          <a href="https://www.rcgroups.com/" target="_blank" rel="noopener" style="color: var(--primary-color); text-decoration: none; font-weight: 600;">
+            🔗 RC Groups Forums
+          </a>
+          <p style="color: var(--text-light); font-size: 0.9rem; margin-top: 0.25rem;">
+            Large online community for RC enthusiasts
+          </p>
+        </li>
+        <li>
+          <a href="https://www.faa.gov/uas/" target="_blank" rel="noopener" style="color: var(--primary-color); text-decoration: none; font-weight: 600;">
+            🔗 FAA Drone Regulations
+          </a>
+          <p style="color: var(--text-light); font-size: 0.9rem; margin-top: 0.25rem;">
+            Official FAA rules and registration
+          </p>
+        </li>
+        <li>
+          <a href="#" style="color: var(--primary-color); text-decoration: none; font-weight: 600;">
+            🔗 Local Hobby Shops
+          </a>
+          <p style="color: var(--text-light); font-size: 0.9rem; margin-top: 0.25rem;">
+            Find supplies and support locally
+          </p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" style="background-color: var(--bg-light); padding: 2rem; border-radius: 8px; text-align: center;">
+    <h3 style="margin-bottom: 1rem;">Need Additional Resources?</h3>
+    <p style="font-size: 1.1rem; color: var(--text-light); margin-bottom: 1.5rem;">
+      If you're looking for a specific document or resource, please don't hesitate to reach out.
+    </p>
+    <a href={`${baseUrl}contact`} class="btn">Contact Us</a>
+  </section>
+</Layout>
