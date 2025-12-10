@@ -13,28 +13,24 @@ permissions:
   pages: write
   id-token: write
 
+# Allow one concurrent deployment
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v4
-        
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          
-      - name: Install dependencies
-        run: npm ci
-        
-      - name: Build Astro site
-        run: npm run build
-        
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./dist
+
+      # This single step replaces "Setup Node", "Install dependencies", 
+      # "Build Astro site", and "Upload artifact"
+      - name: Install, build, and upload your site
+        uses: withastro/action@v2
+        # Note: If you don't have a package-lock.json, this might warn you,
+        # but it generally tries to install dependencies correctly anyway.
 
   deploy:
     needs: build
