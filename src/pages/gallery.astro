@@ -1,109 +1,129 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { Image, getImage } from 'astro:assets';
+
+// 1. Get and Process Images
+const allImages = import.meta.glob('../assets/gallery/**/*.{jpeg,jpg,png,webp}', { eager: true });
+const albums: Record<string, any[]> = {};
+
+await Promise.all(Object.keys(allImages).map(async (path) => {
+  const parts = path.split('/');
+  const folderName = parts[parts.length - 2]; 
+  const imageModule = (allImages[path] as any).default;
+
+  if (!albums[folderName]) {
+    albums[folderName] = [];
+  }
+
+  const optimizedImage = await getImage({
+    src: imageModule,
+    format: 'webp',
+    width: 1920,
+  });
+
+  albums[folderName].push({
+    thumb: imageModule,
+    fullRes: optimizedImage.src
+  });
+}));
+
+const sortedAlbumKeys = Object.keys(albums).sort().reverse();
+const formatTitle = (name: string) => name.replace(/-/g, ' ');
 ---
 
-<Layout title="Gallery" description="Photo gallery of Macon Aero Modelers aircraft and events">
-  <div class="bg-gradient-to-br from-primary to-secondary text-white py-16 px-4 rounded-2xl text-center mb-12 shadow-md">
-    <h1 class="text-4xl md:text-5xl font-bold mb-4">Gallery</h1>
-    <p class="text-xl md:text-2xl text-blue-50 max-w-2xl mx-auto">
-      Explore photos of our aircraft, events, and flying adventures
-    </p>
+<Layout title="Club Photo Gallery">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.14.3/simple-lightbox.min.css" />
+
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <h1 class="text-4xl font-bold text-primary mb-4">Event Galleries</h1>
+    <p class="text-gray-600 mb-12">Photos from our recent fly-ins, build nights, and field work days.</p>
+
+    {sortedAlbumKeys.map((albumName) => (
+      <div class="mb-16">
+        <div class="flex items-center gap-4 mb-6 border-b border-gray-200 pb-2">
+          <h2 class="text-2xl font-bold text-text-dark capitalize">
+            {formatTitle(albumName)}
+          </h2>
+          <span class="text-sm text-gray-400 bg-gray-100 px-2 py-1 rounded-full">
+            {albums[albumName].length} photos
+          </span>
+        </div>
+
+        <div class="gallery-container grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          {albums[albumName].map((photo) => (
+            <a 
+              href={photo.fullRes} 
+              class="block overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 bg-gray-100"
+            >
+              <Image 
+                src={photo.thumb} 
+                alt={`${albumName} photo`} 
+                width={400} 
+                height={300}
+                class="w-full h-64 object-cover hover:scale-105 transition-transform duration-500"
+              />
+            </a>
+          ))}
+        </div>
+      </div>
+    ))}
+
+    {sortedAlbumKeys.length === 0 && (
+      <div class="text-center py-20 bg-gray-50 rounded-lg">
+        <p class="text-gray-500 text-lg">No photos found in <code>src/assets/gallery/</code></p>
+      </div>
+    )}
   </div>
-
-  <section class="mb-16">
-    <h2 class="text-3xl font-bold text-text-dark mb-6">Our Aircraft</h2>
-    
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      
-      <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:-translate-y-1 transition-transform duration-300">
-        <div class="w-full h-48 rounded-lg mb-4 flex items-center justify-center text-5xl text-white bg-gradient-to-br from-indigo-500 to-purple-600">
-          ✈️
-        </div>
-        <h3 class="text-xl font-bold text-gray-900 mb-2">Sport Planes</h3>
-        <p class="text-gray-600">High-wing trainers and sport aircraft perfect for casual flying.</p>
-      </div>
-      
-      <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:-translate-y-1 transition-transform duration-300">
-        <div class="w-full h-48 rounded-lg mb-4 flex items-center justify-center text-5xl text-white bg-gradient-to-br from-pink-400 to-rose-500">
-          🛩️
-        </div>
-        <h3 class="text-xl font-bold text-gray-900 mb-2">Aerobatic Models</h3>
-        <p class="text-gray-600">Precision aerobatic aircraft for 3D flying and competitions.</p>
-      </div>
-      
-      <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:-translate-y-1 transition-transform duration-300">
-        <div class="w-full h-48 rounded-lg mb-4 flex items-center justify-center text-5xl text-white bg-gradient-to-br from-sky-400 to-cyan-300">
-          🛫
-        </div>
-        <h3 class="text-xl font-bold text-gray-900 mb-2">Scale Models</h3>
-        <p class="text-gray-600">Detailed replicas of full-scale aircraft.</p>
-      </div>
-      
-      <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:-translate-y-1 transition-transform duration-300">
-        <div class="w-full h-48 rounded-lg mb-4 flex items-center justify-center text-5xl text-white bg-gradient-to-br from-emerald-400 to-teal-300">
-          🚁
-        </div>
-        <h3 class="text-xl font-bold text-gray-900 mb-2">Helicopters</h3>
-        <p class="text-gray-600">RC helicopters for vertical flight enthusiasts.</p>
-      </div>
-      
-      <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:-translate-y-1 transition-transform duration-300">
-        <div class="w-full h-48 rounded-lg mb-4 flex items-center justify-center text-5xl text-white bg-gradient-to-br from-rose-400 to-amber-300">
-          🛸
-        </div>
-        <h3 class="text-xl font-bold text-gray-900 mb-2">FPV Racing</h3>
-        <p class="text-gray-600">First-person view racing drones and equipment.</p>
-      </div>
-      
-      <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:-translate-y-1 transition-transform duration-300">
-        <div class="w-full h-48 rounded-lg mb-4 flex items-center justify-center text-5xl text-white bg-gradient-to-br from-teal-400 to-indigo-600">
-          ⚙️
-        </div>
-        <h3 class="text-xl font-bold text-gray-900 mb-2">Workshop</h3>
-        <p class="text-gray-600">Building and maintaining our aircraft.</p>
-      </div>
-
-    </div>
-  </section>
-
-  <section class="mb-16">
-    <h2 class="text-3xl font-bold text-text-dark mb-6">Event Photos</h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      
-      <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:-translate-y-1 transition-transform duration-300">
-        <div class="w-full h-48 rounded-lg mb-4 flex items-center justify-center text-5xl text-gray-700 bg-gradient-to-br from-teal-200 to-pink-200">
-          🎉
-        </div>
-        <h3 class="text-xl font-bold text-gray-900 mb-2">Annual Fly-In</h3>
-        <p class="text-gray-600">Our biggest event of the year with pilots from across the region.</p>
-      </div>
-      
-      <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:-translate-y-1 transition-transform duration-300">
-        <div class="w-full h-48 rounded-lg mb-4 flex items-center justify-center text-5xl text-gray-700 bg-gradient-to-br from-orange-100 to-orange-300">
-          🏆
-        </div>
-        <h3 class="text-xl font-bold text-gray-900 mb-2">Competitions</h3>
-        <p class="text-gray-600">Aerobatic competitions and fun-fly events.</p>
-      </div>
-      
-      <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:-translate-y-1 transition-transform duration-300">
-        <div class="w-full h-48 rounded-lg mb-4 flex items-center justify-center text-5xl text-gray-700 bg-gradient-to-br from-red-200 to-pink-200">
-          👥
-        </div>
-        <h3 class="text-xl font-bold text-gray-900 mb-2">Club Meetings</h3>
-        <p class="text-gray-600">Regular meetings and social gatherings.</p>
-      </div>
-      
-    </div>
-  </section>
-
-  <section class="bg-background-alt rounded-2xl p-8 text-center border border-gray-200">
-    <p class="text-lg text-gray-600">
-      Want to share your photos? 
-      <a href={`${import.meta.env.BASE_URL}contact`} class="text-primary font-bold hover:underline">
-        Contact us
-      </a> 
-      to submit your images to our gallery!
-    </p>
-  </section>
 </Layout>
+
+<script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.14.3/simple-lightbox.min.js"></script>
+
+<script is:inline>
+  function initGallery() {
+    if (typeof SimpleLightbox !== 'undefined') {
+      new SimpleLightbox('.gallery-container a', {
+          captions: true,
+          captionDelay: 250,
+          animationSpeed: 250,
+          fadeSpeed: 250,
+          showCounter: true,
+          loop: true,
+          close: true,
+          fileExt: false
+      });
+      console.log('Gallery initialized.');
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', initGallery);
+  document.addEventListener('astro:page-load', initGallery);
+</script>
+
+<style is:global>
+  /* 1. Z-Index and Background Overlay */
+  .sl-wrapper {
+    z-index: 9999 !important;
+  }
+  .sl-overlay {
+    z-index: 9998 !important;
+    background: #0f172a !important; /* Dark Slate Background */
+  }
+
+  /* 2. Controls Default Color (White) */
+  .sl-wrapper .sl-close,
+  .sl-wrapper .sl-navigation button,
+  .sl-wrapper .sl-counter {
+    color: #ffffff !important;
+  }
+
+  /* 3. Hover Effect: Use Amber Alert Color (#f59e0b) */
+  .sl-wrapper .sl-close:hover,
+  .sl-wrapper .sl-navigation button:hover {
+    color: #f59e0b !important; /* Amber-500 */
+  }
+
+  .sl-spinner {
+    border-color: #ffffff !important;
+  }
+</style>
