@@ -1,0 +1,189 @@
+/* src/styles/starlight.css */
+
+@import "tailwindcss";
+
+/* Your custom overrides follow below... */
+
+/* ---------------------------------------------------------
+   1. COLOR VARIABLES (Your Brand Palette)
+   --------------------------------------------------------- */
+:root {
+  --sl-font: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+:root[data-theme='light'] {
+  --sl-color-accent: #0369a1;       /* Sky-700 */
+  --sl-color-text-accent: #0369a1;
+  --sl-color-bg: #ffffff;
+  --sl-color-bg-nav: #f8fafc;       /* Slate-50 */
+  --sl-color-bg-sidebar: #f8fafc;
+  --sl-color-text: #334155;         /* Slate-700 */
+  --sl-color-text-invert: #ffffff;
+  --sl-color-hairline-light: #e2e8f0;
+  --sl-color-hairline: #cbd5e1;
+}
+
+:root[data-theme='dark'] {
+  --sl-color-accent: #38bdf8;
+  --sl-color-text-accent: #38bdf8;
+  --sl-color-bg: #0f172a;
+  --sl-color-bg-nav: #1e293b;
+  --sl-color-bg-sidebar: #1e293b;
+  --sl-color-text: #e2e8f0;
+  --sl-color-hairline: #334155;
+}
+
+.site-title { color: var(--sl-color-accent) !important; }
+
+
+/* ---------------------------------------------------------
+   2. FIX THE THEME SELECTOR (The HTML snippet you sent)
+   --------------------------------------------------------- */
+
+/* Force the label to be a horizontal flex container */
+starlight-theme-select label {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 0.5rem !important; /* Space between Icon and Text */
+  width: auto !important;
+}
+
+/* Fix the Laptop/Moon/Sun Icon */
+starlight-theme-select .label-icon {
+  display: inline-block !important;
+  position: relative !important;
+  width: 1.2em !important;
+  height: 1.2em !important;
+  flex-shrink: 0 !important; /* Stop it from getting squashed */
+}
+
+/* Fix the actual Dropdown Menu */
+starlight-theme-select select {
+  appearance: none !important; /* Remove default browser styling */
+  background-color: transparent !important;
+  border: none !important;
+  padding-right: 1rem !important; /* Room for the arrow */
+  margin: 0 !important;
+  width: auto !important;
+  position: relative !important;
+  z-index: 10;
+  cursor: pointer;
+  
+  /* Fix text color inherited from Tailwind */
+  color: inherit !important;
+  font-size: 0.9em !important;
+  line-height: inherit !important;
+}
+
+/* Fix the Caret (Arrow) Icon */
+starlight-theme-select .caret {
+  display: inline-block !important;
+  position: relative !important;
+  width: 1em !important;
+  margin-left: -1.25rem !important; /* Pull it back visually over the select */
+  pointer-events: none; /* Let clicks pass through to the select */
+}
+
+
+/* ---------------------------------------------------------
+   3. FIX "CROWDED" TEXT (Restoring Margins)
+   --------------------------------------------------------- */
+/* These rules only apply inside the documentation content area */
+
+.sl-markdown-content p {
+  margin-bottom: 1.5rem !important; /* Big gap between paragraphs */
+  line-height: 1.8 !important;      /* Breathe vertically */
+}
+
+.sl-markdown-content ul, 
+.sl-markdown-content ol {
+  margin-bottom: 1.5rem !important;
+  padding-left: 1.5rem !important;
+}
+
+/* Restore bullets that Tailwind hid */
+.sl-markdown-content ul { list-style-type: disc !important; }
+.sl-markdown-content ol { list-style-type: decimal !important; }
+
+.sl-markdown-content li {
+  margin-bottom: 0.5rem !important; /* Space between list items */
+}
+
+.sl-markdown-content h1 { margin-bottom: 1.5rem !important; }
+
+.sl-markdown-content h2, 
+.sl-markdown-content h3 {
+  margin-top: 2.5rem !important;    /* Big space above headers */
+  margin-bottom: 1rem !important;   /* Space below headers */
+  font-weight: 700 !important;
+}
+
+/* ---------------------------------------------------------
+   4. HEADER ICONS SPACING (Github, Search)
+   --------------------------------------------------------- */
+/* Force space between the social icons in the top right */
+.header .social-icons a,
+.header .right-group {
+  gap: 0.75rem !important;
+}
+
+/* =========================================
+   Mobile Table of Contents (TOC) Fixes
+   ========================================= */
+
+/* 1. Target the dropdown container specifically on mobile */
+@media (max-width: 50rem) {
+  
+  /* Target the dropdown div that follows the summary ID you provided */
+  summary#starlight__on-this-page--mobile + .dropdown {
+    
+    /* FIX: Make background solid so text doesn't bleed through */
+    background-color: var(--sl-color-bg-nav); 
+    border: 1px solid var(--sl-color-hairline);
+    
+    /* FIX: Add a shadow to lift it off the content */
+    box-shadow: var(--sl-shadow-md);
+    
+    /* FIX: Round corners for a cleaner look */
+    border-radius: 0.5rem;
+    
+    /* FIX: Add padding so it's not cramped */
+    padding: 1rem;
+    
+    /* Ensure it doesn't run off the screen if the list is long */
+    max-height: 60vh;
+    overflow-y: auto;
+    
+    /* Ensure it sits on top of everything else */
+    position: absolute;
+    z-index: 100;
+    width: 100%;
+    right: 0;
+    left: 0;
+    margin-top: 0.5rem;
+  }
+
+  /* 2. Fix the spacing of the list items inside */
+  summary#starlight__on-this-page--mobile + .dropdown ul li {
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+  }
+
+  /* 3. Make the links easier to read and tap */
+  summary#starlight__on-this-page--mobile + .dropdown a {
+    color: var(--sl-color-white);
+    text-decoration: none;
+    font-size: var(--sl-text-sm);
+    display: block; /* Make the whole area clickable */
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+  }
+
+  /* Highlight the active item or hover state */
+  summary#starlight__on-this-page--mobile + .dropdown a:hover,
+  summary#starlight__on-this-page--mobile + .dropdown a[aria-current="true"] {
+    background-color: var(--sl-color-gray-5);
+    color: var(--sl-color-text-accent);
+  }
+}

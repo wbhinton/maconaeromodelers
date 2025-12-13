@@ -9,15 +9,28 @@ interface Props {
 const { title, description = "Macon Aero Modelers - A model airplane flying club" } = Astro.props;
 const baseUrl = import.meta.env.BASE_URL;
 
+// Consolidated Navigation Structure
 const navItems = [
   { text: "Home", href: baseUrl },
-  { text: "Gallery", href: `${baseUrl}gallery/` },
-  { text: "Videos", href: `${baseUrl}videos/` },
   { text: "Events", href: `${baseUrl}events/` },
-  { text: "Resources", href: `${baseUrl}resources/` },
-  { text: "Docs", href: `${baseUrl}docs` },
+  { 
+    text: "Media", 
+    href: "#", 
+    subItems: [
+      { text: "Photo Gallery", href: `${baseUrl}gallery/` },
+      { text: "Videos", href: `${baseUrl}videos/` },
+    ]
+  },
+  { 
+    text: "Membership", 
+    href: "#", // Placeholder for dropdown parent
+    subItems: [
+      { text: "How to Join", href: `${baseUrl}new-members/` },
+      { text: "Member Handbook (Docs)", href: `${baseUrl}docs/` },
+      { text: "Resources", href: `${baseUrl}resources/` },
+    ]
+  },
   { text: "Contact", href: `${baseUrl}contact/` },
-  { text: "New Members", href: `${baseUrl}new-members/` },
 ];
 ---
 
@@ -54,18 +67,49 @@ const navItems = [
           id="nav-links"
           class="
             hidden 
-            absolute top-16 left-0 w-full bg-white border-b border-gray-200 shadow-lg flex-col p-6 gap-4 
-            md:flex md:static md:w-auto md:bg-transparent md:border-none md:shadow-none md:flex-row md:p-0 md:gap-6
+            absolute top-16 left-0 w-full bg-white border-b border-gray-200 shadow-lg flex-col p-6 gap-2
+            md:flex md:static md:w-auto md:bg-transparent md:border-none md:shadow-none md:flex-row md:items-center md:p-0 md:gap-6
           "
         >
           {navItems.map((item) => (
-            <li>
-              <a 
-                href={item.href} 
-                class="block text-text-dark font-medium hover:text-primary border-b-2 border-transparent hover:border-primary transition-colors py-2 md:py-1"
-              >
-                {item.text}
-              </a>
+            <li class="relative group">
+              {item.subItems ? (
+                /* DROPDOWN MENU ITEM */
+                <>
+                  <button 
+                    class="w-full text-left md:w-auto flex items-center justify-between gap-1 text-text-dark font-medium hover:text-primary py-2 md:py-1 group-hover:text-primary transition-colors cursor-pointer"
+                  >
+                    {item.text}
+                    <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                  </button>
+                  
+                  {/* Dropdown Content */}
+                  <ul class="
+                    hidden md:absolute md:left-0 md:top-full md:w-48 md:bg-white md:shadow-xl md:border md:border-gray-100 md:rounded-md md:py-2
+                    flex-col pl-4 md:pl-0 border-l-2 border-gray-100 md:border-l-0 mt-1 md:mt-2
+                    group-hover:flex z-50
+                  ">
+                    {item.subItems.map((sub) => (
+                      <li>
+                        <a 
+                          href={sub.href} 
+                          class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary transition-colors"
+                        >
+                          {sub.text}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              ) : (
+                /* STANDARD NAV ITEM */
+                <a 
+                  href={item.href} 
+                  class="block text-text-dark font-medium hover:text-primary border-b-2 border-transparent hover:border-primary transition-colors py-2 md:py-1"
+                >
+                  {item.text}
+                </a>
+              )}
             </li>
           ))}
         </ul>
@@ -90,7 +134,7 @@ const navItems = [
           <ul class="space-y-2">
             <li><a href={`${baseUrl}new-members/`} class="text-gray-300 hover:text-alert transition-colors">Join Our Club</a></li>
             <li><a href={`${baseUrl}events/`} class="text-gray-300 hover:text-alert transition-colors">Upcoming Events</a></li>
-            <li><a href={`${baseUrl}resources/`} class="text-gray-300 hover:text-alert transition-colors">Resources</a></li>
+            <li><a href={`${baseUrl}docs/`} class="text-gray-300 hover:text-alert transition-colors">Member Handbook</a></li>
             <li><a href={`${baseUrl}contact/`} class="text-gray-300 hover:text-alert transition-colors">Contact Us</a></li>
           </ul>
         </div>
@@ -113,9 +157,7 @@ const navItems = [
 
       if (btn && menu) {
         btn.addEventListener('click', () => {
-          // Toggle the 'hidden' class to show/hide the menu
           menu.classList.toggle('hidden');
-          // Toggle 'flex' to ensure it uses flexbox when visible
           menu.classList.toggle('flex');
         });
       }

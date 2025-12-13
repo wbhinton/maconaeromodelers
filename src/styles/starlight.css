@@ -1,125 +1,21 @@
-/* src/styles/starlight.css */
+/* Import Theme and Utilities, but SKIP Preflight to protect Starlight UI */
+@import "tailwindcss/theme";
+@import "tailwindcss/utilities";
 
-/* ---------------------------------------------------------
-   1. COLOR VARIABLES (Your Brand Palette)
-   --------------------------------------------------------- */
-:root {
-  --sl-font: 'Inter', system-ui, -apple-system, sans-serif;
+/* Re-add your custom theme variables */
+@theme {
+  --font-sans: "Inter", system-ui, sans-serif;
+
+  --color-primary: #0369a1;
+  --color-primary-hover: #0284c7;
+  --color-secondary: #475569;
+  --color-background: #ffffff;
+  --color-background-alt: #f8fafc;
+  --color-alert: #f59e0b;
+  --color-success: #059669;
+  --color-error: #dc2626;
+  --color-text-dark: #1e293b;
+  --color-text-light: #64748b;
 }
 
-:root[data-theme='light'] {
-  --sl-color-accent: #0369a1;       /* Sky-700 */
-  --sl-color-text-accent: #0369a1;
-  --sl-color-bg: #ffffff;
-  --sl-color-bg-nav: #f8fafc;       /* Slate-50 */
-  --sl-color-bg-sidebar: #f8fafc;
-  --sl-color-text: #334155;         /* Slate-700 */
-  --sl-color-text-invert: #ffffff;
-  --sl-color-hairline-light: #e2e8f0;
-  --sl-color-hairline: #cbd5e1;
-}
-
-:root[data-theme='dark'] {
-  --sl-color-accent: #38bdf8;
-  --sl-color-text-accent: #38bdf8;
-  --sl-color-bg: #0f172a;
-  --sl-color-bg-nav: #1e293b;
-  --sl-color-bg-sidebar: #1e293b;
-  --sl-color-text: #e2e8f0;
-  --sl-color-hairline: #334155;
-}
-
-.site-title { color: var(--sl-color-accent) !important; }
-
-
-/* ---------------------------------------------------------
-   2. FIX THE THEME SELECTOR (The HTML snippet you sent)
-   --------------------------------------------------------- */
-
-/* Force the label to be a horizontal flex container */
-starlight-theme-select label {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: flex-start !important;
-  gap: 0.5rem !important; /* Space between Icon and Text */
-  width: auto !important;
-}
-
-/* Fix the Laptop/Moon/Sun Icon */
-starlight-theme-select .label-icon {
-  display: inline-block !important;
-  position: relative !important;
-  width: 1.2em !important;
-  height: 1.2em !important;
-  flex-shrink: 0 !important; /* Stop it from getting squashed */
-}
-
-/* Fix the actual Dropdown Menu */
-starlight-theme-select select {
-  appearance: none !important; /* Remove default browser styling */
-  background-color: transparent !important;
-  border: none !important;
-  padding-right: 1rem !important; /* Room for the arrow */
-  margin: 0 !important;
-  width: auto !important;
-  position: relative !important;
-  z-index: 10;
-  cursor: pointer;
-  
-  /* Fix text color inherited from Tailwind */
-  color: inherit !important;
-  font-size: 0.9em !important;
-  line-height: inherit !important;
-}
-
-/* Fix the Caret (Arrow) Icon */
-starlight-theme-select .caret {
-  display: inline-block !important;
-  position: relative !important;
-  width: 1em !important;
-  margin-left: -1.25rem !important; /* Pull it back visually over the select */
-  pointer-events: none; /* Let clicks pass through to the select */
-}
-
-
-/* ---------------------------------------------------------
-   3. FIX "CROWDED" TEXT (Restoring Margins)
-   --------------------------------------------------------- */
-/* These rules only apply inside the documentation content area */
-
-.sl-markdown-content p {
-  margin-bottom: 1.5rem !important; /* Big gap between paragraphs */
-  line-height: 1.8 !important;      /* Breathe vertically */
-}
-
-.sl-markdown-content ul, 
-.sl-markdown-content ol {
-  margin-bottom: 1.5rem !important;
-  padding-left: 1.5rem !important;
-}
-
-/* Restore bullets that Tailwind hid */
-.sl-markdown-content ul { list-style-type: disc !important; }
-.sl-markdown-content ol { list-style-type: decimal !important; }
-
-.sl-markdown-content li {
-  margin-bottom: 0.5rem !important; /* Space between list items */
-}
-
-.sl-markdown-content h1 { margin-bottom: 1.5rem !important; }
-
-.sl-markdown-content h2, 
-.sl-markdown-content h3 {
-  margin-top: 2.5rem !important;    /* Big space above headers */
-  margin-bottom: 1rem !important;   /* Space below headers */
-  font-weight: 700 !important;
-}
-
-/* ---------------------------------------------------------
-   4. HEADER ICONS SPACING (Github, Search)
-   --------------------------------------------------------- */
-/* Force space between the social icons in the top right */
-.header .social-icons a,
-.header .right-group {
-  gap: 0.75rem !important;
-}
+/* Any other custom overrides you had... */
