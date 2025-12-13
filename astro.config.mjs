@@ -1,26 +1,48 @@
 import { defineConfig } from 'astro/config';
-import tailwind from '@astrojs/tailwind';
 import starlight from '@astrojs/starlight';
 import react from '@astrojs/react';
+import tailwindcss from '@tailwindcss/vite';
 
-// https://astro.build/config
 export default defineConfig({
   site: 'https://wbhinton.github.io',
   base: '/maconaeromodelers/',
   output: 'static',
-  // REMOVED the 'plugins' block from here
+
+  vite: {
+    plugins: [tailwindcss()],
+  },
+
   integrations: [
-    tailwind(), // This will automatically look for tailwind.config.mjs
     react(),
     starlight({
       title: 'Macon Aero Modelers Docs',
       disable404Route: true,
       customCss: ['./src/styles/starlight.css'],
+      // Note: We removed the 'integrations' block from inside Starlight
+      
       sidebar: [
         {
           label: 'Start Here',
           items: [
             { label: 'Overview', slug: 'docs' },
+          ],
+        },
+        {
+          label: 'Club Info',
+          items: [
+            { label: 'Constitution & Bylaws', slug: 'docs/governance/constitution' },
+          ],
+        },
+        {
+          label: 'Safety & Operations',
+          items: [
+             { label: 'Field Rules', slug: 'docs/safety/field-rules' },
+          ],
+        },
+        {
+          label: 'Membership',
+          items: [
+            { label: 'How to Join', slug: 'docs/membership/joining' },
           ],
         },
       ],

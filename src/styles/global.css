@@ -1,6 +1,23 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
-/* You can add custom global styles here if absolutely needed, 
-   but try to stick to utility classes! */
+@theme {
+  /* 1. Font Family */
+  --font-sans: "Inter", system-ui, sans-serif;
+
+  /* 2. Custom Colors */
+  --color-primary: #0369a1;        /* Sky-700 */
+  --color-primary-hover: #0284c7;  /* Sky-600 */
+  
+  --color-secondary: #475569;      /* Slate-600 */
+  
+  --color-background: #ffffff;     /* White */
+  --color-background-alt: #f8fafc; /* Slate-50 */
+  
+  --color-alert: #f59e0b;          /* Amber-500 */
+  --color-success: #059669;        /* Emerald-600 */
+  --color-error: #dc2626;          /* Red-600 */
+  
+  --color-text-dark: #1e293b;      /* Slate-800 */
+  --color-text-light: #64748b;     /* Slate-500 */
+}
