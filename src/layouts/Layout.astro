@@ -9,7 +9,6 @@ interface Props {
 const { title, description = "Macon Aero Modelers - A model airplane flying club" } = Astro.props;
 const baseUrl = import.meta.env.BASE_URL;
 
-// Consolidated Navigation Structure
 const navItems = [
   { text: "Home", href: baseUrl },
   { text: "Events", href: `${baseUrl}events/` },
@@ -23,10 +22,10 @@ const navItems = [
   },
   { 
     text: "Membership", 
-    href: "#", // Placeholder for dropdown parent
+    href: "#", 
     subItems: [
       { text: "How to Join", href: `${baseUrl}new-members/` },
-      { text: "Member Handbook (Docs)", href: `${baseUrl}docs/` },
+      { text: "Member Handbook", href: `${baseUrl}docs/` },
       { text: "Resources", href: `${baseUrl}resources/` },
     ]
   },
@@ -85,15 +84,23 @@ const navItems = [
                   
                   {/* Dropdown Content */}
                   <ul class="
-                    hidden md:absolute md:left-0 md:top-full md:w-48 md:bg-white md:shadow-xl md:border md:border-gray-100 md:rounded-md md:py-2
-                    flex-col pl-4 md:pl-0 border-l-2 border-gray-100 md:border-l-0 mt-1 md:mt-2
+                    /* Mobile: Always visible as an indented list */
+                    flex flex-col pl-4 mt-2 border-l-2 border-gray-100 space-y-2
+                    
+                    /* Desktop: Hidden by default, Absolute positioning */
+                    md:hidden md:absolute md:left-0 md:top-full md:w-56 md:bg-white md:shadow-xl md:border md:border-gray-100 md:rounded-md 
+                    
+                    /* Desktop: The Gap Fix (Padding instead of margin) */
+                    md:pl-0 md:border-l-0 md:mt-0 md:pt-2 md:pb-2
+                    
+                    /* Desktop: Interaction */
                     group-hover:flex z-50
                   ">
                     {item.subItems.map((sub) => (
                       <li>
                         <a 
                           href={sub.href} 
-                          class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary transition-colors"
+                          class="block text-sm text-gray-700 hover:text-primary md:px-4 md:py-2 md:hover:bg-gray-50 transition-colors"
                         >
                           {sub.text}
                         </a>
