@@ -8,25 +8,20 @@ interface Props {
 
 const { title, description = "Macon Aero Modelers - A model airplane flying club" } = Astro.props;
 const baseUrl = import.meta.env.BASE_URL;
-
+// -- NAVIGATION ITEMS WITH COMMENTS ON CHANGES ---
 const navItems = [
   { text: "Home", href: baseUrl },
+  { text: "The Field", href: `${baseUrl}field-info/` }, 
   { text: "Events", href: `${baseUrl}events/` },
-  { 
-    text: "Media", 
-    href: "#", 
-    subItems: [
-      { text: "Photo Gallery", href: `${baseUrl}gallery/` },
-      { text: "Videos", href: `${baseUrl}videos/` },
-    ]
-  },
+  // CONSOLIDATED: Single Gallery Link
+  { text: "Gallery", href: `${baseUrl}gallery/` },
   { 
     text: "Membership", 
     href: "#", 
     subItems: [
-      { text: "How to Join", href: `${baseUrl}new-members/` },
+      { text: "Join the Club", href: `${baseUrl}new-members/` },
       { text: "Member Handbook", href: `${baseUrl}docs/` },
-      { text: "Resources", href: `${baseUrl}resources/` },
+      { text: "Pilot Resources", href: `${baseUrl}resources/` },
     ]
   },
   { text: "Contact", href: `${baseUrl}contact/` },

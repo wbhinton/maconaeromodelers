@@ -4,251 +4,175 @@ import Layout from '../layouts/Layout.astro';
 const baseUrl = import.meta.env.BASE_URL;
 ---
 
-<Layout title="Resources" description="Helpful resources for RC model airplane enthusiasts">
-  <div class="bg-gradient-to-br from-primary to-secondary text-white py-16 px-4 rounded-2xl text-center mb-12 shadow-md">
-    <h1 class="text-4xl md:text-5xl font-bold mb-4">Resources</h1>
-    <p class="text-xl md:text-2xl text-blue-50 max-w-2xl mx-auto">
-      Downloads, guides, and helpful information for our members
-    </p>
+<Layout title="Pilot Resources">
+  
+  <div class="bg-gray-900 text-white py-16 px-4 rounded-b-3xl md:rounded-2xl mb-12 shadow-xl relative overflow-hidden">
+    <div class="absolute top-0 left-0 -ml-20 -mt-20 w-96 h-96 bg-primary opacity-20 rounded-full blur-3xl"></div>
+    <div class="relative z-10 text-center max-w-4xl mx-auto">
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">Pilot Resources</h1>
+      <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+        Downloads, guides, and essential links for Macon Aero Modelers.
+      </p>
+    </div>
   </div>
 
-  <section class="mb-16">
-    <h2 class="text-3xl font-bold text-text-dark mb-6">Club Documents</h2>
+  <div class="max-w-7xl mx-auto px-4">
     
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <section class="mb-16">
+      <div class="flex items-center gap-4 mb-8">
+        <div class="h-8 w-1 bg-primary rounded-full"></div>
+        <h2 class="text-3xl font-bold text-gray-800">Club Documents</h2>
+      </div>
       
-      <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:-translate-y-1 transition-transform">
-        <div class="flex items-start gap-4 mb-4">
-          <div class="bg-blue-50 w-12 h-12 rounded-lg flex items-center justify-center text-2xl shrink-0">📄</div>
-          <div>
-            <h3 class="text-lg font-bold text-primary">Club Bylaws</h3>
-            <p class="text-sm text-gray-500">PDF - 250 KB</p>
-          </div>
-        </div>
-        <p class="text-gray-600 mb-6 text-sm">Official club bylaws and governance documents.</p>
-        <a href={`${baseUrl}resources/club-bylaws.pdf`} download class="block w-full text-center bg-white border border-gray-200 text-primary font-semibold py-2 rounded hover:bg-gray-50 transition-colors">
-          Download
-        </a>
-      </div>
-
-      <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:-translate-y-1 transition-transform">
-        <div class="flex items-start gap-4 mb-4">
-          <div class="bg-amber-50 w-12 h-12 rounded-lg flex items-center justify-center text-2xl shrink-0">📋</div>
-          <div>
-            <h3 class="text-lg font-bold text-primary">Safety Guidelines</h3>
-            <p class="text-sm text-gray-500">PDF - 180 KB</p>
-          </div>
-        </div>
-        <p class="text-gray-600 mb-6 text-sm">Field safety rules and flying guidelines for all members.</p>
-        <a href={`${baseUrl}resources/safety-guidelines.pdf`} download class="block w-full text-center bg-white border border-gray-200 text-primary font-semibold py-2 rounded hover:bg-gray-50 transition-colors">
-          Download
-        </a>
-      </div>
-
-      <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:-translate-y-1 transition-transform">
-        <div class="flex items-start gap-4 mb-4">
-          <div class="bg-green-50 w-12 h-12 rounded-lg flex items-center justify-center text-2xl shrink-0">📝</div>
-          <div>
-            <h3 class="text-lg font-bold text-primary">Membership App</h3>
-            <p class="text-sm text-gray-500">PDF - 120 KB</p>
-          </div>
-        </div>
-        <p class="text-gray-600 mb-6 text-sm">Application form for new club members.</p>
-        <a href={`${baseUrl}resources/membership-application.pdf`} download class="block w-full text-center bg-white border border-gray-200 text-primary font-semibold py-2 rounded hover:bg-gray-50 transition-colors">
-          Download
-        </a>
-      </div>
-
-      <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:-translate-y-1 transition-transform">
-        <div class="flex items-start gap-4 mb-4">
-          <div class="bg-purple-50 w-12 h-12 rounded-lg flex items-center justify-center text-2xl shrink-0">🗺️</div>
-          <div>
-            <h3 class="text-lg font-bold text-primary">Field Map</h3>
-            <p class="text-sm text-gray-500">PDF - 500 KB</p>
-          </div>
-        </div>
-        <p class="text-gray-600 mb-6 text-sm">Detailed map of our flying field and facilities.</p>
-        <a href={`${baseUrl}resources/field-map.pdf`} download class="block w-full text-center bg-white border border-gray-200 text-primary font-semibold py-2 rounded hover:bg-gray-50 transition-colors">
-          Download
-        </a>
-      </div>
-
-      <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:-translate-y-1 transition-transform">
-        <div class="flex items-start gap-4 mb-4">
-          <div class="bg-rose-50 w-12 h-12 rounded-lg flex items-center justify-center text-2xl shrink-0">📅</div>
-          <div>
-            <h3 class="text-lg font-bold text-primary">Event Calendar</h3>
-            <p class="text-sm text-gray-500">PDF - 200 KB</p>
-          </div>
-        </div>
-        <p class="text-gray-600 mb-6 text-sm">Annual calendar of club events and meetings.</p>
-        <a href={`${baseUrl}resources/event-calendar.pdf`} download class="block w-full text-center bg-white border border-gray-200 text-primary font-semibold py-2 rounded hover:bg-gray-50 transition-colors">
-          Download
-        </a>
-      </div>
-
-      <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:-translate-y-1 transition-transform">
-        <div class="flex items-start gap-4 mb-4">
-          <div class="bg-teal-50 w-12 h-12 rounded-lg flex items-center justify-center text-2xl shrink-0">💰</div>
-          <div>
-            <h3 class="text-lg font-bold text-primary">Membership Dues</h3>
-            <p class="text-sm text-gray-500">PDF - 100 KB</p>
-          </div>
-        </div>
-        <p class="text-gray-600 mb-6 text-sm">Current membership fee schedule and payment options.</p>
-        <a href={`${baseUrl}resources/membership-dues.pdf`} download class="block w-full text-center bg-white border border-gray-200 text-primary font-semibold py-2 rounded hover:bg-gray-50 transition-colors">
-          Download
-        </a>
-      </div>
-
-    </div>
-  </section>
-
-  <section class="mb-16">
-    <h2 class="text-3xl font-bold text-text-dark mb-6">Training Materials</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      
-      <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:-translate-y-1 transition-transform">
-        <div class="flex items-start gap-4 mb-4">
-          <div class="bg-sky-50 w-12 h-12 rounded-lg flex items-center justify-center text-2xl shrink-0">✈️</div>
-          <div>
-            <h3 class="text-lg font-bold text-primary">Beginner's Guide</h3>
-            <p class="text-sm text-gray-500">PDF - 1.2 MB</p>
-          </div>
-        </div>
-        <p class="text-gray-600 mb-6 text-sm">Complete guide for new RC pilots covering basics and safety.</p>
-        <a href={`${baseUrl}resources/beginners-guide.pdf`} download class="block w-full text-center bg-white border border-gray-200 text-primary font-semibold py-2 rounded hover:bg-gray-50 transition-colors">
-          Download
-        </a>
-      </div>
-
-      <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:-translate-y-1 transition-transform">
-        <div class="flex items-start gap-4 mb-4">
-          <div class="bg-green-50 w-12 h-12 rounded-lg flex items-center justify-center text-2xl shrink-0">✓</div>
-          <div>
-            <h3 class="text-lg font-bold text-primary">Pre-Flight Checklist</h3>
-            <p class="text-sm text-gray-500">PDF - 150 KB</p>
-          </div>
-        </div>
-        <p class="text-gray-600 mb-6 text-sm">Essential pre-flight checks for safe flying operations.</p>
-        <a href={`${baseUrl}resources/preflight-checklist.pdf`} download class="block w-full text-center bg-white border border-gray-200 text-primary font-semibold py-2 rounded hover:bg-gray-50 transition-colors">
-          Download
-        </a>
-      </div>
-
-      <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:-translate-y-1 transition-transform">
-        <div class="flex items-start gap-4 mb-4">
-          <div class="bg-indigo-50 w-12 h-12 rounded-lg flex items-center justify-center text-2xl shrink-0">📖</div>
-          <div>
-            <h3 class="text-lg font-bold text-primary">Flight Training Manual</h3>
-            <p class="text-sm text-gray-500">PDF - 2.5 MB</p>
-          </div>
-        </div>
-        <p class="text-gray-600 mb-6 text-sm">Comprehensive flight training curriculum and exercises.</p>
-        <a href={`${baseUrl}resources/flight-training-manual.pdf`} download class="block w-full text-center bg-white border border-gray-200 text-primary font-semibold py-2 rounded hover:bg-gray-50 transition-colors">
-          Download
-        </a>
-      </div>
-
-    </div>
-  </section>
-
-  <section class="mb-16">
-    <h2 class="text-3xl font-bold text-text-dark mb-6">Technical Resources</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      
-      <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:-translate-y-1 transition-transform">
-        <div class="flex items-start gap-4 mb-4">
-          <div class="bg-gray-50 w-12 h-12 rounded-lg flex items-center justify-center text-2xl shrink-0">🔧</div>
-          <div>
-            <h3 class="text-lg font-bold text-primary">Maintenance Guide</h3>
-            <p class="text-sm text-gray-500">PDF - 800 KB</p>
-          </div>
-        </div>
-        <p class="text-gray-600 mb-6 text-sm">Tips for maintaining and repairing your RC aircraft.</p>
-        <a href={`${baseUrl}resources/maintenance-guide.pdf`} download class="block w-full text-center bg-white border border-gray-200 text-primary font-semibold py-2 rounded hover:bg-gray-50 transition-colors">
-          Download
-        </a>
-      </div>
-
-      <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:-translate-y-1 transition-transform">
-        <div class="flex items-start gap-4 mb-4">
-          <div class="bg-blue-50 w-12 h-12 rounded-lg flex items-center justify-center text-2xl shrink-0">📡</div>
-          <div>
-            <h3 class="text-lg font-bold text-primary">Radio Setup Guide</h3>
-            <p class="text-sm text-gray-500">PDF - 600 KB</p>
-          </div>
-        </div>
-        <p class="text-gray-600 mb-6 text-sm">How to properly set up and configure your transmitter.</p>
-        <a href={`${baseUrl}resources/radio-setup-guide.pdf`} download class="block w-full text-center bg-white border border-gray-200 text-primary font-semibold py-2 rounded hover:bg-gray-50 transition-colors">
-          Download
-        </a>
-      </div>
-
-      <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:-translate-y-1 transition-transform">
-        <div class="flex items-start gap-4 mb-4">
-          <div class="bg-yellow-50 w-12 h-12 rounded-lg flex items-center justify-center text-2xl shrink-0">⚡</div>
-          <div>
-            <h3 class="text-lg font-bold text-primary">Battery Safety</h3>
-            <p class="text-sm text-gray-500">PDF - 400 KB</p>
-          </div>
-        </div>
-        <p class="text-gray-600 mb-6 text-sm">Important information on LiPo battery care and safety.</p>
-        <a href={`${baseUrl}resources/battery-safety.pdf`} download class="block w-full text-center bg-white border border-gray-200 text-primary font-semibold py-2 rounded hover:bg-gray-50 transition-colors">
-          Download
-        </a>
-      </div>
-
-    </div>
-  </section>
-
-  <section class="mb-16">
-    <h2 class="text-3xl font-bold text-text-dark mb-6">Helpful Links</h2>
-    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-8">
-      <ul class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <li>
-          <a href="https://www.modelaircraft.org/" target="_blank" rel="noopener" class="text-lg font-bold text-primary hover:underline flex items-center gap-2">
-            🔗 Academy of Model Aeronautics (AMA)
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+          <div class="text-3xl mb-4">⚖️</div>
+          <h3 class="text-lg font-bold text-gray-900 mb-2">Club Bylaws</h3>
+          <p class="text-gray-600 text-sm mb-4">Official governance rules and regulations.</p>
+          <a href="/assets/documents/club-bylaws.pdf" download class="text-primary font-bold text-sm hover:underline flex items-center gap-1">
+            Download PDF <span aria-hidden="true">&darr;</span>
           </a>
-          <p class="text-gray-500 text-sm mt-1 ml-6">
-            National organization for model aviation
-          </p>
-        </li>
-        <li>
-          <a href="https://www.rcgroups.com/" target="_blank" rel="noopener" class="text-lg font-bold text-primary hover:underline flex items-center gap-2">
-            🔗 RC Groups Forums
-          </a>
-          <p class="text-gray-500 text-sm mt-1 ml-6">
-            Large online community for RC enthusiasts
-          </p>
-        </li>
-        <li>
-          <a href="https://www.faa.gov/uas/" target="_blank" rel="noopener" class="text-lg font-bold text-primary hover:underline flex items-center gap-2">
-            🔗 FAA Drone Regulations
-          </a>
-          <p class="text-gray-500 text-sm mt-1 ml-6">
-            Official FAA rules and registration
-          </p>
-        </li>
-        <li>
-          <a href="#" class="text-lg font-bold text-primary hover:underline flex items-center gap-2">
-            🔗 Local Hobby Shops
-          </a>
-          <p class="text-gray-500 text-sm mt-1 ml-6">
-            Find supplies and support locally
-          </p>
-        </li>
-      </ul>
-    </div>
-  </section>
+        </div>
 
-  <section class="bg-background-alt rounded-2xl p-8 text-center border border-gray-200">
-    <h3 class="text-2xl font-bold text-text-dark mb-4">Need Additional Resources?</h3>
-    <p class="text-lg text-text-light mb-8">
-      If you're looking for a specific document or resource, please don't hesitate to reach out.
-    </p>
-    <a href={`${baseUrl}contact`} class="inline-block bg-primary text-white font-semibold py-3 px-8 rounded-lg hover:bg-primary-hover transition-colors shadow-sm">
-      Contact Us
-    </a>
-  </section>
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+          <div class="text-3xl mb-4">🛡️</div>
+          <h3 class="text-lg font-bold text-gray-900 mb-2">Field Safety Rules</h3>
+          <p class="text-gray-600 text-sm mb-4">Mandatory guidelines for all pilots.</p>
+          <a href="/assets/documents/safety-guidelines.pdf" download class="text-primary font-bold text-sm hover:underline flex items-center gap-1">
+            Download PDF <span aria-hidden="true">&darr;</span>
+          </a>
+        </div>
+
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+          <div class="text-3xl mb-4">📝</div>
+          <h3 class="text-lg font-bold text-gray-900 mb-2">Membership App</h3>
+          <p class="text-gray-600 text-sm mb-4">Printable form for new applicants.</p>
+          <a href="/assets/documents/membership-application.pdf" download class="text-primary font-bold text-sm hover:underline flex items-center gap-1">
+            Download PDF <span aria-hidden="true">&darr;</span>
+          </a>
+        </div>
+
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+          <div class="text-3xl mb-4">🗺️</div>
+          <h3 class="text-lg font-bold text-gray-900 mb-2">Printable Field Map</h3>
+          <p class="text-gray-600 text-sm mb-4">Layout of runway, pits, and parking.</p>
+          <a href="/assets/documents/field-map.pdf" download class="text-primary font-bold text-sm hover:underline flex items-center gap-1">
+            Download PDF <span aria-hidden="true">&darr;</span>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="mb-16">
+      <div class="flex items-center gap-4 mb-8">
+        <div class="h-8 w-1 bg-primary rounded-full"></div>
+        <h2 class="text-3xl font-bold text-gray-800">Pilot Library</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <a href="/assets/documents/preflight-checklist.pdf" download class="group flex items-start gap-4 bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:border-primary transition-colors">
+          <div class="bg-green-100 p-3 rounded-lg text-green-700 group-hover:bg-primary group-hover:text-white transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+            </svg>
+          </div>
+          <div>
+            <h3 class="font-bold text-gray-900 group-hover:text-primary transition-colors">Pre-Flight Checklist</h3>
+            <p class="text-sm text-gray-500 mt-1">Essential checks before every takeoff.</p>
+          </div>
+        </a>
+
+        <a href="/assets/documents/beginners-guide.pdf" download class="group flex items-start gap-4 bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:border-primary transition-colors">
+          <div class="bg-blue-100 p-3 rounded-lg text-blue-700 group-hover:bg-primary group-hover:text-white transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+            </svg>
+          </div>
+          <div>
+            <h3 class="font-bold text-gray-900 group-hover:text-primary transition-colors">Beginner's Guide</h3>
+            <p class="text-sm text-gray-500 mt-1">Everything a new pilot needs to know.</p>
+          </div>
+        </a>
+
+        <a href="/assets/documents/battery-safety.pdf" download class="group flex items-start gap-4 bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:border-primary transition-colors">
+          <div class="bg-yellow-100 p-3 rounded-lg text-yellow-700 group-hover:bg-primary group-hover:text-white transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <div>
+            <h3 class="font-bold text-gray-900 group-hover:text-primary transition-colors">LiPo Battery Safety</h3>
+            <p class="text-sm text-gray-500 mt-1">Handling and charging guidelines.</p>
+          </div>
+        </a>
+
+        <a href="/assets/documents/maintenance-guide.pdf" download class="group flex items-start gap-4 bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:border-primary transition-colors">
+          <div class="bg-gray-100 p-3 rounded-lg text-gray-600 group-hover:bg-primary group-hover:text-white transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+          </div>
+          <div>
+            <h3 class="font-bold text-gray-900 group-hover:text-primary transition-colors">Maintenance Tips</h3>
+            <p class="text-sm text-gray-500 mt-1">Keep your aircraft airworthy.</p>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <section class="mb-16">
+      <div class="flex items-center gap-4 mb-8">
+        <div class="h-8 w-1 bg-primary rounded-full"></div>
+        <h2 class="text-3xl font-bold text-gray-800">Helpful Links</h2>
+      </div>
+
+      <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          
+          <a href="https://www.modelaircraft.org/" target="_blank" rel="noopener" class="flex items-start gap-4 group">
+            <div class="bg-blue-50 p-2 rounded text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </div>
+            <div>
+              <h3 class="font-bold text-gray-900 group-hover:text-primary transition-colors">Academy of Model Aeronautics (AMA)</h3>
+              <p class="text-sm text-gray-500 mt-1">The national body for model aviation in the US.</p>
+            </div>
+          </a>
+
+          <a href="https://www.faa.gov/uas/" target="_blank" rel="noopener" class="flex items-start gap-4 group">
+             <div class="bg-blue-50 p-2 rounded text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </div>
+            <div>
+              <h3 class="font-bold text-gray-900 group-hover:text-primary transition-colors">FAA DroneZone</h3>
+              <p class="text-sm text-gray-500 mt-1">Register your aircraft and take the TRUST test.</p>
+            </div>
+          </a>
+
+          <a href="https://www.rcgroups.com/" target="_blank" rel="noopener" class="flex items-start gap-4 group">
+             <div class="bg-blue-50 p-2 rounded text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
+              </svg>
+            </div>
+            <div>
+              <h3 class="font-bold text-gray-900 group-hover:text-primary transition-colors">RC Groups Forums</h3>
+              <p class="text-sm text-gray-500 mt-1">The world's largest online radio control community.</p>
+            </div>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+  </div>
 </Layout>
