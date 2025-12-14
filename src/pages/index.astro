@@ -1,7 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 // 1. Import the new component
-import MetarWidget from '../components/MetarWidget.astro';
+//import MetarWidget from '../components/MetarWidget.astro';
+import FieldWeather from '../components/FieldWeather.astro';
 ---
 
 <Layout title="Home">
@@ -11,8 +12,10 @@ import MetarWidget from '../components/MetarWidget.astro';
       Join us in the exciting world of radio-controlled model aviation
     </p>
   </div>
+  
+  <FieldWeather />
 
-  <MetarWidget />
+  
 
   <section class="mb-16 mt-12"> <h2 class="text-3xl font-bold text-text-dark mb-6">About Our Club</h2>
     
