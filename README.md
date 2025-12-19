@@ -54,6 +54,10 @@ Here are the key files and folders you need to know about:
 │       └── resources.astro    <-- Pilot Documents & Links
 ├── astro.config.mjs           <-- Astro Config (Starlight Sidebar & Integrations)
 └── tailwind.config.mjs        <-- Styling & Color Palette
+### PART 2: How to Update Content
+
+```   
+
 
 ## 🛠️ How to Update Content
 
