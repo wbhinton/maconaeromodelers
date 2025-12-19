@@ -3,19 +3,29 @@ import Layout from '../layouts/Layout.astro';
 import ical from 'ical';
 
 // ==========================================
-// CONFIGURATION SECTION
+// CONFIGURATION
 // ==========================================
-
-// PASTE YOUR GOOGLE CALENDAR "SECRET ADDRESS IN ICAL FORMAT" HERE:
-// (Settings > Integrate Calendar > Secret address in iCal format)
 const GOOGLE_ICAL_URL = "https://calendar.google.com/calendar/ical/67aefd4dd7621c22897c0a8fdd47453ee92c5d6d55de02e1b1e5465cfa4a7027%40group.calendar.google.com/public/basic.ics";
 
+// Define the shape of an event so TypeScript doesn't get confused
+interface ClubEvent {
+  day: string;
+  month: string;
+  title: string;
+  time: string;
+  location: string;
+  description: string;
+  linkUrl: string;
+  linkText: string;
+  color: string;
+}
+
 // ==========================================
-// DATA FETCHING LOGIC (Server Side)
+// DATA FETCHING LOGIC
 // ==========================================
 
-// 1. Define Fallback Data (Shows if Calendar fetch fails or is empty)
-const fallbackEvents = [
+// 1. Define Fallback Data
+const fallbackEvents: ClubEvent[] = [
   {
     day: "15",
     month: "MAY",
@@ -30,7 +40,7 @@ const fallbackEvents = [
 ];
 
 // 2. The Fetching Function
-let upcomingEvents = fallbackEvents;
+let upcomingEvents: ClubEvent[] = fallbackEvents;
 let fetchError = false;
 
 try {
@@ -45,43 +55,49 @@ try {
 
     // Process the raw ICS data
     const realEvents = Object.values(parsedData)
-      .filter((event) => event.type === 'VEVENT') // Only events, not timezones
-      .filter((event) => new Date(event.start) >= new Date()) // Only future events
-      .sort((a, b) => new Date(a.start).getTime() - new Date(b.start).getTime()) // Sort chronological
-      .slice(0, 10) // Limit to next 10 events
-      .map((event) => {
-        const date = new Date(event.start);
-        const endDate = new Date(event.end);
+      .filter((event) => event.type === 'VEVENT') 
+      .filter((event) => {
+        // Safety check: Ensure start date exists
+        return event.start && new Date(event.start) >= new Date();
+      }) 
+      .sort((a, b) => {
+        // Safety check for sorting
+        const dateA = a.start ? new Date(a.start).getTime() : 0;
+        const dateB = b.start ? new Date(b.start).getTime() : 0;
+        return dateA - dateB;
+      })
+      .slice(0, 10)
+      .map((event): ClubEvent => {
+        // Force create dates with fallback to current time if missing (unlikely due to filter above)
+        const date = event.start ? new Date(event.start) : new Date();
+        const endDate = event.end ? new Date(event.end) : new Date();
         
-        // Format Time (e.g. 9:00 AM)
+        // Format Time
         const timeOpts: Intl.DateTimeFormatOptions = { hour: 'numeric', minute: '2-digit' };
         const timeString = `${date.toLocaleTimeString('en-US', timeOpts)} - ${endDate.toLocaleTimeString('en-US', timeOpts)}`;
 
         return {
-          day: date.getDate(),
+          day: date.getDate().toString(), // FIX: Convert number to string to match fallback
           month: date.toLocaleString('default', { month: 'short' }).toUpperCase(),
-          title: event.summary,
+          title: event.summary || "Untitled Event", // FIX: Handle undefined title
           time: timeString,
           location: event.location || "Club Flying Field",
           description: event.description || "",
-          linkUrl: "#", // Calendar events usually don't have links, but you could map this to a description field URL
+          linkUrl: "#", 
           linkText: "Add to Calendar",
-          color: "bg-primary" // You could randomize this or base it on event title keywords
+          color: "bg-primary"
         };
       });
 
-    // If we found events, override the fallback
     if (realEvents.length > 0) {
       upcomingEvents = realEvents;
     } else {
-        // If calendar is valid but empty, show an empty array (don't show fallback)
         upcomingEvents = [];
     }
   }
 } catch (e) {
   console.error("Error fetching Google Calendar:", e);
   fetchError = true;
-  // We stick with fallbackEvents here so the page doesn't crash
 }
 
 // 3. Regular Activities (Static Data)
@@ -119,7 +135,7 @@ const regularActivities = [
 
 <Layout title="Events" description="Upcoming events and activities at Macon Aero Modelers">
   
- <div class="relative bg-gray-900 text-white py-20 px-4 rounded-b-3xl md:rounded-2xl mb-12 shadow-xl overflow-hidden">
+  <div class="relative bg-gray-900 text-white py-20 px-4 rounded-b-3xl md:rounded-2xl mb-12 shadow-xl overflow-hidden">
     <div class="absolute inset-0 z-0">
       <img 
         src={`${import.meta.env.BASE_URL}assets/images/hero1.jpg`} 
@@ -140,11 +156,11 @@ const regularActivities = [
   <section class="mb-16">
     <div class="flex items-center justify-between mb-6">
         <h2 class="text-3xl font-bold text-text-dark">Upcoming Events</h2>
-        </div>
+    </div>
     
     <div class="flex flex-col gap-6">
       
-      {/* ERROR STATE: If fetch failed and we are using fallback */}
+      {/* ERROR STATE */}
       {fetchError && (
         <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-4">
           <p class="text-yellow-700 text-sm">
@@ -178,8 +194,7 @@ const regularActivities = [
                   </p>
                 )}
                 
-                {/* Add to Calendar Button (Generic Link for now) */}
-                {/* Only show if it's a real event, not a placeholder */}
+                {/* Button */}
                 {event.linkUrl !== "#" ? (
                   <a href={event.linkUrl} class="inline-block bg-primary text-white font-medium py-2 px-4 rounded hover:bg-primary-hover transition-colors">
                     {event.linkText}
@@ -194,7 +209,7 @@ const regularActivities = [
           </div>
         ))
       ) : (
-        /* EMPTY STATE (No events found) */
+        /* EMPTY STATE */
         <div class="text-center py-12 bg-gray-50 rounded-xl border border-dashed border-gray-300">
           <p class="text-gray-500 text-lg">No special events currently scheduled.</p>
           <p class="text-gray-400">Check our regular schedule below!</p>
