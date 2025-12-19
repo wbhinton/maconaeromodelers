@@ -7,24 +7,32 @@ interface Props {
 }
 
 const { title, description = "Macon Aero Modelers - A model airplane flying club" } = Astro.props;
+
+// Ensure baseUrl always has a clean path handling
 const baseUrl = import.meta.env.BASE_URL;
-// -- NAVIGATION ITEMS WITH COMMENTS ON CHANGES ---
+
+// Helper to join paths safely (Avoids double slashes or missing slashes)
+const joinPath = (path: string) => {
+  const cleanBase = baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`;
+  const cleanPath = path.startsWith('/') ? path.slice(1) : path;
+  return `${cleanBase}${cleanPath}`;
+}
+
 const navItems = [
-  { text: "Home", href: baseUrl },
-  { text: "The Field", href: `${baseUrl}field-info/` }, 
-  { text: "Events", href: `${baseUrl}events/` },
-  // CONSOLIDATED: Single Gallery Link
-  { text: "Gallery", href: `${baseUrl}gallery/` },
+  { text: "Home", href: joinPath('') },
+  { text: "The Field", href: joinPath('field-info/') }, 
+  { text: "Events", href: joinPath('events/') },
+  { text: "Gallery", href: joinPath('gallery/') },
   { 
     text: "Membership", 
     href: "#", 
     subItems: [
-      { text: "Join the Club", href: `${baseUrl}new-members/` },
-      { text: "Member Handbook", href: `${baseUrl}docs/` },
-      { text: "Pilot Resources", href: `${baseUrl}resources/` },
+      { text: "Join the Club", href: joinPath('new-members/') },
+      { text: "Member Handbook", href: joinPath('docs/') },
+      { text: "Pilot Resources", href: joinPath('resources/') },
     ]
   },
-  { text: "Contact", href: `${baseUrl}contact/` },
+  { text: "Contact", href: joinPath('contact/') },
 ];
 ---
 
@@ -34,7 +42,9 @@ const navItems = [
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href={`${baseUrl}favicon.svg`} />
+    
+    <link rel="icon" type="image/svg+xml" href={joinPath('favicon.svg')} />
+    
     <title>{title} | Macon Aero Modelers</title>
   </head>
   
@@ -43,7 +53,7 @@ const navItems = [
     <header class="bg-background border-b border-gray-200 sticky top-0 z-50 shadow-sm">
       <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between relative">
         
-        <a href={baseUrl} class="text-xl font-bold text-primary flex items-center gap-2 hover:opacity-80 transition-opacity z-50">
+        <a href={joinPath('')} class="text-xl font-bold text-primary flex items-center gap-2 hover:opacity-80 transition-opacity z-50">
           <span class="text-2xl">✈️</span> Macon Aero Modelers
         </a>
 
@@ -79,16 +89,9 @@ const navItems = [
                   
                   {/* Dropdown Content */}
                   <ul class="
-                    /* Mobile: Always visible as an indented list */
                     flex flex-col pl-4 mt-2 border-l-2 border-gray-100 space-y-2
-                    
-                    /* Desktop: Hidden by default, Absolute positioning */
                     md:hidden md:absolute md:left-0 md:top-full md:w-56 md:bg-white md:shadow-xl md:border md:border-gray-100 md:rounded-md 
-                    
-                    /* Desktop: The Gap Fix (Padding instead of margin) */
                     md:pl-0 md:border-l-0 md:mt-0 md:pt-2 md:pb-2
-                    
-                    /* Desktop: Interaction */
                     group-hover:flex z-50
                   ">
                     {item.subItems.map((sub) => (
@@ -134,10 +137,10 @@ const navItems = [
         <div>
           <h3 class="text-alert font-semibold text-lg mb-4">Quick Links</h3>
           <ul class="space-y-2">
-            <li><a href={`${baseUrl}new-members/`} class="text-gray-300 hover:text-alert transition-colors">Join Our Club</a></li>
-            <li><a href={`${baseUrl}events/`} class="text-gray-300 hover:text-alert transition-colors">Upcoming Events</a></li>
-            <li><a href={`${baseUrl}docs/`} class="text-gray-300 hover:text-alert transition-colors">Member Handbook</a></li>
-            <li><a href={`${baseUrl}contact/`} class="text-gray-300 hover:text-alert transition-colors">Contact Us</a></li>
+            <li><a href={joinPath('new-members/')} class="text-gray-300 hover:text-alert transition-colors">Join Our Club</a></li>
+            <li><a href={joinPath('events/')} class="text-gray-300 hover:text-alert transition-colors">Upcoming Events</a></li>
+            <li><a href={joinPath('docs/')} class="text-gray-300 hover:text-alert transition-colors">Member Handbook</a></li>
+            <li><a href={joinPath('contact/')} class="text-gray-300 hover:text-alert transition-colors">Contact Us</a></li>
           </ul>
         </div>
         <div>

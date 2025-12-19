@@ -1,17 +1,25 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const baseUrl = import.meta.env.BASE_URL;
+// No imports needed for public images, we use string paths
 ---
 
 <Layout title="Pilot Resources">
   
-  <div class="bg-gray-900 text-white py-16 px-4 rounded-b-3xl md:rounded-2xl mb-12 shadow-xl relative overflow-hidden">
-    <div class="absolute top-0 left-0 -ml-20 -mt-20 w-96 h-96 bg-primary opacity-20 rounded-full blur-3xl"></div>
-    <div class="relative z-10 text-center max-w-4xl mx-auto">
-      <h1 class="text-4xl md:text-5xl font-bold mb-6">Pilot Resources</h1>
-      <p class="text-xl text-gray-300 max-w-2xl mx-auto">
-        Downloads, guides, and essential links for Macon Aero Modelers.
+  <div class="relative bg-gray-900 text-white py-20 px-4 rounded-b-3xl md:rounded-2xl mb-12 shadow-xl overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <img 
+        src={`${import.meta.env.BASE_URL}assets/images/hero3.jpg`} 
+        alt="RC Workshop" 
+        class="w-full h-full object-cover opacity-30" 
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent"></div>
+    </div>
+    
+    <div class="relative z-10 text-center max-w-4xl mx-auto mt-4">
+      <h1 class="text-4xl md:text-5xl font-bold mb-6 drop-shadow-lg">Pilot Resources</h1>
+      <p class="text-xl text-gray-200 max-w-2xl mx-auto drop-shadow-md">
+        Downloads, flight tools, and community links for the modern aviator.
       </p>
     </div>
   </div>
@@ -29,36 +37,36 @@ const baseUrl = import.meta.env.BASE_URL;
         <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
           <div class="text-3xl mb-4">⚖️</div>
           <h3 class="text-lg font-bold text-gray-900 mb-2">Club Bylaws</h3>
-          <p class="text-gray-600 text-sm mb-4">Official governance rules and regulations.</p>
+          <p class="text-gray-600 text-sm mb-4">Official governance rules.</p>
           <a href="/assets/documents/club-bylaws.pdf" download class="text-primary font-bold text-sm hover:underline flex items-center gap-1">
-            Download PDF <span aria-hidden="true">&darr;</span>
+            Download PDF <span>&darr;</span>
           </a>
         </div>
 
         <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
           <div class="text-3xl mb-4">🛡️</div>
-          <h3 class="text-lg font-bold text-gray-900 mb-2">Field Safety Rules</h3>
-          <p class="text-gray-600 text-sm mb-4">Mandatory guidelines for all pilots.</p>
+          <h3 class="text-lg font-bold text-gray-900 mb-2">Safety Rules</h3>
+          <p class="text-gray-600 text-sm mb-4">Mandatory field guidelines.</p>
           <a href="/assets/documents/safety-guidelines.pdf" download class="text-primary font-bold text-sm hover:underline flex items-center gap-1">
-            Download PDF <span aria-hidden="true">&darr;</span>
+            Download PDF <span>&darr;</span>
           </a>
         </div>
 
         <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
           <div class="text-3xl mb-4">📝</div>
           <h3 class="text-lg font-bold text-gray-900 mb-2">Membership App</h3>
-          <p class="text-gray-600 text-sm mb-4">Printable form for new applicants.</p>
+          <p class="text-gray-600 text-sm mb-4">Printable application form.</p>
           <a href="/assets/documents/membership-application.pdf" download class="text-primary font-bold text-sm hover:underline flex items-center gap-1">
-            Download PDF <span aria-hidden="true">&darr;</span>
+            Download PDF <span>&darr;</span>
           </a>
         </div>
 
         <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
           <div class="text-3xl mb-4">🗺️</div>
-          <h3 class="text-lg font-bold text-gray-900 mb-2">Printable Field Map</h3>
-          <p class="text-gray-600 text-sm mb-4">Layout of runway, pits, and parking.</p>
+          <h3 class="text-lg font-bold text-gray-900 mb-2">Field Map</h3>
+          <p class="text-gray-600 text-sm mb-4">Runway, pits, and parking.</p>
           <a href="/assets/documents/field-map.pdf" download class="text-primary font-bold text-sm hover:underline flex items-center gap-1">
-            Download PDF <span aria-hidden="true">&darr;</span>
+            Download PDF <span>&darr;</span>
           </a>
         </div>
 
@@ -68,57 +76,44 @@ const baseUrl = import.meta.env.BASE_URL;
     <section class="mb-16">
       <div class="flex items-center gap-4 mb-8">
         <div class="h-8 w-1 bg-primary rounded-full"></div>
-        <h2 class="text-3xl font-bold text-gray-800">Pilot Library</h2>
+        <h2 class="text-3xl font-bold text-gray-800">Flight Tools</h2>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         
-        <a href="/assets/documents/preflight-checklist.pdf" download class="group flex items-start gap-4 bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:border-primary transition-colors">
-          <div class="bg-green-100 p-3 rounded-lg text-green-700 group-hover:bg-primary group-hover:text-white transition-colors">
+        <a href="https://ecalc.ch" target="_blank" rel="noopener" class="group bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:border-primary transition-colors flex items-start gap-4">
+          <div class="bg-orange-50 p-3 rounded-lg text-orange-600 group-hover:bg-primary group-hover:text-white transition-colors">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
             </svg>
           </div>
           <div>
-            <h3 class="font-bold text-gray-900 group-hover:text-primary transition-colors">Pre-Flight Checklist</h3>
-            <p class="text-sm text-gray-500 mt-1">Essential checks before every takeoff.</p>
+            <h3 class="font-bold text-gray-900 group-hover:text-primary transition-colors">eCalc</h3>
+            <p class="text-sm text-gray-500 mt-1">The industry standard for calculating motor, prop, and ESC combinations.</p>
           </div>
         </a>
 
-        <a href="/assets/documents/beginners-guide.pdf" download class="group flex items-start gap-4 bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:border-primary transition-colors">
-          <div class="bg-blue-100 p-3 rounded-lg text-blue-700 group-hover:bg-primary group-hover:text-white transition-colors">
+        <a href="https://www.windy.com" target="_blank" rel="noopener" class="group bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:border-primary transition-colors flex items-start gap-4">
+          <div class="bg-blue-50 p-3 rounded-lg text-blue-600 group-hover:bg-primary group-hover:text-white transition-colors">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
             </svg>
           </div>
           <div>
-            <h3 class="font-bold text-gray-900 group-hover:text-primary transition-colors">Beginner's Guide</h3>
-            <p class="text-sm text-gray-500 mt-1">Everything a new pilot needs to know.</p>
+            <h3 class="font-bold text-gray-900 group-hover:text-primary transition-colors">Windy.com</h3>
+            <p class="text-sm text-gray-500 mt-1">Detailed wind forecasts and gusts for our local area.</p>
           </div>
         </a>
 
-        <a href="/assets/documents/battery-safety.pdf" download class="group flex items-start gap-4 bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:border-primary transition-colors">
-          <div class="bg-yellow-100 p-3 rounded-lg text-yellow-700 group-hover:bg-primary group-hover:text-white transition-colors">
+        <a href="https://www.ecalc.ch/cgcalc.php" target="_blank" rel="noopener" class="group bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:border-primary transition-colors flex items-start gap-4">
+          <div class="bg-green-50 p-3 rounded-lg text-green-600 group-hover:bg-primary group-hover:text-white transition-colors">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
             </svg>
           </div>
           <div>
-            <h3 class="font-bold text-gray-900 group-hover:text-primary transition-colors">LiPo Battery Safety</h3>
-            <p class="text-sm text-gray-500 mt-1">Handling and charging guidelines.</p>
-          </div>
-        </a>
-
-        <a href="/assets/documents/maintenance-guide.pdf" download class="group flex items-start gap-4 bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:border-primary transition-colors">
-          <div class="bg-gray-100 p-3 rounded-lg text-gray-600 group-hover:bg-primary group-hover:text-white transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-            </svg>
-          </div>
-          <div>
-            <h3 class="font-bold text-gray-900 group-hover:text-primary transition-colors">Maintenance Tips</h3>
-            <p class="text-sm text-gray-500 mt-1">Keep your aircraft airworthy.</p>
+            <h3 class="font-bold text-gray-900 group-hover:text-primary transition-colors">CG Calculator</h3>
+            <p class="text-sm text-gray-500 mt-1">Calculate the Center of Gravity for custom wing designs.</p>
           </div>
         </a>
 
@@ -128,49 +123,47 @@ const baseUrl = import.meta.env.BASE_URL;
     <section class="mb-16">
       <div class="flex items-center gap-4 mb-8">
         <div class="h-8 w-1 bg-primary rounded-full"></div>
-        <h2 class="text-3xl font-bold text-gray-800">Helpful Links</h2>
+        <h2 class="text-3xl font-bold text-gray-800">Learning & Community</h2>
       </div>
 
-      <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-8">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-          
-          <a href="https://www.modelaircraft.org/" target="_blank" rel="noopener" class="flex items-start gap-4 group">
-            <div class="bg-blue-50 p-2 rounded text-primary group-hover:bg-primary group-hover:text-white transition-colors">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-              </svg>
-            </div>
-            <div>
-              <h3 class="font-bold text-gray-900 group-hover:text-primary transition-colors">Academy of Model Aeronautics (AMA)</h3>
-              <p class="text-sm text-gray-500 mt-1">The national body for model aviation in the US.</p>
-            </div>
-          </a>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        
+        <a href="https://www.flitetest.com/" target="_blank" rel="noopener" class="group bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:border-primary transition-colors flex items-center gap-4">
+          <div class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center shrink-0 font-bold text-gray-600 group-hover:bg-primary group-hover:text-white transition-colors">FT</div>
+          <div>
+            <h3 class="font-bold text-gray-900 group-hover:text-primary transition-colors">FliteTest</h3>
+            <p class="text-sm text-gray-500">The best place for beginners to learn about building and flying.</p>
+          </div>
+          <svg class="ml-auto w-5 h-5 text-gray-300 group-hover:text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+        </a>
 
-          <a href="https://www.faa.gov/uas/" target="_blank" rel="noopener" class="flex items-start gap-4 group">
-             <div class="bg-blue-50 p-2 rounded text-primary group-hover:bg-primary group-hover:text-white transition-colors">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-              </svg>
-            </div>
-            <div>
-              <h3 class="font-bold text-gray-900 group-hover:text-primary transition-colors">FAA DroneZone</h3>
-              <p class="text-sm text-gray-500 mt-1">Register your aircraft and take the TRUST test.</p>
-            </div>
-          </a>
+        <a href="https://www.rcgroups.com/" target="_blank" rel="noopener" class="group bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:border-primary transition-colors flex items-center gap-4">
+          <div class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center shrink-0 font-bold text-gray-600 group-hover:bg-primary group-hover:text-white transition-colors">RC</div>
+          <div>
+            <h3 class="font-bold text-gray-900 group-hover:text-primary transition-colors">RC Groups</h3>
+            <p class="text-sm text-gray-500">The world's largest forum for discussion, classifieds, and build logs.</p>
+          </div>
+          <svg class="ml-auto w-5 h-5 text-gray-300 group-hover:text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+        </a>
 
-          <a href="https://www.rcgroups.com/" target="_blank" rel="noopener" class="flex items-start gap-4 group">
-             <div class="bg-blue-50 p-2 rounded text-primary group-hover:bg-primary group-hover:text-white transition-colors">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
-              </svg>
-            </div>
-            <div>
-              <h3 class="font-bold text-gray-900 group-hover:text-primary transition-colors">RC Groups Forums</h3>
-              <p class="text-sm text-gray-500 mt-1">The world's largest online radio control community.</p>
-            </div>
-          </a>
+        <a href="https://www.modelaircraft.org/" target="_blank" rel="noopener" class="group bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:border-primary transition-colors flex items-center gap-4">
+          <div class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center shrink-0 font-bold text-gray-600 group-hover:bg-primary group-hover:text-white transition-colors">AMA</div>
+          <div>
+            <h3 class="font-bold text-gray-900 group-hover:text-primary transition-colors">Academy of Model Aeronautics</h3>
+            <p class="text-sm text-gray-500">Insurance, safety codes, and government advocacy.</p>
+          </div>
+          <svg class="ml-auto w-5 h-5 text-gray-300 group-hover:text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+        </a>
 
-        </div>
+        <a href="https://faadronezone.faa.gov/" target="_blank" rel="noopener" class="group bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:border-primary transition-colors flex items-center gap-4">
+          <div class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center shrink-0 font-bold text-gray-600 group-hover:bg-primary group-hover:text-white transition-colors">FAA</div>
+          <div>
+            <h3 class="font-bold text-gray-900 group-hover:text-primary transition-colors">FAA DroneZone</h3>
+            <p class="text-sm text-gray-500">TRUST Test and Aircraft Registration.</p>
+          </div>
+          <svg class="ml-auto w-5 h-5 text-gray-300 group-hover:text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+        </a>
+
       </div>
     </section>
 
