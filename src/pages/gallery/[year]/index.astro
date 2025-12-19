@@ -1,15 +1,9 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import GalleryNav from '../components/GalleryNav.astro';
+import Layout from '../../../layouts/Layout.astro';
+import GalleryNav from '../../../components/GalleryNav.astro';
 import fs from 'node:fs';
 import path from 'node:path';
 
-// ==================================================================
-// CONFIGURATION
-// ==================================================================
-const CURRENT_YEAR = "2025"; 
-
-// 1. Define the Shape of an Album (TypeScript Interface)
 interface Album {
   title: string;
   date: string;
@@ -19,11 +13,27 @@ interface Album {
 }
 
 // ==================================================================
-// SERVER SIDE LOGIC
+// 1. GET STATIC PATHS (Find all Year folders)
 // ==================================================================
-const baseDir = path.join(process.cwd(), 'public', 'assets', 'gallery', CURRENT_YEAR);
+export async function getStaticPaths() {
+  const baseDir = path.join(process.cwd(), 'public', 'assets', 'gallery');
+  
+  // Find all folders that look like years (4 digits)
+  const years = fs.readdirSync(baseDir).filter(f => 
+    fs.statSync(path.join(baseDir, f)).isDirectory() && /^\d{4}$/.test(f)
+  );
 
-// 2. Explicitly type the array using the Interface
+  return years.map(year => ({
+    params: { year: year }
+  }));
+}
+
+// ==================================================================
+// 2. PAGE LOGIC
+// ==================================================================
+const { year } = Astro.params;
+const baseDir = path.join(process.cwd(), 'public', 'assets', 'gallery', year);
+
 let albums: Album[] = [];
 
 try {
@@ -34,16 +44,14 @@ try {
 
     albums = eventFolders.map((slug): Album => {
       const eventPath = path.join(baseDir, slug);
-      let meta = { title: slug, date: CURRENT_YEAR, description: "", cover: "" };
+      let meta = { title: slug, date: year, description: "", cover: "" };
       
       try {
         const jsonPath = path.join(eventPath, 'info.json');
         if (fs.existsSync(jsonPath)) {
           meta = JSON.parse(fs.readFileSync(jsonPath, 'utf-8'));
         }
-      } catch (e) {
-        // Ignore JSON errors
-      }
+      } catch (e) { }
 
       let coverImage = meta.cover;
       let photoCount = 0;
@@ -62,44 +70,46 @@ try {
 
       return {
         title: meta.title || slug,
-        date: meta.date || CURRENT_YEAR,
+        date: meta.date || year,
         coverUrl: coverImage 
-          ? `${import.meta.env.BASE_URL}assets/gallery/${CURRENT_YEAR}/${slug}/${coverImage}`
+          ? `${import.meta.env.BASE_URL}assets/gallery/${year}/${slug}/${coverImage}`
           : null, 
-        link: `${import.meta.env.BASE_URL}gallery/${CURRENT_YEAR}/${slug}/`,
+        link: `${import.meta.env.BASE_URL}gallery/${year}/${slug}/`,
         count: photoCount
       };
     }).filter(album => album.count > 0);
   }
 } catch (e) {
-  console.error("Error scanning gallery directory:", e);
+  console.error(`Error scanning ${year} directory:`, e);
 }
 ---
 
-<Layout title={`Gallery - ${CURRENT_YEAR} Season`}>
+<Layout title={`Gallery - ${year} Archive`}>
+  
   <div class="relative bg-gray-900 text-white py-16 px-4 rounded-b-3xl md:rounded-2xl mb-12 shadow-xl overflow-hidden">
     <div class="absolute inset-0 z-0">
       <img 
         src={`${import.meta.env.BASE_URL}assets/images/hero3.jpg`} 
-        alt="Gallery" 
-        class="w-full h-full object-cover opacity-40" 
+        alt="Gallery Archive" 
+        class="w-full h-full object-cover opacity-40 grayscale" 
       />
       <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent"></div>
     </div>
     
     <div class="relative z-10 text-center max-w-4xl mx-auto mt-4">
-      <h1 class="text-4xl md:text-5xl font-bold mb-6 drop-shadow-lg">Photo Gallery</h1>
+      <h1 class="text-4xl md:text-5xl font-bold mb-6 drop-shadow-lg">Gallery Archive</h1>
       <p class="text-xl md:text-2xl text-gray-200 max-w-2xl mx-auto drop-shadow-md">
-        Highlights from the {CURRENT_YEAR} flight line.
+        Looking back at the {year} season.
       </p>
     </div>
   </div>
 
   <div class="max-w-7xl mx-auto px-4 mb-16">
+    
     <GalleryNav />
 
-    <h2 class="text-2xl font-bold text-gray-800 mb-6 border-l-4 border-primary pl-4">
-      {CURRENT_YEAR} Albums
+    <h2 class="text-2xl font-bold text-gray-800 mb-6 border-l-4 border-gray-400 pl-4">
+      {year} Albums
     </h2>
 
     {albums.length > 0 ? (
@@ -111,7 +121,7 @@ try {
                 <img 
                   src={album.coverUrl} 
                   alt={album.title} 
-                  class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                  class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500 grayscale group-hover:grayscale-0 transition-filter"
                   loading="lazy"
                 />
               ) : (
@@ -119,11 +129,14 @@ try {
                   <span>No Image</span>
                 </div>
               )}
+              
               <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors"></div>
+              
               <div class="absolute bottom-3 right-3 bg-black/60 text-white text-xs font-bold px-2 py-1 rounded backdrop-blur-sm">
                 📷 {album.count} Photos
               </div>
             </div>
+            
             <div class="p-5">
               <h3 class="font-bold text-lg text-gray-900 group-hover:text-primary transition-colors mb-1">{album.title}</h3>
               <p class="text-sm text-gray-500">{album.date}</p>
@@ -133,11 +146,9 @@ try {
       </div>
     ) : (
       <div class="text-center py-20 bg-gray-50 rounded-2xl border border-dashed border-gray-300">
-        <div class="text-6xl mb-4">📂</div>
-        <h3 class="text-xl font-bold text-gray-600 mb-2">No Albums Yet</h3>
-        <p class="text-gray-500 max-w-md mx-auto">
-          We haven't uploaded any photos for {CURRENT_YEAR} yet. 
-          Check back after our next event!
+        <h3 class="text-xl font-bold text-gray-600 mb-2">No Albums Found</h3>
+        <p class="text-gray-500">
+          We found the {year} folder, but it seems to be empty.
         </p>
       </div>
     )}

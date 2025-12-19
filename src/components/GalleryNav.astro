@@ -1,0 +1,76 @@
+---
+import fs from 'node:fs';
+import path from 'node:path';
+
+const currentPath = Astro.url.pathname;
+
+// 1. SCAN FOLDERS AUTOMATICALLY
+// This runs at build time. It looks for any 4-digit folder in assets/gallery.
+const baseDir = path.join(process.cwd(), 'public', 'assets', 'gallery');
+let yearsFound: string[] = [];
+
+try {
+  if (fs.existsSync(baseDir)) {
+    yearsFound = fs.readdirSync(baseDir)
+      .filter(f => /^\d{4}$/.test(f) && fs.statSync(path.join(baseDir, f)).isDirectory())
+      .sort((a, b) => Number(b) - Number(a)); // Sort Newest to Oldest (2025, 2024, 2020...)
+  }
+} catch (e) {
+  console.error("GalleryNav: Could not scan years", e);
+  // Fallback if something breaks
+  yearsFound = ["2025"]; 
+}
+
+// 2. DEFINE THE ACTIVE YEAR (For styling)
+// Logic: If URL is /gallery/2023/, active is 2023. If /gallery/, active is the newest year.
+const getYearFromPath = (path: string) => {
+    const match = path.match(/gallery\/(\d{4})\//);
+    if (match) return match[1];
+    if (path.endsWith('/gallery') || path.endsWith('/gallery/')) return yearsFound[0]; // Default to newest
+    return "";
+};
+
+const activeYear = getYearFromPath(currentPath);
+
+// 3. BUILD THE LINKS
+const navItems = yearsFound.map((year, index) => {
+    // The newest year goes to the main /gallery/ page. 
+    // Older years go to /gallery/[year]/
+    const isNewest = index === 0; 
+    return {
+        label: isNewest ? `${year} Events` : `${year} Archive`,
+        path: isNewest 
+            ? `${import.meta.env.BASE_URL}gallery/` 
+            : `${import.meta.env.BASE_URL}gallery/${year}/`,
+        year: year
+    };
+});
+
+// Check if we are "deep" inside an album (to show the Back button)
+const isDeepPage = currentPath.split('/').filter(Boolean).length > 3; // rough check for depth
+---
+
+<div class="flex flex-col md:flex-row items-center justify-between mb-8 gap-4 border-b border-gray-200 pb-6">
+  
+  <div class="flex flex-wrap justify-center gap-3">
+    {navItems.map((item) => (
+      <a 
+        href={item.path}
+        class={`
+          px-5 py-2 rounded-full font-bold text-sm transition-all shadow-sm border
+          ${activeYear === item.year 
+            ? 'bg-primary text-white border-primary shadow-md transform scale-105' 
+            : 'bg-white text-gray-600 border-gray-200 hover:bg-gray-50 hover:text-primary'}
+        `}
+      >
+        {item.label}
+      </a>
+    ))}
+  </div>
+
+  {isDeepPage && (
+    <a href={`${import.meta.env.BASE_URL}gallery/${activeYear === yearsFound[0] ? '' : activeYear + '/'}`} class="text-sm font-bold text-gray-500 hover:text-primary flex items-center gap-1">
+      &larr; Back to {activeYear} Albums
+    </a>
+  )}
+</div>
