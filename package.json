@@ -23,11 +23,13 @@
     "@astrojs/starlight-tailwind": "^4.0.2",
     "@tailwindcss/vite": "^4.1.18",
     "astro": "^5.16.4",
+    "ical": "^0.8.0",
     "tailwindcss": "^4.1.18"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.4",
     "@tailwindcss/typography": "^0.5.19",
+    "@types/ical": "^0.8.3",
     "typescript": "^5.7.2"
   }
 }

@@ -1,60 +1,104 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import ical from 'ical';
 
-// --- DATA SECTION: EDIT HERE TO UPDATE THE WEBSITE ---
+// ==========================================
+// CONFIGURATION SECTION
+// ==========================================
 
-// 1. UPCOMING SPECIAL EVENTS (Fly-ins, Cookouts, Competitions)
-const upcomingEvents = [
+// PASTE YOUR GOOGLE CALENDAR "SECRET ADDRESS IN ICAL FORMAT" HERE:
+// (Settings > Integrate Calendar > Secret address in iCal format)
+const GOOGLE_ICAL_URL = "https://calendar.google.com/calendar/ical/67aefd4dd7621c22897c0a8fdd47453ee92c5d6d55de02e1b1e5465cfa4a7027%40group.calendar.google.com/public/basic.ics";
+
+// ==========================================
+// DATA FETCHING LOGIC (Server Side)
+// ==========================================
+
+// 1. Define Fallback Data (Shows if Calendar fetch fails or is empty)
+const fallbackEvents = [
   {
     day: "15",
     month: "MAY",
-    title: "Spring Cookout & Fly-In",
+    title: "Spring Cookout (Example)",
     time: "9:00 AM - 4:00 PM",
     location: "Club Flying Field",
-    description: "Our first big gathering of the year! Burgers and dogs provided. Bring your favorite aircraft and a side dish to share.",
-    linkText: "Get Directions",
-    linkUrl: "/contact", // or external google maps link
-    color: "bg-primary" // Options: bg-primary, bg-alert (for important stuff)
-  },
-  {
-    day: "21",
-    month: "JUN",
-    title: "Summer Solstice Night Fly",
-    time: "7:00 PM - 10:00 PM",
-    location: "Club Flying Field",
-    description: "Flying under the lights! LED equipped aircraft only after sunset. We will have the grill going.",
-    linkText: "Read Rules",
-    linkUrl: "/safety",
-    color: "bg-blue-600"
-  },
-  {
-    day: "12",
-    month: "OCT",
-    title: "Fall Charity Fly-In",
-    time: "10:00 AM - 3:00 PM",
-    location: "Club Flying Field",
-    description: "Open to the public. Landing fees are donated to local charity. Spectators welcome!",
-    linkText: "Learn More",
+    description: "This is a placeholder event because the Google Calendar connection isn't set up yet.",
     linkUrl: "/contact",
-    color: "bg-primary"
+    linkText: "Get Directions",
+    color: "bg-gray-500"
   }
 ];
 
-// 2. REGULAR WEEKLY/MONTHLY SCHEDULE
+// 2. The Fetching Function
+let upcomingEvents = fallbackEvents;
+let fetchError = false;
+
+try {
+  // Only attempt fetch if the URL has been updated from the placeholder
+  if (!GOOGLE_ICAL_URL.includes("YOUR_CALENDAR_ID")) {
+    
+    const response = await fetch(GOOGLE_ICAL_URL);
+    if (!response.ok) throw new Error('Failed to fetch calendar');
+    
+    const data = await response.text();
+    const parsedData = ical.parseICS(data);
+
+    // Process the raw ICS data
+    const realEvents = Object.values(parsedData)
+      .filter((event) => event.type === 'VEVENT') // Only events, not timezones
+      .filter((event) => new Date(event.start) >= new Date()) // Only future events
+      .sort((a, b) => new Date(a.start).getTime() - new Date(b.start).getTime()) // Sort chronological
+      .slice(0, 10) // Limit to next 10 events
+      .map((event) => {
+        const date = new Date(event.start);
+        const endDate = new Date(event.end);
+        
+        // Format Time (e.g. 9:00 AM)
+        const timeOpts: Intl.DateTimeFormatOptions = { hour: 'numeric', minute: '2-digit' };
+        const timeString = `${date.toLocaleTimeString('en-US', timeOpts)} - ${endDate.toLocaleTimeString('en-US', timeOpts)}`;
+
+        return {
+          day: date.getDate(),
+          month: date.toLocaleString('default', { month: 'short' }).toUpperCase(),
+          title: event.summary,
+          time: timeString,
+          location: event.location || "Club Flying Field",
+          description: event.description || "",
+          linkUrl: "#", // Calendar events usually don't have links, but you could map this to a description field URL
+          linkText: "Add to Calendar",
+          color: "bg-primary" // You could randomize this or base it on event title keywords
+        };
+      });
+
+    // If we found events, override the fallback
+    if (realEvents.length > 0) {
+      upcomingEvents = realEvents;
+    } else {
+        // If calendar is valid but empty, show an empty array (don't show fallback)
+        upcomingEvents = [];
+    }
+  }
+} catch (e) {
+  console.error("Error fetching Google Calendar:", e);
+  fetchError = true;
+  // We stick with fallbackEvents here so the page doesn't crash
+}
+
+// 3. Regular Activities (Static Data)
 const regularActivities = [
   {
     icon: "🌤️",
     title: "The Tuesday Group",
     when: "Every Tuesday (Weather Permitting)",
     time: "Morning - Early Afternoon",
-    desc: "A dedicated group of members flies almost every Tuesday when the weather is nice. Great time for retirees or those with flexible schedules."
+    desc: "A dedicated group of members flies almost every Tuesday when the weather is nice. Great time for retirees."
   },
   {
     icon: "🌙",
     title: "Night Flying",
     when: "Twice Monthly",
     time: "Dusk - 10:00 PM",
-    desc: "Usually scheduled around the full moon or clear weekends. Check our Facebook group for the 'Go/No-Go' call based on weather."
+    desc: "Usually scheduled around the full moon or clear weekends. Check our Facebook group for the 'Go/No-Go' call."
   },
   {
     icon: "🗓️",
@@ -74,11 +118,23 @@ const regularActivities = [
 ---
 
 <Layout title="Events" description="Upcoming events and activities at Macon Aero Modelers">
-  <div class="bg-gradient-to-br from-primary to-secondary text-white py-16 px-4 rounded-2xl text-center mb-12 shadow-md">
-    <h1 class="text-4xl md:text-5xl font-bold mb-4">Events & Activities</h1>
-    <p class="text-xl md:text-2xl text-blue-50 max-w-2xl mx-auto">
-      Join us for fly-ins, competitions, and club meetings
-    </p>
+  
+ <div class="relative bg-gray-900 text-white py-20 px-4 rounded-b-3xl md:rounded-2xl mb-12 shadow-xl overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <img 
+        src={`${import.meta.env.BASE_URL}assets/images/hero1.jpg`} 
+        alt="Club Events" 
+        class="w-full h-full object-cover opacity-40" 
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent"></div>
+    </div>
+    
+    <div class="relative z-10 text-center max-w-4xl mx-auto mt-4">
+      <h1 class="text-4xl md:text-5xl font-bold mb-6 drop-shadow-lg">Events & Activities</h1>
+      <p class="text-xl md:text-2xl text-gray-200 max-w-2xl mx-auto drop-shadow-md">
+        Join us for fly-ins, competitions, and club meetings.
+      </p>
+    </div>
   </div>
 
   <section class="mb-16">
@@ -87,30 +143,63 @@ const regularActivities = [
         </div>
     
     <div class="flex flex-col gap-6">
-      {upcomingEvents.map((event) => (
-        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition-shadow">
-          <div class="flex flex-col sm:flex-row gap-6">
-            <div class={`${event.color} text-white rounded-lg p-4 text-center min-w-[100px] h-fit flex flex-col justify-center shrink-0`}>
-              <div class="text-3xl font-bold">{event.day}</div>
-              <div class="text-sm font-medium tracking-wider">{event.month}</div>
-            </div>
-            
-            <div class="flex-grow">
-              <h3 class="text-xl font-bold text-primary mb-2">{event.title}</h3>
-              <div class="text-gray-600 mb-4 space-y-1">
-                <p><strong>Time:</strong> {event.time}</p>
-                <p><strong>Location:</strong> {event.location}</p>
+      
+      {/* ERROR STATE: If fetch failed and we are using fallback */}
+      {fetchError && (
+        <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-4">
+          <p class="text-yellow-700 text-sm">
+            <strong>Note:</strong> Could not load live calendar. Showing example events.
+          </p>
+        </div>
+      )}
+
+      {/* EVENT CARDS */}
+      {upcomingEvents.length > 0 ? (
+        upcomingEvents.map((event) => (
+          <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition-shadow">
+            <div class="flex flex-col sm:flex-row gap-6">
+              
+              {/* Date Badge */}
+              <div class={`${event.color || 'bg-primary'} text-white rounded-lg p-4 text-center min-w-[100px] h-fit flex flex-col justify-center shrink-0`}>
+                <div class="text-3xl font-bold">{event.day}</div>
+                <div class="text-sm font-medium tracking-wider">{event.month}</div>
               </div>
-              <p class="text-gray-700 mb-4 leading-relaxed">
-                {event.description}
-              </p>
-              <a href={`${import.meta.env.BASE_URL}${event.linkUrl.replace(/^\//, '')}`} class="inline-block bg-primary text-white font-medium py-2 px-4 rounded hover:bg-primary-hover transition-colors">
-                {event.linkText}
-              </a>
+              
+              {/* Event Details */}
+              <div class="flex-grow">
+                <h3 class="text-xl font-bold text-primary mb-2">{event.title}</h3>
+                <div class="text-gray-600 mb-4 space-y-1">
+                  <p><strong>Time:</strong> {event.time}</p>
+                  <p><strong>Location:</strong> {event.location}</p>
+                </div>
+                {event.description && (
+                  <p class="text-gray-700 mb-4 leading-relaxed line-clamp-3">
+                    {event.description}
+                  </p>
+                )}
+                
+                {/* Add to Calendar Button (Generic Link for now) */}
+                {/* Only show if it's a real event, not a placeholder */}
+                {event.linkUrl !== "#" ? (
+                  <a href={event.linkUrl} class="inline-block bg-primary text-white font-medium py-2 px-4 rounded hover:bg-primary-hover transition-colors">
+                    {event.linkText}
+                  </a>
+                ) : (
+                  <span class="inline-block bg-gray-100 text-gray-500 font-medium py-2 px-4 rounded cursor-default">
+                    Sync from Calendar
+                  </span>
+                )}
+              </div>
             </div>
           </div>
+        ))
+      ) : (
+        /* EMPTY STATE (No events found) */
+        <div class="text-center py-12 bg-gray-50 rounded-xl border border-dashed border-gray-300">
+          <p class="text-gray-500 text-lg">No special events currently scheduled.</p>
+          <p class="text-gray-400">Check our regular schedule below!</p>
         </div>
-      ))}
+      )}
     </div>
   </section>
 
@@ -142,7 +231,7 @@ const regularActivities = [
         RC Flying is strictly weather dependent. For the "Tuesday Group" and Night Flies, check our social media for last-minute Go/No-Go decisions.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="#" class="inline-block bg-white text-secondary border border-secondary font-semibold py-3 px-8 rounded-lg hover:bg-gray-50 transition-colors shadow-sm">
+        <a href="https://www.facebook.com/MaconAeroModelers" target="_blank" class="inline-block bg-white text-secondary border border-secondary font-semibold py-3 px-8 rounded-lg hover:bg-gray-50 transition-colors shadow-sm">
           Check Facebook for Updates
         </a>
       </div>
