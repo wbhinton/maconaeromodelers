@@ -119,11 +119,22 @@ const regularActivities = [
 
 <Layout title="Events" description="Upcoming events and activities at Macon Aero Modelers">
   
-  <div class="bg-gradient-to-br from-primary to-secondary text-white py-16 px-4 rounded-2xl text-center mb-12 shadow-md">
-    <h1 class="text-4xl md:text-5xl font-bold mb-4">Events & Activities</h1>
-    <p class="text-xl md:text-2xl text-blue-50 max-w-2xl mx-auto">
-      Join us for fly-ins, competitions, and club meetings
-    </p>
+ <div class="relative bg-gray-900 text-white py-20 px-4 rounded-b-3xl md:rounded-2xl mb-12 shadow-xl overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <img 
+        src={`${import.meta.env.BASE_URL}assets/images/hero1.jpg`} 
+        alt="Club Events" 
+        class="w-full h-full object-cover opacity-40" 
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent"></div>
+    </div>
+    
+    <div class="relative z-10 text-center max-w-4xl mx-auto mt-4">
+      <h1 class="text-4xl md:text-5xl font-bold mb-6 drop-shadow-lg">Events & Activities</h1>
+      <p class="text-xl md:text-2xl text-gray-200 max-w-2xl mx-auto drop-shadow-md">
+        Join us for fly-ins, competitions, and club meetings.
+      </p>
+    </div>
   </div>
 
   <section class="mb-16">
