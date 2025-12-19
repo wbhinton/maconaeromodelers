@@ -1,0 +1,128 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import GalleryNav from '../../../components/GalleryNav.astro';
+import fs from 'node:fs';
+import path from 'node:path';
+
+// 1. Define Types
+interface EventMeta {
+  title: string;
+  date: string;
+  description: string;
+  cover: string;
+}
+
+interface EventPath {
+  params: { year: string; slug: string };
+  props: { 
+    meta: EventMeta;
+    images: string[];
+    basePath: string;
+  };
+}
+
+// ==================================================================
+// 1. GET STATIC PATHS
+// ==================================================================
+export async function getStaticPaths() {
+  const baseDir = path.join(process.cwd(), 'public', 'assets', 'gallery');
+  
+  // Explicitly type the array
+  let paths: EventPath[] = [];
+
+  // Check if directory exists before reading to avoid build crash on fresh clone
+  if (fs.existsSync(baseDir)) {
+    const years = fs.readdirSync(baseDir).filter(f => fs.statSync(path.join(baseDir, f)).isDirectory());
+    
+    years.forEach(year => {
+      const yearPath = path.join(baseDir, year);
+      const events = fs.readdirSync(yearPath).filter(f => fs.statSync(path.join(yearPath, f)).isDirectory());
+
+      events.forEach(eventSlug => {
+        const eventPath = path.join(yearPath, eventSlug);
+        
+        let meta: EventMeta = { title: eventSlug, date: year, description: "", cover: "" };
+        try {
+          const jsonPath = path.join(eventPath, 'info.json');
+          if (fs.existsSync(jsonPath)) {
+            meta = JSON.parse(fs.readFileSync(jsonPath, 'utf-8'));
+          }
+        } catch (e) {
+          console.error(`Error reading info.json for ${eventSlug}`, e);
+        }
+
+        const files = fs.readdirSync(eventPath).filter(f => /\.(jpg|jpeg|png|webp)$/i.test(f));
+        
+        paths.push({
+          params: { year: year, slug: eventSlug },
+          props: { 
+            meta, 
+            images: files,
+            basePath: `/assets/gallery/${year}/${eventSlug}/` 
+          }
+        });
+      });
+    });
+  }
+
+  return paths;
+}
+
+// ==================================================================
+// 2. THE PAGE TEMPLATE
+// ==================================================================
+const { meta, images, basePath } = Astro.props;
+
+// Added type definition to the parameter
+const fixPath = (filename: string) => `${import.meta.env.BASE_URL}${basePath.replace(/^\//, '')}${filename}`;
+---
+
+<Layout title={`${meta.title} - Gallery`}>
+  
+  <div class="relative bg-gray-900 text-white py-16 px-4 rounded-b-3xl md:rounded-2xl mb-12 shadow-xl overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <img 
+        src={`${import.meta.env.BASE_URL}assets/images/hero3.jpg`} 
+        alt="Gallery" 
+        class="w-full h-full object-cover opacity-30" 
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent"></div>
+    </div>
+    <div class="relative z-10 text-center max-w-4xl mx-auto mt-4">
+      <h1 class="text-3xl md:text-5xl font-bold mb-2 drop-shadow-lg">{meta.title}</h1>
+      <p class="text-lg text-gray-300 drop-shadow-md">{meta.date}</p>
+    </div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 py-8 mb-16">
+    <GalleryNav />
+
+    {meta.description && (
+      <div class="bg-gray-50 border-l-4 border-primary p-6 rounded-r-lg mb-12 max-w-4xl">
+        <p class="text-gray-700 text-lg leading-relaxed">{meta.description}</p>
+      </div>
+    )}
+
+    {images.length > 0 ? (
+      <div class="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
+        {images.map((img: string) => (
+            <div class="break-inside-avoid group rounded-lg overflow-hidden border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 bg-white">
+              <a href={fixPath(img)} target="_blank">
+                <img 
+                  src={fixPath(img)} 
+                  alt={meta.title} 
+                  class="w-full h-auto block transform group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+              </a>
+            </div>
+        ))}
+      </div>
+    ) : (
+      <div class="text-center py-12 text-gray-500">
+        No images found in this folder yet.
+      </div>
+    )}
+
+  </div>
+</Layout>
