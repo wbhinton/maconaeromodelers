@@ -1,17 +1,16 @@
 ---
-// src/components/HeroSlider.astro
-import type { ImageMetadata } from 'astro'; // Import type for safety
+import type { ImageMetadata } from 'astro';
 
 interface Props {
   title: string;
   subtitle: string;
-  images: ImageMetadata[]; // CHANGED: Now accepts Image objects, not strings
+  images: ImageMetadata[];
 }
 
 const { title, subtitle, images } = Astro.props;
 ---
 
-<div class="relative w-full h-[600px] overflow-hidden rounded-2xl shadow-xl group">
+<div class="relative w-full h-[600px] overflow-hidden rounded-2xl shadow-xl group bg-black">
   
   {images.map((img, index) => (
     <div 
@@ -22,11 +21,13 @@ const { title, subtitle, images } = Astro.props;
         src={img.src} 
         alt="Club Event" 
         class="w-full h-full object-cover"
+        loading="eager"
+        decoding="sync" 
       />
     </div>
   ))}
-<!-- Change the opacity of the black overlay here -->
-  <div class="absolute inset-0 bg-black/60"></div> 
+
+  <div class="absolute inset-0 bg-black/60"></div>
 
   <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-4 z-10">
     <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 drop-shadow-md">
@@ -52,9 +53,14 @@ const { title, subtitle, images } = Astro.props;
 
   if (slides.length > 1) {
     setInterval(() => {
+      // 1. Fade OUT current
       slides[currentSlide].classList.remove('opacity-100');
       slides[currentSlide].classList.add('opacity-0');
+
+      // 2. Calculate NEXT
       currentSlide = (currentSlide + 1) % slides.length;
+
+      // 3. Fade IN next
       slides[currentSlide].classList.remove('opacity-0');
       slides[currentSlide].classList.add('opacity-100');
     }, slideInterval);
