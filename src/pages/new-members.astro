@@ -1,56 +1,68 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+// Import a nice background image for the header
+// Ensure you have a generic sky/plane image at this path, or revert to the gray background
 ---
 
 <Layout title="Join the Club">
   
-  <div class="bg-gray-900 text-white py-16 px-4 rounded-b-3xl md:rounded-2xl mb-12 shadow-xl relative overflow-hidden">
-    <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-primary opacity-20 rounded-full blur-3xl"></div>
+  <div class="relative bg-gray-900 text-white py-20 px-4 rounded-b-3xl md:rounded-2xl mb-12 shadow-xl overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      
+      <img 
+  src={`${import.meta.env.BASE_URL}assets/images/hero2.jpg`} 
+  alt="Club Field" 
+  class="w-full h-full object-cover opacity-40" 
+/>
+      <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent"></div>
+    </div>
     
-    <div class="relative z-10 text-center max-w-4xl mx-auto">
-      <h1 class="text-4xl md:text-5xl font-bold mb-6">Become a Member</h1>
-      <p class="text-xl text-gray-300 max-w-2xl mx-auto">
-        Join a community of passionate aviators. Whether you are a seasoned pilot or have never held a transmitter, you are welcome here.
+    <div class="relative z-10 text-center max-w-4xl mx-auto mt-8">
+      <h1 class="text-4xl md:text-6xl font-bold mb-6 drop-shadow-lg">Become a Member</h1>
+      <p class="text-xl md:text-2xl text-gray-100 max-w-2xl mx-auto drop-shadow-md">
+        From first flight to aerobatic master. Join Macon County's premier aviation community.
       </p>
     </div>
   </div>
 
   <div class="max-w-5xl mx-auto px-4">
     
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-      <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 text-center">
-        <div class="w-12 h-12 bg-blue-50 text-primary rounded-full flex items-center justify-center mx-auto mb-4">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-          </svg>
-        </div>
-        <h3 class="font-bold text-lg mb-2">Community & Learning</h3>
-        <p class="text-gray-600 text-sm">Learn from experienced builders and pilots. Free flight instruction for beginners.</p>
+    <div class="bg-blue-50 border border-blue-100 rounded-2xl p-8 mb-16 flex flex-col md:flex-row items-center gap-6">
+      <div class="bg-white p-4 rounded-full shadow-sm text-4xl">🛩️</div>
+      <div class="flex-grow text-center md:text-left">
+        <h3 class="text-2xl font-bold text-primary mb-2">Never flown before?</h3>
+        <p class="text-gray-700">
+          <strong>Don't buy a plane yet!</strong> We offer free introductory flights using our club trainer planes. 
+          We use a "Buddy Box" system that links two controllers, so an instructor can take over instantly if you get in trouble. 
+          It's 100% safe and free.
+        </p>
       </div>
+      <a href="/contact" class="bg-primary hover:bg-primary-hover text-white font-bold py-3 px-6 rounded-lg shadow-md transition-colors whitespace-nowrap">
+        Schedule a Demo
+      </a>
+    </div>
 
-      <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 text-center">
-        <div class="w-12 h-12 bg-blue-50 text-primary rounded-full flex items-center justify-center mx-auto mb-4">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-        </div>
-        <h3 class="font-bold text-lg mb-2">Safe Flying Site</h3>
-        <p class="text-gray-600 text-sm">Access to our private, insured OTX AeroDrome with bermuda runway and covered pits.</p>
-      </div>
-
-      <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 text-center">
-        <div class="w-12 h-12 bg-blue-50 text-primary rounded-full flex items-center justify-center mx-auto mb-4">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-        </div>
-        <h3 class="font-bold text-lg mb-2">Events & Fun</h3>
-        <p class="text-gray-600 text-sm">Participate in fly-ins, swap meets, and club cookouts throughout the year.</p>
-      </div>
+    <div class="mb-16 text-center">
+      <h2 class="text-2xl font-bold text-gray-800 mb-4">Not ready to commit?</h2>
+      <p class="text-gray-600 max-w-2xl mx-auto mb-6">
+        Join our <strong>Digital Hangar</strong> on Discord. It's where we coordinate flying days, share build photos, and answer questions. 
+        You don't need to be a paid member to join the chat!
+      </p>
+      <a 
+        href="YOUR_DISCORD_INVITE_LINK_HERE" 
+        target="_blank"
+        class="inline-flex items-center gap-2 bg-[#5865F2] hover:bg-[#4752C4] text-white font-bold py-3 px-8 rounded-xl transition-all shadow-md hover:shadow-lg transform hover:-translate-y-1"
+      >
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.419-2.1568 2.419zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.419-2.1568 2.419z"/>
+        </svg>
+        Chat on Discord
+      </a>
     </div>
 
     <div class="mb-16">
-      <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">How to Join (3 Simple Steps)</h2>
+      <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Ready to Join? (3 Simple Steps)</h2>
       
       <div class="space-y-6">
         
@@ -61,11 +73,7 @@ import Layout from '../layouts/Layout.astro';
             <p class="text-gray-600 mb-4">
               All members must hold a current membership with the Academy of Model Aeronautics (AMA) for insurance purposes.
             </p>
-            <a 
-              href="https://www.modelaircraft.org/join" 
-              target="_blank"
-              class="inline-block text-sm font-bold text-primary hover:text-primary-hover underline"
-            >
+            <a href="https://www.modelaircraft.org/join" target="_blank" class="inline-block text-sm font-bold text-primary hover:text-primary-hover underline">
               Sign up at ModelAircraft.org &rarr;
             </a>
           </div>
@@ -76,13 +84,9 @@ import Layout from '../layouts/Layout.astro';
           <div class="grow">
             <h3 class="text-xl font-bold text-gray-900 mb-2">Complete FAA TRUST Test</h3>
             <p class="text-gray-600 mb-4">
-              The FAA requires all recreational drone and RC pilots to pass "The Recreational UAS Safety Test" (TRUST). It is free, online, and impossible to fail.
+              Required by the FAA for all recreational RC pilots. It takes about 15 minutes, is free, and impossible to fail.
             </p>
-            <a 
-              href="https://trust.modelaircraft.org/" 
-              target="_blank"
-              class="inline-block text-sm font-bold text-blue-600 hover:text-blue-800 underline"
-            >
+            <a href="https://trust.modelaircraft.org/" target="_blank" class="inline-block text-sm font-bold text-blue-600 hover:text-blue-800 underline">
               Take the Free Test Here &rarr;
             </a>
           </div>
@@ -93,7 +97,7 @@ import Layout from '../layouts/Layout.astro';
           <div class="grow">
             <h3 class="text-xl font-bold text-gray-900 mb-2">Submit Application & Dues</h3>
             <p class="text-gray-600 mb-4">
-              Download our membership application, fill it out, and bring it to the next club meeting or mail it in.
+              Download the form and bring it to the field or a monthly meeting. We accept Cash or Check.
             </p>
             <div class="flex flex-wrap gap-4">
               <a 
@@ -106,7 +110,9 @@ import Layout from '../layouts/Layout.astro';
                 </svg>
                 Download PDF
               </a>
-              <span class="text-sm text-gray-500 self-center italic">or bring cash/check to the field</span>
+              <a href="/contact" class="text-sm text-green-700 font-semibold self-center hover:underline">
+                Contact us for mailing address
+              </a>
             </div>
           </div>
         </div>
@@ -120,28 +126,33 @@ import Layout from '../layouts/Layout.astro';
         <table class="min-w-full divide-y divide-gray-200">
           <thead class="bg-gray-50">
             <tr>
-              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Membership Type</th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Type</th>
               <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Description</th>
-              <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Annual Cost</th>
+              <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Cost</th>
             </tr>
           </thead>
           <tbody class="divide-y divide-gray-200">
             <tr>
               <td class="px-6 py-4 whitespace-nowrap font-bold text-gray-900">Open Membership</td>
-              <td class="px-6 py-4 text-gray-600">Standard adult membership (Ages 19 and older)</td>
+              <td class="px-6 py-4 text-gray-600">Standard adult membership (19+)</td>
               <td class="px-6 py-4 whitespace-nowrap text-right font-bold text-primary">$100.00</td>
             </tr>
-
             <tr>
               <td class="px-6 py-4 whitespace-nowrap font-bold text-gray-900">Junior Membership</td>
-              <td class="px-6 py-4 text-gray-600">Pilots under age 19 (Must have AMA)</td>
-              <td class="px-6 py-4 whitespace-nowrap text-right font-bold text-green-600">$10</td>
+              <td class="px-6 py-4 text-gray-600">Pilots under age 19 (AMA Required)</td>
+              <td class="px-6 py-4 whitespace-nowrap text-right font-bold text-green-600">$10.00</td>
             </tr>
-
+            <tr>
+              <td class="px-6 py-4 whitespace-nowrap font-bold text-gray-900">Family Membership</td>
+              <td class="px-6 py-4 text-gray-600">Includes spouse/children in same household</td>
+              <td class="px-6 py-4 whitespace-nowrap text-right font-bold text-primary">$150.00</td>
+            </tr>
           </tbody>
         </table>
       </div>
-      <!-- <p class="text-xs text-gray-500 mt-2 text-center">* New members also pay a one-time $25 initiation fee.</p> -->
+      <p class="text-xs text-gray-500 mt-3 text-center">
+        * Dues are pro-rated for new members joining after July 1st.
+      </p>
     </div>
 
     <div class="max-w-3xl mx-auto mb-16">
@@ -154,27 +165,27 @@ import Layout from '../layouts/Layout.astro';
             <span class="text-primary group-open:rotate-180 transition-transform">▼</span>
           </summary>
           <p class="text-gray-600 mt-4 leading-relaxed">
-            No! We highly recommend you do NOT buy a plane until you talk to us. We offer introductory flights with club trainer planes using a "buddy box" system, so you can try flying risk-free before spending any money.
+            No! We highly recommend you do NOT buy a plane until you talk to us. We have club trainer planes available for you to try.
           </p>
         </details>
-
+        
         <details class="group bg-white rounded-lg shadow-sm border border-gray-200 p-4 cursor-pointer">
           <summary class="font-bold text-gray-800 list-none flex justify-between items-center">
             Do you fly drones/quadcopters?
             <span class="text-primary group-open:rotate-180 transition-transform">▼</span>
           </summary>
           <p class="text-gray-600 mt-4 leading-relaxed">
-            Yes, we welcome all types of RC aircraft including fixed-wing, helicopters, and multi-rotors (drones). We ask that FPV pilots have a spotter present for safety.
+            Yes! We welcome fixed-wing, helicopters, and drones. We have a dedicated group of FPV pilots who fly regularly.
           </p>
         </details>
 
-        <details class="group bg-white rounded-lg shadow-sm border border-gray-200 p-4 cursor-pointer">
+         <details class="group bg-white rounded-lg shadow-sm border border-gray-200 p-4 cursor-pointer">
           <summary class="font-bold text-gray-800 list-none flex justify-between items-center">
-            When are meetings held?
+            Can I just show up at the field?
             <span class="text-primary group-open:rotate-180 transition-transform">▼</span>
           </summary>
           <p class="text-gray-600 mt-4 leading-relaxed">
-            Club meetings are typically held on the first Saturday of the month at the field (weather permitting) or at a local library during winter. Check the Events page for the latest schedule.
+            Spectators are always welcome! However, to fly, you must be a member or a guest of a member with current AMA insurance.
           </p>
         </details>
       </div>
