@@ -8,10 +8,8 @@ interface Props {
 
 const { title, description = "Macon Aero Modelers - A model airplane flying club" } = Astro.props;
 
-// Ensure baseUrl always has a clean path handling
 const baseUrl = import.meta.env.BASE_URL;
 
-// Helper to join paths safely (Avoids double slashes or missing slashes)
 const joinPath = (path: string) => {
   const cleanBase = baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`;
   const cleanPath = path.startsWith('/') ? path.slice(1) : path;
@@ -42,9 +40,7 @@ const navItems = [
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
     <link rel="icon" type="image/svg+xml" href={joinPath('favicon.svg')} />
-    
     <title>{title} | Macon Aero Modelers</title>
   </head>
   
@@ -81,15 +77,25 @@ const navItems = [
                 /* DROPDOWN MENU ITEM */
                 <>
                   <button 
+                    id="membership-btn" 
                     class="w-full text-left md:w-auto flex items-center justify-between gap-1 text-text-dark font-medium hover:text-primary py-2 md:py-1 group-hover:text-primary transition-colors cursor-pointer"
                   >
                     {item.text}
-                    <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    {/* Arrow Icon that rotates when group is hovered (Desktop) or manually via JS (Mobile) */}
+                    <svg id="membership-arrow" class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                   </button>
                   
                   {/* Dropdown Content */}
-                  <ul class="
-                    flex flex-col pl-4 mt-2 border-l-2 border-gray-100 space-y-2
+                  {/* FIX: 
+                      1. Changed base class to 'hidden' (closed by default on mobile).
+                      2. Added 'flex-col' for layout.
+                      3. Kept 'md:absolute' for desktop positioning.
+                      4. Added ID 'membership-menu' for the JS to find it.
+                  */}
+                  <ul 
+                    id="membership-menu"
+                    class="
+                    hidden flex-col pl-4 mt-2 border-l-2 border-gray-100 space-y-2
                     md:hidden md:absolute md:left-0 md:top-full md:w-56 md:bg-white md:shadow-xl md:border md:border-gray-100 md:rounded-md 
                     md:pl-0 md:border-l-0 md:mt-0 md:pt-2 md:pb-2
                     group-hover:flex z-50
@@ -157,6 +163,7 @@ const navItems = [
     </footer>
 
     <script>
+      // 1. Mobile Hamburger Menu Logic
       const btn = document.getElementById('mobile-menu-btn');
       const menu = document.getElementById('nav-links');
 
@@ -164,6 +171,27 @@ const navItems = [
         btn.addEventListener('click', () => {
           menu.classList.toggle('hidden');
           menu.classList.toggle('flex');
+        });
+      }
+
+      // 2. Mobile Membership Dropdown Logic
+      const memBtn = document.getElementById('membership-btn');
+      const memMenu = document.getElementById('membership-menu');
+      const memArrow = document.getElementById('membership-arrow');
+
+      if (memBtn && memMenu) {
+        memBtn.addEventListener('click', (e) => {
+          // Prevent the click from bubbling up if necessary, though not strictly needed here
+          e.stopPropagation();
+          
+          // Toggle the visibility classes
+          memMenu.classList.toggle('hidden');
+          memMenu.classList.toggle('flex');
+          
+          // Rotate the arrow icon
+          if (memArrow) {
+             memArrow.classList.toggle('rotate-180');
+          }
         });
       }
     </script>
