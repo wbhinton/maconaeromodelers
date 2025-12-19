@@ -3,23 +3,31 @@ import Layout from '../layouts/Layout.astro';
 
 // ---------------------------------------------------------
 // CONFIGURATION
-// 1. Go to https://web3forms.com/
-// 2. Enter your email to get an Access Key
-// 3. Paste it below:
 const ACCESS_KEY = "333fe4c7-fbab-487c-9a25-691c89381913";
 // ---------------------------------------------------------
 ---
+
 <Layout title="Contact Us">
-  <div class="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
+  
+  <div class="relative bg-gray-900 text-white py-20 px-4 rounded-b-3xl md:rounded-2xl mb-12 shadow-xl overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <img 
+        src={`${import.meta.env.BASE_URL}assets/images/hero1.jpg`} 
+        alt="Contact Macon Aero Modelers" 
+        class="w-full h-full object-cover opacity-40" 
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent"></div>
+    </div>
     
-    <div class="text-center max-w-3xl mx-auto mb-16">
-      <h1 class="text-4xl font-bold text-primary mb-4">Get in Touch</h1>
-      <p class="text-xl text-gray-600">
-        Have questions about membership, our flying field, or upcoming events? 
-        Send us a message and we'll get back to you.
+    <div class="relative z-10 text-center max-w-4xl mx-auto mt-4">
+      <h1 class="text-4xl md:text-5xl font-bold mb-6 drop-shadow-lg">Get in Touch</h1>
+      <p class="text-xl md:text-2xl text-gray-200 max-w-2xl mx-auto drop-shadow-md">
+         Have questions about membership, our flying field, or upcoming events? 
       </p>
     </div>
+  </div>
 
+  <div class="max-w-7xl mx-auto px-4 mb-16">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
       
       <div class="bg-white rounded-2xl shadow-md border border-gray-100 p-8">
@@ -44,7 +52,7 @@ const ACCESS_KEY = "333fe4c7-fbab-487c-9a25-691c89381913";
               </div>
               <br>
               <a 
-                href="https://www.google.com/maps/place/35%C2%B003'46.9%22N+83%C2%B022'59.9%22W/@35.063028,-83.383306,17z" 
+                href="https://www.google.com/maps/search/?api=1&query=35.063028,-83.383306" 
                 target="_blank"
                 class="inline-flex items-center gap-1 text-primary hover:text-primary-hover mt-3 text-sm font-medium"
               >
@@ -61,7 +69,14 @@ const ACCESS_KEY = "333fe4c7-fbab-487c-9a25-691c89381913";
             </div>
             <div>
               <h3 class="font-bold text-gray-900">Email Us</h3>
-              <p class="text-gray-600 mt-1">maconaeromodelers@gmail.com</p>
+              <p class="mt-1">
+                <a 
+                  href="mailto:&#109;&#97;&#99;&#111;&#110;&#97;&#101;&#114;&#111;&#109;&#111;&#100;&#101;&#108;&#101;&#114;&#115;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;" 
+                  class="text-gray-600 hover:text-primary transition-colors"
+                >
+                  &#109;&#97;&#99;&#111;&#110;&#97;&#101;&#114;&#111;&#109;&#111;&#100;&#101;&#108;&#101;&#114;&#115;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;
+                </a>
+              </p>
             </div>
           </div>
 
@@ -81,7 +96,7 @@ const ACCESS_KEY = "333fe4c7-fbab-487c-9a25-691c89381913";
           </div>
         </div>
 
-        <div class="mt-8 rounded-xl overflow-hidden shadow-sm border border-gray-200 h-64">
+        <div class="mt-8 rounded-xl overflow-hidden shadow-sm border border-gray-200 h-64 bg-gray-100">
            <iframe 
             src="https://maps.google.com/maps?q=35.063028,-83.383306&t=k&z=17&ie=UTF8&iwloc=&output=embed"
             width="100%" 
