@@ -17,9 +17,10 @@ export default defineConfig({
     starlight({
       title: 'Macon Aero Modelers Docs',
       disable404Route: true,
+      // defaultTheme: 'light',
       customCss: ['./src/styles/starlight.css'],
       // Note: We removed the 'integrations' block from inside Starlight
-      
+
       sidebar: [
         {
           label: 'Start Here',

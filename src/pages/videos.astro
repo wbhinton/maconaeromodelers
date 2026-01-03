@@ -1,181 +1,66 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+// REPLACE THIS with your specific Playlist ID (Change the 'UC' in your Channel ID to 'UU')
+// Current ID is for Louis Vitale's channel which has many Macon Aero Modeler videos.
+const PLAYLIST_ID = "UUy5OGJfxp4gos5WnEADppSw"; 
+
+const CHANNEL_URL = "https://www.youtube.com/@44RAILGUY"; // Update this to your new channel URL
 ---
 
-<Layout title="Videos" description="Watch videos of Macon Aero Modelers flights and events">
-  <div class="bg-gradient-to-br from-primary to-secondary text-white py-16 px-4 rounded-2xl text-center mb-12 shadow-md">
-    <h1 class="text-4xl md:text-5xl font-bold mb-4">Videos</h1>
-    <p class="text-xl md:text-2xl text-blue-50 max-w-2xl mx-auto">
-      Watch exciting flights, tutorials, and event highlights
-    </p>
+<Layout title="Club Videos | Macon Aero Modelers">
+  
+  <div class="relative bg-gray-900 text-white py-16 px-4 rounded-b-3xl md:rounded-2xl mb-12 shadow-xl overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <img 
+        src={`${import.meta.env.BASE_URL}assets/images/hero3.jpg`} 
+        alt="Videos" 
+        class="w-full h-full object-cover opacity-30" 
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent"></div>
+    </div>
+    <div class="relative z-10 text-center max-w-4xl mx-auto mt-4">
+      <h1 class="text-3xl md:text-5xl font-bold mb-2 drop-shadow-lg">Club Videos</h1>
+      <p class="text-lg text-gray-300 drop-shadow-md">Flight demos, events, and highlights.</p>
+    </div>
   </div>
 
-  <section class="mb-16">
-    <h2 class="text-3xl font-bold text-text-dark mb-6">Featured Videos</h2>
+  <div class="max-w-4xl mx-auto px-4 mb-16">
     
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="bg-white p-2 md:p-4 rounded-2xl shadow-lg border border-gray-200 mb-8">
+      <h2 class="text-2xl font-bold text-gray-800 mb-4 px-2">Latest Upload</h2>
       
-      <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-all hover:-translate-y-1">
-        <div class="w-full aspect-video bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white text-6xl group cursor-pointer">
-          ▶️
-        </div>
-        <div class="p-6">
-          <h3 class="text-xl font-bold text-gray-900 mb-2">Club Fly-In Highlights</h3>
-          <p class="text-gray-600 mb-4">
-            Watch the best moments from our annual fly-in event featuring dozens of aircraft.
-          </p>
-          <a href="#" class="inline-block bg-primary text-white font-medium py-2 px-4 rounded hover:bg-primary-hover transition-colors">
-            Watch Video
-          </a>
-        </div>
+      <div class="aspect-video w-full rounded-xl overflow-hidden bg-black relative">
+        <iframe 
+          class="absolute inset-0 w-full h-full"
+          src={`https://www.youtube.com/embed/videoseries?list=${PLAYLIST_ID}`}
+          title="Latest Macon Aero Modelers Video"
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+          allowfullscreen
+        ></iframe>
       </div>
-
-      <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-all hover:-translate-y-1">
-        <div class="w-full aspect-video bg-gradient-to-br from-pink-400 to-rose-500 flex items-center justify-center text-white text-6xl group cursor-pointer">
-          ▶️
-        </div>
-        <div class="p-6">
-          <h3 class="text-xl font-bold text-gray-900 mb-2">Aerobatic Performance</h3>
-          <p class="text-gray-600 mb-4">
-            Amazing 3D aerobatics and precision flying from our experienced pilots.
-          </p>
-          <a href="#" class="inline-block bg-primary text-white font-medium py-2 px-4 rounded hover:bg-primary-hover transition-colors">
-            Watch Video
-          </a>
-        </div>
-      </div>
-
-      <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-all hover:-translate-y-1">
-        <div class="w-full aspect-video bg-gradient-to-br from-sky-400 to-cyan-300 flex items-center justify-center text-white text-6xl group cursor-pointer">
-          ▶️
-        </div>
-        <div class="p-6">
-          <h3 class="text-xl font-bold text-gray-900 mb-2">First Solo Flight</h3>
-          <p class="text-gray-600 mb-4">
-            Witness the excitement of a new member's first successful solo flight.
-          </p>
-          <a href="#" class="inline-block bg-primary text-white font-medium py-2 px-4 rounded hover:bg-primary-hover transition-colors">
-            Watch Video
-          </a>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <section class="mb-16">
-    <h2 class="text-3xl font-bold text-text-dark mb-6">Training & Tutorials</h2>
-    
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       
-      <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-all hover:-translate-y-1">
-        <div class="w-full aspect-video bg-gradient-to-br from-emerald-400 to-teal-300 flex items-center justify-center text-white text-6xl">
-          ▶️
-        </div>
-        <div class="p-6">
-          <h3 class="text-xl font-bold text-gray-900 mb-2">Getting Started with RC</h3>
-          <p class="text-gray-600 mb-4">
-            A comprehensive guide for beginners covering the basics of RC aircraft.
-          </p>
-          <a href="#" class="inline-block bg-secondary text-white font-medium py-2 px-4 rounded hover:bg-gray-700 transition-colors">
-            Watch Tutorial
-          </a>
-        </div>
-      </div>
-
-      <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-all hover:-translate-y-1">
-        <div class="w-full aspect-video bg-gradient-to-br from-rose-400 to-amber-300 flex items-center justify-center text-white text-6xl">
-          ▶️
-        </div>
-        <div class="p-6">
-          <h3 class="text-xl font-bold text-gray-900 mb-2">Pre-Flight Checklist</h3>
-          <p class="text-gray-600 mb-4">
-            Essential pre-flight checks to ensure safe and successful flights.
-          </p>
-          <a href="#" class="inline-block bg-secondary text-white font-medium py-2 px-4 rounded hover:bg-gray-700 transition-colors">
-            Watch Tutorial
-          </a>
-        </div>
-      </div>
-
-      <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-all hover:-translate-y-1">
-        <div class="w-full aspect-video bg-gradient-to-br from-teal-400 to-indigo-600 flex items-center justify-center text-white text-6xl">
-          ▶️
-        </div>
-        <div class="p-6">
-          <h3 class="text-xl font-bold text-gray-900 mb-2">Basic Aerobatics</h3>
-          <p class="text-gray-600 mb-4">
-            Learn how to perform loops, rolls, and other basic aerobatic moves.
-          </p>
-          <a href="#" class="inline-block bg-secondary text-white font-medium py-2 px-4 rounded hover:bg-gray-700 transition-colors">
-            Watch Tutorial
-          </a>
-        </div>
-      </div>
-
+      <p class="text-sm text-gray-500 mt-3 px-2 italic">
+        * This player automatically updates with our newest video.
+      </p>
     </div>
-  </section>
 
-  <section class="mb-16">
-    <h2 class="text-3xl font-bold text-text-dark mb-6">Event Coverage</h2>
-    
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="text-center py-12 bg-gray-50 rounded-2xl border border-dashed border-gray-300">
+      <h3 class="text-xl font-bold text-gray-800 mb-2">Want to see more?</h3>
+      <p class="text-gray-600 mb-6 max-w-lg mx-auto">
+        Visit our official YouTube channel to browse the full archive of flight videos, tutorials, and event recaps.
+      </p>
       
-      <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-all hover:-translate-y-1">
-        <div class="w-full aspect-video bg-gradient-to-br from-teal-200 to-pink-200 flex items-center justify-center text-gray-700 text-6xl">
-          ▶️
-        </div>
-        <div class="p-6">
-          <h3 class="text-xl font-bold text-gray-900 mb-2">2024 Summer Fun Fly</h3>
-          <p class="text-gray-600 mb-4">
-            Highlights from our summer fun fly event with various competitions.
-          </p>
-          <a href="#" class="inline-block bg-primary text-white font-medium py-2 px-4 rounded hover:bg-primary-hover transition-colors">
-            Watch Video
-          </a>
-        </div>
-      </div>
-
-      <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-all hover:-translate-y-1">
-        <div class="w-full aspect-video bg-gradient-to-br from-orange-100 to-orange-300 flex items-center justify-center text-gray-700 text-6xl">
-          ▶️
-        </div>
-        <div class="p-6">
-          <h3 class="text-xl font-bold text-gray-900 mb-2">Scale Model Showcase</h3>
-          <p class="text-gray-600 mb-4">
-            Detailed walkarounds and flights of beautiful scale models.
-          </p>
-          <a href="#" class="inline-block bg-primary text-white font-medium py-2 px-4 rounded hover:bg-primary-hover transition-colors">
-            Watch Video
-          </a>
-        </div>
-      </div>
-
-      <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-all hover:-translate-y-1">
-        <div class="w-full aspect-video bg-gradient-to-br from-red-200 to-pink-200 flex items-center justify-center text-gray-700 text-6xl">
-          ▶️
-        </div>
-        <div class="p-6">
-          <h3 class="text-xl font-bold text-gray-900 mb-2">FPV Racing Comp</h3>
-          <p class="text-gray-600 mb-4">
-            High-speed FPV drone racing action from our latest competition.
-          </p>
-          <a href="#" class="inline-block bg-primary text-white font-medium py-2 px-4 rounded hover:bg-primary-hover transition-colors">
-            Watch Video
-          </a>
-        </div>
-      </div>
-
+      <a 
+        href={CHANNEL_URL} 
+        target="_blank"
+        class="inline-flex items-center gap-2 bg-[#FF0000] text-white px-6 py-3 rounded-full font-bold hover:bg-red-700 transition-transform hover:scale-105 shadow-md"
+      >
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+        Subscribe on YouTube
+      </a>
     </div>
-  </section>
 
-  <section class="bg-background-alt rounded-2xl p-12 text-center border border-gray-200">
-    <h3 class="text-2xl font-bold text-text-dark mb-4">Subscribe to Our Channel</h3>
-    <p class="text-lg text-text-light mb-8 max-w-2xl mx-auto">
-      Stay updated with our latest videos by subscribing to our YouTube channel!
-    </p>
-    <a href="#" class="inline-block bg-red-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-red-700 transition-colors shadow-sm flex items-center justify-center gap-2 mx-auto w-fit">
-      <span>▶</span> Subscribe on YouTube
-    </a>
-  </section>
+  </div>
 </Layout>

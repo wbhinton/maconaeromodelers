@@ -1,0 +1,53 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="404 - Lost Link">
+  
+  <div class="relative bg-gray-900 text-white py-24 px-4 rounded-b-3xl md:rounded-2xl mb-12 shadow-xl overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <img 
+        src={`${import.meta.env.BASE_URL}assets/images/hero3.jpg`} 
+        alt="Crash Site" 
+        class="w-full h-full object-cover opacity-30 grayscale" 
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent"></div>
+    </div>
+    
+    <div class="relative z-10 text-center max-w-4xl mx-auto mt-4">
+      <h1 class="text-6xl md:text-8xl font-bold mb-4 drop-shadow-lg text-alert">404</h1>
+      <h2 class="text-2xl md:text-4xl font-bold text-white drop-shadow-md">Signal Lost</h2>
+    </div>
+  </div>
+
+  <div class="max-w-3xl mx-auto px-4 text-center mb-20">
+    
+    <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+      <div class="text-6xl mb-6">📡 ❌</div>
+      
+      <h3 class="text-2xl font-bold text-gray-800 mb-4">We can't find that page.</h3>
+      
+      <p class="text-gray-600 text-lg mb-8 leading-relaxed">
+        It looks like you've flown out of range. The page you are looking for might have been moved, deleted, or never existed in the first place.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a 
+          href={`${import.meta.env.BASE_URL}`} 
+          class="inline-flex items-center justify-center gap-2 bg-primary text-white px-8 py-3 rounded-full font-bold hover:bg-blue-700 transition-transform hover:scale-105 shadow-md"
+        >
+          Return to Runway (Home)
+        </a>
+        
+        <a 
+          href={`${import.meta.env.BASE_URL}contact/`} 
+          class="inline-flex items-center justify-center gap-2 bg-gray-100 text-gray-700 px-8 py-3 rounded-full font-bold hover:bg-gray-200 transition-colors"
+        >
+          Report a Problem
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+</Layout>
