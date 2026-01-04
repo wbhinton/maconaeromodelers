@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro check && astro build",
+    "build": "astro check && astro build && pagefind --site dist",
     "preview": "astro preview",
     "astro": "astro"
   },
@@ -18,9 +18,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@astrojs/mdx": "^4.3.13",
     "@astrojs/react": "^4.4.2",
-    "@astrojs/starlight": "^0.37.1",
-    "@astrojs/starlight-tailwind": "^4.0.2",
     "@tailwindcss/vite": "^4.1.18",
     "astro": "^5.16.4",
     "ical": "^0.8.0",
@@ -30,6 +29,7 @@
     "@astrojs/check": "^0.9.4",
     "@tailwindcss/typography": "^0.5.19",
     "@types/ical": "^0.8.3",
+    "pagefind": "^1.4.0",
     "typescript": "^5.7.2"
   }
 }

@@ -1,9 +1,9 @@
 ---
 title: Safety & Field Rules
 description: Mandatory safety requirements, insurance validation, and visitor policies for Macon Aero Modelers.
+order: 4
 ---
-
-import { Aside } from '@astrojs/starlight/components';
+import Card from '../../../components/docs/Card.astro';
 
 Safety is the primary objective of Macon Aero Modelers. All members are expected to operate their aircraft in a manner that ensures the safety of themselves, other pilots, and spectators.
 
@@ -18,9 +18,14 @@ Proof of insurance is non-negotiable for flying at our field.
 * **Verification:** You must be able to produce your AMA membership card upon request.
 * **Scope:** AMA membership is required for **all** fliers.
 
-<Aside type="danger" title="No Insurance, No Fly">
+<div class="bg-red-50 border-l-4 border-red-600 p-4 my-6 rounded-r-md shadow-sm">
+  <p class="font-bold text-red-800 m-0 flex items-center gap-2">
+    <span>🚫</span> No Insurance, No Fly
+  </p>
+  <p class="text-red-700 m-0 mt-1">
     Failure to maintain active AMA membership invalidates your permission to fly at the Tessentee Road field.
-</Aside>
+  </p>
+</div>
 
 ### FAA Compliance
 In addition to AMA rules, the club adheres to federal law.
@@ -46,11 +51,20 @@ The **Safety Officer** is the designated authority for interpreting and enforcin
 * **Fines:** The Safety Officer has the authority to assess appropriate fines for repeated violations.
 * **Resolution:** Complaints or issues relating to safe flying operations should be brought directly to the Safety Officer for resolution.
 
-<Aside type="caution" title="Disciplinary Action">
+<div class="bg-amber-50 border-l-4 border-amber-500 p-4 my-6 rounded-r-md shadow-sm">
+  <p class="font-bold text-amber-800 m-0 flex items-center gap-2">
+    <span>⚠️</span> Disciplinary Action
+  </p>
+  <p class="text-amber-700 m-0 mt-1">
     Repeated violations of rules may be reported to the Board of Directors. Failure to observe club objectives and rules may result in disciplinary action or expulsion from membership.
-</Aside>
+  </p>
+</div>
 
 ### AMA Safety Code
 The Safety Officer is responsible for keeping up to date with all AMA safety rules. As a chartered AMA Gold Leader Club, we follow the **Official AMA National Model Aircraft Safety Code**.
 
-* [View Official AMA Safety Code](https://www.modelaircraft.org/sites/default/files/105.pdf)
+<div class="my-6">
+  <Card title="Official AMA Safety Code" href="https://www.modelaircraft.org/sites/default/files/105.pdf">
+    Download the official PDF of the National Model Aircraft Safety Code (Document 105).
+  </Card>
+</div>

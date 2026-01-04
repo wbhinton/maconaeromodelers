@@ -1,0 +1,91 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Search from '../../components/docs/Search.astro';
+
+// 1. Generate a new page for every Markdown file in src/content/docs/
+export async function getStaticPaths() {
+  const docsEntries = await getCollection('docs');
+  return docsEntries.map(entry => {
+    // If the file is 'index.mdx', we return undefined for the slug.
+    // This tells Astro to build this page at /docs/ instead of /docs/index/
+    const slug = entry.slug === 'index' ? undefined : entry.slug;
+    return { params: { slug }, props: { entry } };
+  });
+}
+
+// 2. Get the current page data
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+
+// 3. Get ALL docs to build the Sidebar navigation
+const allDocs = await getCollection('docs');
+
+// Sort by the 'order' number in frontmatter, then alphabetically
+const sortedDocs = allDocs.sort((a, b) => {
+    if (a.data.order !== b.data.order) return a.data.order - b.data.order;
+    return a.data.title.localeCompare(b.data.title);
+});
+
+const currentSlug = entry.slug;
+
+// Helper to clean up URLs for the sidebar links
+const getDocPath = (slug: string) => {
+    // If it's the index file, link to /docs/
+    if (slug === 'index') return `${import.meta.env.BASE_URL}docs/`;
+    // Otherwise link to /docs/folder/file/
+    return `${import.meta.env.BASE_URL}docs/${slug}/`;
+}
+---
+
+<Layout title={entry.data.title}>
+  
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="flex flex-col md:flex-row gap-12">
+      
+      <aside class="w-full md:w-64 flex-shrink-0">
+        <nav class="sticky top-24">
+            <Search />
+            <h3 class="text-lg font-bold text-gray-900 mb-4 px-2 uppercase tracking-wider border-b border-gray-200 pb-2">
+              Handbook
+            </h3>
+            <ul class="space-y-1">
+                {sortedDocs.map((doc) => (
+                    <li>
+                        <a 
+                            href={getDocPath(doc.slug)}
+                            class:list={[
+                                "block px-3 py-2 rounded-md text-sm font-medium transition-colors",
+                                doc.slug === currentSlug 
+                                    ? "bg-primary text-white shadow-md" // Active State
+                                    : "text-gray-600 hover:bg-gray-100 hover:text-gray-900" // Inactive State
+                            ]}
+                        >
+                            {doc.data.title}
+                        </a>
+                    </li>
+                ))}
+            </ul>
+        </nav>
+      </aside>
+
+      <main class="flex-grow min-w-0">
+        <div class="mb-8 border-b border-gray-200 pb-4">
+            <h1 class="text-4xl font-bold text-gray-900 mb-2">{entry.data.title}</h1>
+            {entry.data.description && (
+                <p class="text-xl text-gray-500">{entry.data.description}</p>
+            )}
+        </div>
+
+        <div class="prose prose-lg prose-slate max-w-none 
+            prose-headings:font-bold prose-headings:text-gray-800
+            prose-a:text-primary prose-a:no-underline hover:prose-a:underline
+            prose-img:rounded-xl prose-img:shadow-lg">
+            <Content />
+        </div>
+      </main>
+
+    </div>
+  </div>
+
+</Layout>
