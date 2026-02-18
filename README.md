@@ -60,8 +60,9 @@ The weather widget on the homepage and "Field Info" page combines data from two 
 *   **Service**: [Web3Forms](https://web3forms.com/).
 *   **How it works**: Submissions are sent directly to club officers' emails. This allows us to have a working contact form without a backend server.
 
-### 5. 📘 Member Handbook (Starlight)
-*   **Framework**: [Starlight](https://starlight.astro.build).
+### 5. 📘 Member Handbook (Custom System)
+*   **Implementation**: Custom integration using **Astro Content Collections** and **Tailwind Typography**.
+*   **Why**: We built this custom system instead of using Starlight to ensure the documentation pages inherit the main site's styling perfectly.
 *   **Content**: Documentation is written in standard Markdown files located in `src/content/docs`.
 
 ## 📂 Project Structure
@@ -78,7 +79,7 @@ The weather widget on the homepage and "Field Info" page combines data from two 
 │   │   └── docs/              # Member Handbook content (Markdown)
 │   ├── layouts/               # Main page wrappers
 │   └── pages/                 # Website routes (index.astro, events.astro, etc.)
-├── astro.config.mjs           # Configuration for Astro & Starlight
+├── astro.config.mjs           # Configuration for Astro & Integrations
 └── tailwind.config.mjs        # Design system tokens (colors, fonts)
 ```
 
