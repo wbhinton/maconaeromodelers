@@ -5,8 +5,8 @@ import tailwindcss from '@tailwindcss/vite';
 import mdx from '@astrojs/mdx';
 
 export default defineConfig({
-  site: 'https://wbhinton.github.io',
-  base: '/maconaeromodelers/',
+  site: 'https://maconaeromodelers.com',
+  base: '/',
   output: 'static',
 
   vite: {
