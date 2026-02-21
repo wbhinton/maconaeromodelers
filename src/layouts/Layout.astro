@@ -9,6 +9,7 @@ interface Props {
 const { title, description = "Macon Aero Modelers - A model airplane flying club" } = Astro.props;
 
 const baseUrl = import.meta.env.BASE_URL;
+const gaMeasurementId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
 
 const joinPath = (path: string) => {
   const cleanBase = baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`;
@@ -42,6 +43,15 @@ const navItems = [
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href={joinPath('favicon.svg')} />
     <title>{title} | Macon Aero Modelers</title>
+
+    <!-- Google tag (gtag.js) -->
+    <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}></script>
+    <script is:inline define:vars={{ gaMeasurementId }}>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', gaMeasurementId);
+    </script>
   </head>
   
   <body class="bg-background text-text-dark antialiased min-h-screen flex flex-col font-sans">
