@@ -165,10 +165,8 @@
   // ------------------------------------------------------
   async function fetchAirportMetar() {
     try {
-      // Uses the official FAA/NOAA Aviation Weather Center API — no proxy needed, has CORS headers
-      const awcUrl = `https://aviationweather.gov/api/data/metar?ids=${METAR_ID}&format=raw`;
-      
-      const res = await fetch(awcUrl);
+      // Fetches through our Cloudflare Worker which adds CORS headers
+      const res = await fetch(`${PROXY_URL}metar?id=${METAR_ID}`);
       if (!res.ok) throw new Error('METAR Offline');
       const text = await res.text();
       if (!text || !text.includes(METAR_ID)) throw new Error('Parse Fail');
