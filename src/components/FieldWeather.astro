@@ -166,11 +166,13 @@
   async function fetchAirportMetar() {
     try {
       const noaaUrl = `https://tgftp.nws.noaa.gov/data/observations/metar/stations/${METAR_ID}.TXT`;
-      const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(noaaUrl)}&cb=${Date.now()}`;
+      const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(noaaUrl)}&cb=${Date.now()}`;
       
       const res = await fetch(proxyUrl);
       if (!res.ok) throw new Error('METAR Offline');
-      const text = await res.text();
+      const data = await res.json();
+      if (!data.contents) throw new Error('Empty response');
+      const text = data.contents;
       
       const lines = text.split('\n');
       const metar = lines.find(l => l.includes(METAR_ID));
