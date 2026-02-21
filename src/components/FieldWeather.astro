@@ -165,18 +165,16 @@
   // ------------------------------------------------------
   async function fetchAirportMetar() {
     try {
-      const noaaUrl = `https://tgftp.nws.noaa.gov/data/observations/metar/stations/${METAR_ID}.TXT`;
-      const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(noaaUrl)}&cb=${Date.now()}`;
+      // Uses the official FAA/NOAA Aviation Weather Center API — no proxy needed, has CORS headers
+      const awcUrl = `https://aviationweather.gov/api/data/metar?ids=${METAR_ID}&format=raw`;
       
-      const res = await fetch(proxyUrl);
+      const res = await fetch(awcUrl);
       if (!res.ok) throw new Error('METAR Offline');
-      const data = await res.json();
-      if (!data.contents) throw new Error('Empty response');
-      const text = data.contents;
-      
-      const lines = text.split('\n');
-      const metar = lines.find(l => l.includes(METAR_ID));
-      if (!metar) throw new Error('Parse Fail');
+      const text = await res.text();
+      if (!text || !text.includes(METAR_ID)) throw new Error('Parse Fail');
+
+      // AWC returns "METAR K1A5 ..." — use the full text as the metar string
+      const metar = text.trim();
 
       let skyText = "Clear";
       if (metar.includes('OVC')) skyText = "Overcast";
