@@ -25,7 +25,7 @@ This site is built to be modern, fast, and extremely low-maintenance. It uses a 
     ```bash
     npm run dev
     ```
-    The site will be available at `http://localhost:4321/maconaeromodelers/`.
+    The site will be available at `http://localhost:4321/`.
 
 ## 🛠 Tech Stack & Architecture
 
@@ -34,7 +34,7 @@ We chose this stack to minimize costs (free hosting) and maintenance effort.
 *   **Framework**: [Astro](https://astro.build) - A modern web framework optimized for speed.
 *   **Styling**: [Tailwind CSS](https://tailwindcss.com) - Utility-first CSS framework.
 *   **Language**: TypeScript / JavaScript.
-*   **Hosting**: GitHub Pages (Deployed via GitHub Actions).
+*   **Hosting**: GitHub Pages with custom domain [maconaeromodelers.com](https://maconaeromodelers.com).
 
 ## 🧩 Key Features & Integrations
 
