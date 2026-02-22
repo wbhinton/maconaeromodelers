@@ -29,6 +29,8 @@ jobs:
       # "Build Astro site", and "Upload artifact"
       - name: Install, build, and upload your site
         uses: withastro/action@v2
+        env:
+          PUBLIC_GA_MEASUREMENT_ID: G-X5KGG1XKMG
         # Note: If you don't have a package-lock.json, this might warn you,
         # but it generally tries to install dependencies correctly anyway.
 
