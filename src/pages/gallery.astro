@@ -10,7 +10,7 @@ import path from 'node:path';
 const CURRENT_YEAR = "2025"; 
 
 // Replace this with your actual YouTube Playlist ID
-// const playlistId = "PLxxxxxxxxxxxxxxxxxxxxxxxxx";
+const playlistId = "PLDeRW7LNQl1eiLRtiiwcrvPEkX99St1K7";
 
 // 1. Define the Shape of an Album (TypeScript Interface)
 interface Album {
@@ -101,28 +101,6 @@ try {
   <div class="max-w-7xl mx-auto px-4 mb-16">
     <GalleryNav />
 
-    {/* 
-    === FEATURED VIDEO PLAYLIST ===
-    Uncomment the `playlistId` variable in the frontmatter above, 
-    and uncomment this block to display the YouTube playlist. 
-    */}
-    {/*
-    <div class="w-full max-w-5xl mx-auto mb-16 mt-8">
-      <h2 class="text-2xl font-bold text-gray-800 mb-6 border-l-4 border-primary pl-4">
-        Featured Flights
-      </h2>
-      <div class="aspect-video w-full overflow-hidden rounded-xl shadow-lg border border-slate-200 bg-gray-900">
-        <iframe
-          class="w-full h-full"
-          src={`https://www.youtube.com/embed/videoseries?list=${playlistId}&rel=0`}
-          title="Macon Aero Modelers Featured Flights"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-        ></iframe>
-      </div>
-    </div>
-    */}
-
     <h2 class="text-2xl font-bold text-gray-800 mb-6 border-l-4 border-primary pl-4">
       {CURRENT_YEAR} Albums
     </h2>
@@ -166,6 +144,24 @@ try {
         </p>
       </div>
     )}
+
+    {/* 
+    === FEATURED VIDEO PLAYLIST ===
+    */}
+    <div class="w-full max-w-5xl mx-auto mb-16 mt-16">
+      <h2 class="text-2xl font-bold text-gray-800 mb-6 border-l-4 border-primary pl-4">
+        Featured Flights
+      </h2>
+      <div class="aspect-video w-full overflow-hidden rounded-xl shadow-lg border border-slate-200 bg-gray-900">
+        <iframe
+          class="w-full h-full"
+          src={`https://www.youtube.com/embed/videoseries?list=${playlistId}&rel=0`}
+          title="Macon Aero Modelers Featured Flights"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
 
   </div>
 </Layout>
