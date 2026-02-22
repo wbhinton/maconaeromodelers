@@ -73,12 +73,16 @@ try {
         const endDate = event.end ? new Date(event.end) : new Date();
         
         // Format Time
-        const timeOpts: Intl.DateTimeFormatOptions = { hour: 'numeric', minute: '2-digit' };
+        const timeOpts: Intl.DateTimeFormatOptions = { 
+          hour: 'numeric', 
+          minute: '2-digit',
+          timeZone: 'America/New_York'
+        };
         const timeString = `${date.toLocaleTimeString('en-US', timeOpts)} - ${endDate.toLocaleTimeString('en-US', timeOpts)}`;
 
         return {
-          day: date.getDate().toString(), // FIX: Convert number to string to match fallback
-          month: date.toLocaleString('default', { month: 'short' }).toUpperCase(),
+          day: date.toLocaleString('en-US', { day: 'numeric', timeZone: 'America/New_York' }), 
+          month: date.toLocaleString('en-US', { month: 'short', timeZone: 'America/New_York' }).toUpperCase(),
           title: event.summary || "Untitled Event", // FIX: Handle undefined title
           time: timeString,
           location: event.location || "Club Flying Field",
