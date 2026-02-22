@@ -76,6 +76,40 @@ import FieldWeather from '../components/FieldWeather.astro';
         </div>
       </section>
 
+      <section class="mb-16" id="field-map">
+        <div class="flex items-center gap-3 mb-8">
+          <div class="h-8 w-1 bg-primary rounded-full"></div>
+          <h2 class="text-3xl font-bold text-gray-800">Field Map & FRIA Boundary</h2>
+        </div>
+
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+          <div class="rounded-xl overflow-hidden bg-gray-100 mb-6">
+            <img 
+              src={`${import.meta.env.BASE_URL}assets/images/OTX-Map-web.jpg`} 
+              alt="OTX AeroDrome Field Map with FRIA and Pit Area boundaries" 
+              class="w-full h-auto"
+              loading="lazy"
+            />
+          </div>
+          
+          <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p class="text-gray-600 text-sm">
+              Overhead satellite view detailing the field layout, designated parking, pit areas, and our active FAA-Recognized Identification Area (FRIA) boundary.
+            </p>
+            <a 
+              href={`${import.meta.env.BASE_URL}assets/images/OTX-Map.jpg`}
+              download="OTX-AeroDrome-Map-HighRes.jpg"
+              class="shrink-0 inline-flex items-center justify-center bg-gray-900 text-white font-bold py-3 px-6 rounded-xl hover:bg-gray-800 transition-colors shadow-sm"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+              Download High-Res Map
+            </a>
+          </div>
+        </div>
+      </section>
+
       <section class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20 items-start">
         <div>
           <div class="flex items-center gap-3 mb-6">

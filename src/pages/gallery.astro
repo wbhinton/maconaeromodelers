@@ -9,6 +9,9 @@ import path from 'node:path';
 // ==================================================================
 const CURRENT_YEAR = "2025"; 
 
+// Replace this with your actual YouTube Playlist ID
+// const playlistId = "PLxxxxxxxxxxxxxxxxxxxxxxxxx";
+
 // 1. Define the Shape of an Album (TypeScript Interface)
 interface Album {
   title: string;
@@ -76,19 +79,19 @@ try {
 }
 ---
 
-<Layout title={`Gallery - ${CURRENT_YEAR} Season`}>
+<Layout title={`Media Gallery - ${CURRENT_YEAR} Season`}>
   <div class="relative bg-gray-900 text-white py-16 px-4 rounded-b-3xl md:rounded-2xl mb-12 shadow-xl overflow-hidden">
     <div class="absolute inset-0 z-0">
       <img 
         src={`${import.meta.env.BASE_URL}assets/images/hero3.jpg`} 
-        alt="Gallery" 
+        alt="Media Gallery" 
         class="w-full h-full object-cover opacity-40" 
       />
       <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent"></div>
     </div>
     
     <div class="relative z-10 text-center max-w-4xl mx-auto mt-4">
-      <h1 class="text-4xl md:text-5xl font-bold mb-6 drop-shadow-lg">Photo Gallery</h1>
+      <h1 class="text-4xl md:text-5xl font-bold mb-6 drop-shadow-lg">Media Gallery</h1>
       <p class="text-xl md:text-2xl text-gray-200 max-w-2xl mx-auto drop-shadow-md">
         Highlights from the {CURRENT_YEAR} flight line.
       </p>
@@ -97,6 +100,28 @@ try {
 
   <div class="max-w-7xl mx-auto px-4 mb-16">
     <GalleryNav />
+
+    {/* 
+    === FEATURED VIDEO PLAYLIST ===
+    Uncomment the `playlistId` variable in the frontmatter above, 
+    and uncomment this block to display the YouTube playlist. 
+    */}
+    {/*
+    <div class="w-full max-w-5xl mx-auto mb-16 mt-8">
+      <h2 class="text-2xl font-bold text-gray-800 mb-6 border-l-4 border-primary pl-4">
+        Featured Flights
+      </h2>
+      <div class="aspect-video w-full overflow-hidden rounded-xl shadow-lg border border-slate-200 bg-gray-900">
+        <iframe
+          class="w-full h-full"
+          src={`https://www.youtube.com/embed/videoseries?list=${playlistId}&rel=0`}
+          title="Macon Aero Modelers Featured Flights"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+    */}
 
     <h2 class="text-2xl font-bold text-gray-800 mb-6 border-l-4 border-primary pl-4">
       {CURRENT_YEAR} Albums
