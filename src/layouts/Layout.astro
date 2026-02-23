@@ -6,7 +6,7 @@ interface Props {
   description?: string;
 }
 
-const { title, description = "Macon Aero Modelers - A model airplane flying club" } = Astro.props;
+const { title, description = "Join Macon Aero Modelers, the premier radio-controlled aviation community in Macon County, NC. We welcome RC airplanes, helicopters, and drones of all sizes!" } = Astro.props;
 
 const baseUrl = import.meta.env.BASE_URL;
 const gaMeasurementId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
@@ -42,7 +42,11 @@ const navItems = [
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href={joinPath('favicon.svg')} />
-    <title>{title} | Macon Aero Modelers</title>
+    <title>{title === 'Home' ? 'Macon Aero Modelers | RC Airplane & Helicopter Club' : `${title} | Macon Aero Modelers`}</title>
+
+    <!-- Preconnect to external APIs -->
+    <link rel="preconnect" href="https://spring-bread-84bd.wbhinton.workers.dev" crossorigin />
+    <link rel="dns-prefetch" href="https://spring-bread-84bd.wbhinton.workers.dev" />
 
     <!-- Google tag (gtag.js) -->
     <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}></script>

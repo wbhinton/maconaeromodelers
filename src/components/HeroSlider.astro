@@ -26,7 +26,8 @@ function fixPath(path: string) {
         src={fixPath(img)} 
         alt="Club Event" 
         class="w-full h-full object-cover"
-        loading="eager"
+        loading={index === 0 ? "eager" : "lazy"}
+        fetchpriority={index === 0 ? "high" : "auto"}
         decoding="sync" 
       />
     </div>
