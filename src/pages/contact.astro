@@ -5,6 +5,7 @@ import Layout from '../layouts/Layout.astro';
 // CONFIGURATION
 const ACCESS_KEY = "333fe4c7-fbab-487c-9a25-691c89381913";
 // ------------------------------------------------------------
+---
 
 <Layout title="Contact Us">
   
@@ -43,13 +44,13 @@ const ACCESS_KEY = "333fe4c7-fbab-487c-9a25-691c89381913";
             <div>
               <h3 class="font-bold text-gray-900">OTX AeroDrome</h3>
               <p class="text-gray-600 mt-1">
-                516 Tessentee Road<br>
+                516 Tessentee Road<br />
                 Otto, NC 28763
               </p>
               <div class="mt-2 text-sm text-gray-500 font-mono bg-gray-50 inline-block px-2 py-1 rounded border border-gray-200">
                 35°03'46.9"N 83°22'59.9"W
               </div>
-              <br>
+              <br />
               <a 
                 href="https://www.google.com/maps/search/?api=1&query=35.063028,-83.383306" 
                 target="_blank"
@@ -88,7 +89,7 @@ const ACCESS_KEY = "333fe4c7-fbab-487c-9a25-691c89381913";
             <div>
               <h3 class="font-bold text-gray-900">Flying Hours</h3>
               <p class="text-gray-600 mt-1">
-                Open to members 7 days a week.<br>
+                Open to members 7 days a week.<br />
                 Spectators welcome on weekends!
               </p>
             </div>
@@ -114,11 +115,11 @@ const ACCESS_KEY = "333fe4c7-fbab-487c-9a25-691c89381913";
           method="POST"
           class="space-y-6"
         >
-          <input type="hidden" name="access_key" value={ACCESS_KEY}>
+          <input type="hidden" name="access_key" value={ACCESS_KEY} />
           
-          <input type="hidden" name="redirect" value="https://maconaeromodelers.com/contact-success">
+          <input type="hidden" name="redirect" value="https://maconaeromodelers.com/contact-success" />
           
-          <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+          <input type="checkbox" name="botcheck" class="hidden" style="display: none;" />
 
           <div>
             <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
@@ -129,7 +130,7 @@ const ACCESS_KEY = "333fe4c7-fbab-487c-9a25-691c89381913";
               required
               class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all"
               placeholder="John Doe"
-            >
+            />
           </div>
 
           <div>
@@ -141,7 +142,7 @@ const ACCESS_KEY = "333fe4c7-fbab-487c-9a25-691c89381913";
               required
               class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all"
               placeholder="john@example.com"
-            >
+            />
           </div>
 
           <div>
