@@ -38,32 +38,63 @@
     </div>
   </div>
 
-  <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-    
-    <div class="bg-blue-50 p-4 rounded-xl border border-blue-100">
-      <p class="text-xs text-blue-600 uppercase tracking-wider font-bold mb-1">Wind (OTX)</p>
-      <p id="val-wind" class="text-2xl font-bold text-gray-900">--</p>
-      <p id="val-wind-dir" class="text-xs text-gray-500 mt-1">--</p>
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <!-- Weather Metrics (left 2/3 on desktop) -->
+    <div class="lg:col-span-2">
+      <div class="grid grid-cols-2 gap-4 text-center">
+        
+        <div class="bg-blue-50 p-4 rounded-xl border border-blue-100">
+          <p class="text-xs text-blue-600 uppercase tracking-wider font-bold mb-1">Wind (OTX)</p>
+          <p id="val-wind" class="text-2xl font-bold text-gray-900">--</p>
+          <p id="val-wind-dir" class="text-xs text-gray-500 mt-1">--</p>
+        </div>
+
+        <div class="bg-orange-50 p-4 rounded-xl border border-orange-100">
+          <p class="text-xs text-orange-600 uppercase tracking-wider font-bold mb-1">Gusts (OTX)</p>
+          <p id="val-gust" class="text-2xl font-bold text-gray-900">--</p>
+          <p class="text-xs text-gray-500 mt-1">MPH</p>
+        </div>
+
+        <div class="bg-gray-50 p-4 rounded-xl border border-gray-100">
+          <p class="text-xs text-gray-500 uppercase tracking-wider font-bold mb-1">Sky (K1A5)</p>
+          <p id="val-sky" class="text-xl font-bold text-gray-900 mt-1">--</p>
+          <p id="val-vis" class="text-xs text-gray-500 mt-1">--</p>
+        </div>
+
+        <div class="bg-gray-50 p-4 rounded-xl border border-gray-100">
+          <p class="text-xs text-gray-500 uppercase tracking-wider font-bold mb-1">Temp (OTX)</p>
+          <p id="val-temp" class="text-2xl font-bold text-gray-900">--</p>
+          <p id="val-feels" class="text-xs text-gray-500 mt-1">--</p>
+        </div>
+
+      </div>
     </div>
 
-    <div class="bg-orange-50 p-4 rounded-xl border border-orange-100">
-      <p class="text-xs text-orange-600 uppercase tracking-wider font-bold mb-1">Gusts (OTX)</p>
-      <p id="val-gust" class="text-2xl font-bold text-gray-900">--</p>
-      <p class="text-xs text-gray-500 mt-1">MPH</p>
+    <!-- Webcam Preview (right 1/3 on desktop) -->
+    <div class="relative group">
+      <a 
+        href="https://ambientweather.net/dashboard/2ae669e5daebf0249f2771df7bcef9d3?pip=webcam" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        class="block relative rounded-xl overflow-hidden shadow-sm border border-gray-200 aspect-video lg:aspect-square"
+      >
+        <img 
+          id="webcam-image"
+          src="https://images.ambientweather.net/40F5200AD3DA/latest.jpg" 
+          alt="Field Webcam" 
+          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+        <div class="absolute top-2 left-2 bg-red-600 text-white text-[10px] font-bold px-1.5 py-0.5 rounded flex items-center gap-1 shadow-sm">
+          <span class="w-1.5 h-1.5 bg-white rounded-full animate-pulse"></span>
+          LIVE FIELD CAM
+        </div>
+        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center">
+            <div class="opacity-0 group-hover:opacity-100 transition-opacity bg-white/90 text-primary font-bold text-xs py-2 px-4 rounded-lg shadow-lg transform translate-y-2 group-hover:translate-y-0 duration-300">
+                Open Full Dashboard
+            </div>
+        </div>
+      </a>
     </div>
-
-    <div class="bg-gray-50 p-4 rounded-xl border border-gray-100">
-      <p class="text-xs text-gray-500 uppercase tracking-wider font-bold mb-1">Sky (K1A5)</p>
-      <p id="val-sky" class="text-xl font-bold text-gray-900 mt-1">--</p>
-      <p id="val-vis" class="text-xs text-gray-500 mt-1">--</p>
-    </div>
-
-    <div class="bg-gray-50 p-4 rounded-xl border border-gray-100">
-      <p class="text-xs text-gray-500 uppercase tracking-wider font-bold mb-1">Temp (OTX)</p>
-      <p id="val-temp" class="text-2xl font-bold text-gray-900">--</p>
-      <p id="val-feels" class="text-xs text-gray-500 mt-1">--</p>
-    </div>
-
   </div>
 </div>
 
@@ -112,6 +143,15 @@
 
     // Run fetches
     Promise.allSettled([fetchLocalStation(), fetchAirportMetar()]);
+
+    // Webcam Refresh (every 60 seconds)
+    const webcamImg = document.getElementById('webcam-image');
+    if (webcamImg) {
+      setInterval(() => {
+        const timestamp = new Date().getTime();
+        webcamImg.src = `https://images.ambientweather.net/40F5200AD3DA/latest.jpg?t=${timestamp}`;
+      }, 60000);
+    }
   }
 
   // ------------------------------------------------------
