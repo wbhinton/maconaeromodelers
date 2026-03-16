@@ -187,6 +187,21 @@ const navItems = [
     </footer>
 
     <script>
+      // 0. GA Tracking Logic
+      document.addEventListener('click', (e) => {
+        const target = e.target as HTMLElement;
+        const trackElement = target.closest('[data-ga-track]');
+        if (trackElement) {
+          const eventName = trackElement.getAttribute('data-ga-track');
+          if (eventName && typeof (window as any).gtag === 'function') {
+            (window as any).gtag('event', eventName, {
+              'event_category': 'engagement',
+              'event_label': trackElement.getAttribute('href') || 'no_link'
+            });
+          }
+        }
+      });
+
       // 1. Mobile Hamburger Menu Logic
       const btn = document.getElementById('mobile-menu-btn');
       const menu = document.getElementById('nav-links');

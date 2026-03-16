@@ -1,0 +1,14 @@
+{
+  "strategy": "parallel-map-reduce",
+  "repo_type": "single-project",
+  "monorepo_projects": [],
+  "generated_at": "2026-03-09T00:00:00.000Z",
+  "git_commit": "d5bd48cb3d838499dd01d0965acd15d0478a8958",
+  "files_analyzed": 92,
+  "languages": ["TypeScript", "Astro", "JavaScript", "MDX", "CSS"],
+  "metrics": {
+    "modules": 9,
+    "components": 19,
+    "concepts": 10
+  }
+}
