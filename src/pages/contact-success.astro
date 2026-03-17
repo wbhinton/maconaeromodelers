@@ -1,0 +1,60 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Message Sent">
+  
+  <div class="relative bg-gray-900 text-white py-24 px-4 rounded-b-3xl md:rounded-2xl mb-12 shadow-xl overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <img 
+        src={`${import.meta.env.BASE_URL}assets/images/hero2.jpg`} 
+        alt="Success" 
+        class="w-full h-full object-cover opacity-30" 
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent"></div>
+    </div>
+    
+    <div class="relative z-10 text-center max-w-4xl mx-auto mt-4">
+      <h1 class="text-5xl md:text-7xl font-bold mb-4 drop-shadow-lg">Mission Accomplished</h1>
+      <h2 class="text-xl md:text-2xl font-medium text-blue-200 drop-shadow-md">Message Transmission Successful</h2>
+    </div>
+  </div>
+
+  <div class="max-w-3xl mx-auto px-4 text-center mb-20">
+    
+    <div class="bg-white p-10 rounded-2xl shadow-xl border border-gray-100 flex flex-col items-center">
+      <div class="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-8 shadow-inner animate-bounce-subtle">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+        </svg>
+      </div>
+      
+      <h3 class="text-3xl font-bold text-gray-800 mb-6">Thank you for your message!</h3>
+      
+      <p class="text-gray-600 text-lg mb-10 leading-relaxed max-w-lg">
+        The club officers have received it and will get back to you soon. We appreciate your interest in Macon Aero Modelers!
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center w-full sm:w-auto">
+        <a 
+          href={`${import.meta.env.BASE_URL}`} 
+          class="inline-flex items-center justify-center gap-2 bg-primary text-white px-10 py-4 rounded-xl font-bold hover:bg-primary-hover transition-all hover:scale-105 shadow-lg active:scale-95"
+        >
+          Return to Homepage
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+</Layout>
+
+<style>
+  @keyframes bounce-subtle {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+  }
+  .animate-bounce-subtle {
+    animation: bounce-subtle 2s infinite ease-in-out;
+  }
+</style>
