@@ -7,7 +7,20 @@ import path from 'node:path';
 // ==================================================================
 // CONFIGURATION
 // ==================================================================
-const CURRENT_YEAR = "2025"; 
+// Scan years to find the newest year automatically, fallback to 2025
+const galleryDir = path.join(process.cwd(), 'public', 'assets', 'gallery');
+let yearsFound: string[] = [];
+try {
+  if (fs.existsSync(galleryDir)) {
+    yearsFound = fs.readdirSync(galleryDir)
+      .filter(f => /^\d{4}$/.test(f) && fs.statSync(path.join(galleryDir, f)).isDirectory())
+      .sort((a, b) => Number(b) - Number(a));
+  }
+} catch (e) {
+  console.error("Gallery: Could not scan years", e);
+}
+
+const CURRENT_YEAR = yearsFound[0] || "2025";
 
 // Replace this with your actual YouTube Playlist ID
 const latestPlaylistId = "UULFy5OGJfxp4gos5WnEADppSw";
