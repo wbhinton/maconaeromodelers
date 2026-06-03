@@ -32,7 +32,7 @@
    inkscape:window-x="0"
    inkscape:window-y="33"
    inkscape:window-maximized="0"
-   inkscape:current-layer="g5" /><defs
+   inkscape:current-layer="g31" /><defs
    id="defs258"><filter
      style="color-interpolation-filters:sRGB"
      id="filter2"
@@ -241,7 +241,8 @@
      style="font-style:italic;font-variant:normal;font-weight:900;font-stretch:normal;font-family:'Nexa Slab Black Italic';-inkscape-font-specification:'Nexa Slab Black Italic,  Heavy Italic'">North Carolina</tspan></text><g
    id="g6"
    style="display:inline"
-   inkscape:label="Lower"><ellipse
+   inkscape:label="Lower"
+   transform="translate(0,10)"><ellipse
      style="display:none;vector-effect:non-scaling-stroke;fill:none;fill-opacity:1;stroke:#33424c;stroke-width:1.61988;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1;-inkscape-stroke:hairline"
      id="ellipse6"
      cx="-183.19237"
