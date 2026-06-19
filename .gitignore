@@ -36,3 +36,6 @@ dist/
 .rp1/context/meta.json
 .rp1/settings.toml
 # rp1:end
+# pixi environments
+.pixi/*
+!.pixi/config.toml
