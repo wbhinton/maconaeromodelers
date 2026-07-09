@@ -213,23 +213,38 @@ const navItems = [
         });
       }
 
-      // 2. Mobile Membership Dropdown Logic
+      // 2. Mobile & Tablet Membership Dropdown Logic
       const memBtn = document.getElementById('membership-btn');
       const memMenu = document.getElementById('membership-menu');
       const memArrow = document.getElementById('membership-arrow');
 
       if (memBtn && memMenu) {
         memBtn.addEventListener('click', (e) => {
-          // Prevent the click from bubbling up if necessary, though not strictly needed here
           e.stopPropagation();
           
-          // Toggle the visibility classes
+          // Toggle both mobile and desktop visibility classes to support tablet touch clicks
           memMenu.classList.toggle('hidden');
+          memMenu.classList.toggle('md:hidden');
           memMenu.classList.toggle('flex');
+          memMenu.classList.toggle('md:flex');
           
           // Rotate the arrow icon
           if (memArrow) {
              memArrow.classList.toggle('rotate-180');
+          }
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+          const target = e.target as HTMLElement;
+          if (!memBtn.contains(target) && !memMenu.contains(target)) {
+            memMenu.classList.add('hidden');
+            memMenu.classList.add('md:hidden');
+            memMenu.classList.remove('flex');
+            memMenu.classList.remove('md:flex');
+            if (memArrow) {
+              memArrow.classList.remove('rotate-180');
+            }
           }
         });
       }
